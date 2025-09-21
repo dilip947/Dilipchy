@@ -105,6 +105,16 @@
       border-radius: 2px;
     }
 
+    /* === Particles Background === */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
     /* === Header === */
     header {
       position: fixed;
@@ -182,6 +192,40 @@
       width: 100%;
     }
 
+    /* Dropdown Menu */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 200px;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 20px var(--card-shadow);
+      border: 1px solid var(--card-border);
+      padding: 0.5rem;
+      display: none;
+      z-index: 1000;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-item {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .dropdown-item:hover {
+      background: var(--background-alt);
+    }
+
     .theme-toggle {
       background: var(--card-bg);
       border-radius: 50%;
@@ -211,19 +255,6 @@
       padding-top: 5rem;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      opacity: 0.05;
-      z-index: -1;
     }
 
     .hero-container {
@@ -319,15 +350,6 @@
       align-items: center;
     }
 
-    .about-image {
-      position: relative;
-    }
-
-    .about-img {
-      border-radius: var(--border-radius);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
     .about-content h2 {
       text-align: left;
     }
@@ -377,6 +399,8 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
     .service-card:hover {
@@ -405,6 +429,38 @@
 
     .service-description {
       color: var(--text-light);
+    }
+
+    /* Data Dashboarding Focus Effect */
+    .services-container {
+      position: relative;
+    }
+
+    .data-dashboard-card {
+      position: relative;
+      z-index: 3;
+    }
+
+    .data-dashboard-card:hover ~ .service-card {
+      filter: blur(5px);
+      opacity: 0.7;
+    }
+
+    /* Finance Visualization Background */
+    .finance-visualization {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.03;
+      pointer-events: none;
+      background: 
+        radial-gradient(circle at 20% 35%, var(--primary) 0%, transparent 50%),
+        radial-gradient(circle at 75% 44%, var(--secondary) 0%, transparent 50%),
+        radial-gradient(circle at 54% 15%, var(--accent) 0%, transparent 50%),
+        linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     }
 
     /* === Projects Section === */
@@ -467,6 +523,59 @@
     .project-actions {
       display: flex;
       gap: 1rem;
+    }
+
+    /* === Resume Section === */
+    .resume {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resume::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='white' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100'%3E%3Cline x1='0' y1='0' x2='100' y2='100' stroke='white' stroke-width='0.5' opacity='0.1'/%3E%3Cline x1='100' y1='0' x2='0' y2='100' stroke='white' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E");
+      background-size: 100px 100px, 50px 50px;
+      opacity: 0.1;
+    }
+
+    .resume .section-title {
+      color: white;
+    }
+
+    .resume .section-title::after {
+      background: white;
+    }
+
+    .resume-container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .resume-download {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: white;
+      color: var(--primary);
+      border-radius: 8px;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      margin-top: 2rem;
+    }
+
+    .resume-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
     /* === Contact Section === */
@@ -655,6 +764,9 @@
   </style>
 </head>
 <body>
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+
   <!-- Header -->
   <header>
     <div class="container header-container">
@@ -669,8 +781,18 @@
       <nav class="nav-links">
         <a href="#home" class="nav-link">Home</a>
         <a href="#about" class="nav-link">About</a>
+        
+        <!-- Projects Dropdown -->
+        <div class="dropdown">
+          <a href="#projects" class="nav-link">Projects ▾</a>
+          <div class="dropdown-menu">
+            <a href="#project1" class="dropdown-item">Crypto Market Risk</a>
+            <a href="#project2" class="dropdown-item">E-Commerce Sales</a>
+          </div>
+        </div>
+        
         <a href="#services" class="nav-link">Services</a>
-        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#resume" class="nav-link">Resume</a>
         <a href="#contact" class="nav-link">Contact</a>
         <button class="theme-toggle" id="themeToggle">
           <i class="fas fa-moon"></i>
@@ -707,9 +829,6 @@
   <!-- About Section -->
   <section id="about" class="section about">
     <div class="container about-container">
-      <div class="about-image">
-        <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="about-img">
-      </div>
       <div class="about-content">
         <h2 class="section-title">About Me</h2>
         <p class="about-text">I'm a Business Analytics student focused on financial markets, risk analysis, and data-driven decision-making. I transform messy datasets into clear insights and dashboards that empower stakeholders to act.</p>
@@ -724,19 +843,19 @@
           <span class="skill">Dashboarding</span>
           <span class="skill">Risk Analysis</span>
         </div>
-        <a href="Resume.pdf" class="btn btn-primary" target="_blank">
-          <i class="fas fa-download"></i> Download Resume
-        </a>
       </div>
     </div>
   </section>
 
   <!-- Services Section -->
   <section id="services" class="section">
-    <div class="container">
+    <div class="container services-container">
+      <!-- Finance Visualization Background -->
+      <div class="finance-visualization"></div>
+      
       <h2 class="section-title">What I Do</h2>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card data-dashboard-card">
           <div class="service-icon">
             <i class="fas fa-chart-line"></i>
           </div>
@@ -766,7 +885,7 @@
     <div class="container">
       <h2 class="section-title">My Projects</h2>
       <div class="projects-grid">
-        <div class="project-card">
+        <div id="project1" class="project-card">
           <div class="project-image">
             <img src="Image/Project1/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
           </div>
@@ -783,7 +902,7 @@
             </div>
           </div>
         </div>
-        <div class="project-card">
+        <div id="project2" class="project-card">
           <div class="project-image">
             <img src="Image/Project2/1.png" alt="E-Commerce Sales Insights" class="project-img">
           </div>
@@ -804,6 +923,17 @@
     </div>
   </section>
 
+  <!-- Resume Section -->
+  <section id="resume" class="section resume">
+    <div class="container resume-container">
+      <h2 class="section-title">My Resume</h2>
+      <p>Download my resume to learn more about my experience, skills, and education.</p>
+      <a href="Resume.pdf" download class="resume-download">
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+    </div>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="section">
     <div class="container">
@@ -816,7 +946,7 @@
             </div>
             <div>
               <h3>Email</h3>
-              <p>choudharydilip947@gmail.com</p>
+              <a href="mailto:choudharydilip947@gmail.com">choudharydilip947@gmail.com</a>
             </div>
           </div>
           <div class="contact-item">
@@ -825,7 +955,7 @@
             </div>
             <div>
               <h3>Phone</h3>
-              <p>+91 9346053750</p>
+              <a href="tel:+919346053750">+91 9346053750</a>
             </div>
           </div>
           <div class="contact-item">
@@ -834,7 +964,7 @@
             </div>
             <div>
               <h3>LinkedIn</h3>
-              <p>linkedin.com/in/dilip-choudhary-analytics</p>
+              <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank">linkedin.com/in/dilip-choudhary-analytics</a>
             </div>
           </div>
           <div class="contact-item">
@@ -890,7 +1020,44 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
+    // Initialize particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#3b82f6" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#3b82f6",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        }
+      },
+      retina_detect: true
+    });
+
     // Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = themeToggle.querySelector('i');

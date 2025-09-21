@@ -1,28 +1,157 @@
+/* GLOBAL */
 body {
-    margin:0; padding:0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0a192f;
+  color: #e6f1ff;
+  scroll-behavior: smooth;
 }
-.container { max-width:1100px; margin:auto; padding:20px; }
-header { background:#0d47a1; color:white; padding:50px 0; text-align:center; }
-header h1 { font-size:3rem; }
-header p { font-size:1.2rem; }
-nav { background:#1565c0; }
-nav .container { display:flex; justify-content:center; }
-nav a { margin:0 15px; color:white; font-weight:500; padding:10px 0; }
-nav a:hover { color:#ffeb3b; }
-section { padding:60px 0; }
-section h2 { text-align:center; margin-bottom:40px; color:#0d47a1; }
-.projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-.project-card { background:white; border-radius:10px; padding:20px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-.project-card img { width:100%; border-radius:8px; }
-.project-card h3 { margin-top:15px; color:#0d47a1; }
-.skill-bar .bar { background:#ddd; border-radius:20px; overflow:hidden; margin-bottom:20px; }
-.skill-bar .bar div { height:20px; background:#0d47a1; width:0%; color:white; text-align:right; padding-right:10px; line-height:20px; transition: width 1s; }
-.contact-form { max-width:500px; margin:auto; display:flex; flex-direction:column; }
-.contact-form input, .contact-form textarea { padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ccc; font-size:1rem; }
-.contact-form button { padding:12px; background:#0d47a1; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer; transition:0.3s; }
-.contact-form button:hover { background:#1565c0; }
-footer { background:#0d47a1; color:white; text-align:center; padding:20px 0; }
-@media(max-width:768px){ header h1{font-size:2.2rem;} section h2{font-size:2rem;} }
+
+h1, h2, h3 {
+  margin: 0.5rem 0;
+}
+
+section {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #0a192f, #112240);
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.profile-img {
+  width: 140px;
+  border-radius: 50%;
+  border: 3px solid #64ffda;
+  margin-bottom: 1rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero h1 span {
+  color: #64ffda;
+}
+
+.hero-links a {
+  margin: 0 10px;
+  padding: 8px 16px;
+  border: 2px solid #64ffda;
+  color: #64ffda;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.hero-links a:hover {
+  background: #64ffda;
+  color: #0a192f;
+}
+
+/* TYPING ANIMATION */
+.typing {
+  border-right: 2px solid #64ffda;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+/* SKILLS */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.skill-card {
+  background: #112240;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: #233554;
+}
+
+/* PROJECTS */
+.project-card {
+  background: #112240;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-left: 4px solid #64ffda;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateX(10px);
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #64ffda;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* CONTACT */
+.contact p {
+  font-size: 1.2rem;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #112240;
+  font-size: 0.9rem;
+}
+
+/* ANIMATIONS */
+.fade-in {
+  animation: fadeIn 2s ease forwards;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+}

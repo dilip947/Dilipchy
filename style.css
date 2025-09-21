@@ -1,0 +1,28 @@
+body {
+    margin:0; padding:0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+.container { max-width:1100px; margin:auto; padding:20px; }
+header { background:#0d47a1; color:white; padding:50px 0; text-align:center; }
+header h1 { font-size:3rem; }
+header p { font-size:1.2rem; }
+nav { background:#1565c0; }
+nav .container { display:flex; justify-content:center; }
+nav a { margin:0 15px; color:white; font-weight:500; padding:10px 0; }
+nav a:hover { color:#ffeb3b; }
+section { padding:60px 0; }
+section h2 { text-align:center; margin-bottom:40px; color:#0d47a1; }
+.projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+.project-card { background:white; border-radius:10px; padding:20px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+.project-card img { width:100%; border-radius:8px; }
+.project-card h3 { margin-top:15px; color:#0d47a1; }
+.skill-bar .bar { background:#ddd; border-radius:20px; overflow:hidden; margin-bottom:20px; }
+.skill-bar .bar div { height:20px; background:#0d47a1; width:0%; color:white; text-align:right; padding-right:10px; line-height:20px; transition: width 1s; }
+.contact-form { max-width:500px; margin:auto; display:flex; flex-direction:column; }
+.contact-form input, .contact-form textarea { padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ccc; font-size:1rem; }
+.contact-form button { padding:12px; background:#0d47a1; color:white; border:none; border-radius:8px; font-size:1rem; cursor:pointer; transition:0.3s; }
+.contact-form button:hover { background:#1565c0; }
+footer { background:#0d47a1; color:white; text-align:center; padding:20px 0; }
+@media(max-width:768px){ header h1{font-size:2.2rem;} section h2{font-size:2rem;} }

@@ -33,9 +33,17 @@ section.visible {
   align-items: center;
   text-align: center;
   position: relative;
+  z-index: 2;
 }
 
-.hero h1 span {
+.logo-reveal {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: fadeInDown 2s ease forwards;
+}
+
+.logo-reveal span {
   color: #64ffda;
 }
 
@@ -53,21 +61,6 @@ section.visible {
   background: #64ffda;
   color: #0a192f;
   box-shadow: 0 0 15px #64ffda;
-}
-
-/* BACKGROUND ANIMATION */
-.background {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at 20% 20%, #112240, #0a192f);
-  z-index: -1;
-  animation: gradientShift 15s ease infinite alternate;
-}
-
-@keyframes gradientShift {
-  0% { background: radial-gradient(circle at 20% 20%, #112240, #0a192f); }
-  100% { background: radial-gradient(circle at 80% 80%, #233554, #0a192f); }
 }
 
 /* SKILLS */
@@ -111,4 +104,10 @@ footer {
   padding: 1rem;
   background: #112240;
   font-size: 0.9rem;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
 }

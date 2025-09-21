@@ -1,79 +1,257 @@
+/* ================= GLOBAL ================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Inter', sans-serif;
-  margin:0;
-  scroll-behavior:smooth;
-  transition: background 0.6s, color 0.6s;
+  background: #f5f5f5;
+  color: #111;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-/* PARTICLE BACKGROUND */
+.dark-mode {
+  background: #111;
+  color: #f5f5f5;
+}
+
+/* ================= PARTICLES ================= */
 #particles-js {
   position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  z-index:-1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
-/* THEME TOGGLE */
-.theme-toggle {position:fixed; top:20px; right:30px; z-index:10;}
-.theme-toggle button {padding:10px 20px; font-size:1rem; cursor:pointer; border-radius:8px; border:none; background:linear-gradient(135deg,#64ffda,#0a192f); color:#fff; transition:0.3s;}
-.theme-toggle button:hover {opacity:0.8;}
-
-/* SECTIONS */
-.section {padding:5rem 2rem; max-width:1200px; margin:auto;}
-h2 {font-size:2rem;margin-bottom:2rem; text-align:center;}
-p {font-size:1.1rem; line-height:1.8; text-align:center;}
-
-/* HERO */
-.hero-section {display:flex; justify-content:center; align-items:center; flex-wrap:wrap; padding:5rem 2rem; gap:2rem;}
-.hero-left img {width:180px; border-radius:50%; border:3px solid #64ffda;}
-.hero-right {max-width:600px;}
-.hero-right h1 {font-size:2.5rem;}
-.hero-right span {color:#64ffda;}
-.hero-links {margin-top:1.5rem;}
-.hero-links a {margin-right:15px; padding:10px 20px; border:2px solid #64ffda; border-radius:6px; text-decoration:none; color:#64ffda; transition:0.3s;}
-.hero-links a:hover {background:linear-gradient(135deg,#64ffda,#0a192f); color:#fff; transform:translateY(-3px);}
-
-/* SKILLS */
-.skills-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem;}
-.skill {margin-bottom:1.5rem;}
-.skill span {display:block; margin-bottom:0.5rem;}
-.skill-bar {background:#222; border-radius:6px; overflow:hidden; height:12px;}
-.skill-fill {background:#64ffda; width:0%; height:100%; transition:width 1.5s; border-radius:6px;}
-
-/* PROJECTS */
-.projects-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem;}
-.project-card {position:relative; overflow:hidden; border-radius:10px; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.2); transition:transform 0.3s;}
-.project-card img {width:100%; display:block; transition:transform 0.5s;}
-.project-card:hover img {transform:scale(1.05);}
-.project-info {position:absolute; bottom:0; left:0; width:100%; padding:20px; background:rgba(0,0,0,0.6); color:#fff; opacity:0; transition:opacity 0.4s;}
-.project-card:hover .project-info {opacity:1;}
-.project-info button {background:linear-gradient(135deg,#64ffda,#0a192f); border:none; padding:8px 15px; border-radius:6px; cursor:pointer; color:#fff; font-weight:600;}
-
-/* RESUME */
-.resume-card {max-width:800px; margin:auto; border-radius:10px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.2); text-align:center; padding:2rem;}
-.download-btn {padding:10px 20px; border-radius:8px; border:none; background:linear-gradient(135deg,#64ffda,#0a192f); color:#fff; cursor:pointer; transition:0.3s;}
-.download-btn:hover {opacity:0.8; transform:translateY(-3px);}
-
-/* CONTACT */
-#contact-form {max-width:500px; margin:auto; display:flex; flex-direction:column;}
-#contact-form input,#contact-form textarea {margin-bottom:15px;padding:12px;border-radius:6px;border:1px solid #ccc;background:transparent;color:inherit;}
-#contact-form button {padding:12px; border:none; border-radius:6px; background:linear-gradient(135deg,#64ffda,#0a192f); color:#fff; cursor:pointer; transition:0.3s;}
-#contact-form button:hover {transform:translateY(-3px);}
-
-/* FOOTER */
-footer {text-align:center; padding:2rem; color:#aaa; font-size:0.9rem;}
-
-/* DARK/LIGHT MODE */
-body.dark {background:#0a192f; color:#e6f1ff;}
-body.dark .skill-bar {background:#222;}
-body.dark .skill-fill {background:#64ffda;}
-body.light {background:#f5f5f5; color:#222;}
-body.light .hero-links a {color:#64ffda; border-color:#64ffda;}
-body.light .hero-links a:hover {background:linear-gradient(135deg,#64ffda,#0a192f); color:#fff;}
-body.light .skill-fill {background:#64ffda;}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .hero-section{flex-direction:column; text-align:center;}
-  .hero-left img{margin-bottom:20px;}
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
 }
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  position: relative;
+}
+
+.navbar a:hover {
+  color: #64ffda;
+}
+
+.theme-toggle button {
+  padding: 6px 14px;
+  border: 2px solid #64ffda;
+  background: none;
+  color: inherit;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.theme-toggle button:hover {
+  background: #64ffda;
+  color: #111;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  background: rgba(255,255,255,0.95);
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  min-width: 220px;
+  padding: 1rem;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-menu button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #64ffda, #00cfff);
+  color: #111;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.dropdown-menu button:hover {
+  transform: scale(1.05);
+}
+
+/* ================= HERO ================= */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+  background: linear-gradient(135deg,#64ffda,#00cfff);
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.hero-left .profile-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid #64ffda;
+  object-fit: cover;
+}
+
+.hero-right h1 {
+  font-size: 2.5rem;
+}
+
+.hero-right h1 span {
+  color: #64ffda;
+}
+
+.hero-right h2.typing {
+  font-size: 1.5rem;
+  color: #00cfff;
+  margin-top: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #fff;
+}
+
+/* ================= SECTIONS ================= */
+.section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  scroll-snap-align: start;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #64ffda;
+  text-align: center;
+}
+
+/* ================= SKILLS ================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 1rem;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg,#64ffda,#00cfff);
+  border-radius: 6px;
+}
+
+/* ================= PROJECTS ================= */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-info h3 {
+  font-size: 1.3rem;
+}
+
+.project-info button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #64ffda, #00cfff);
+  color: #111;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  transition: 0.3s;
+}
+
+.project-info button:hover {
+  transform: scale(1.05);
+}
+
+/* ================= RESUME ================= */
+#resume iframe {
+  bord

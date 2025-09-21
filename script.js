@@ -1,62 +1,62 @@
-// Typing Animation
+// HERO TYPING EFFECT
 const typingText = ["Business Analytics", "Finance", "Dashboarding", "Data Visualization"];
-let i=0, j=0, currentText="", isDeleting=false;
+let i=0, j=0, isDeleting=false;
 const typingElem = document.querySelector(".typing");
 
 function type() {
-  if(i >= typingText.length) i=0;
-  const fullText = typingText[i];
-  if(isDeleting){
-    currentText = fullText.substring(0,j--);
-  }else{
-    currentText = fullText.substring(0,j++);
-  }
-  typingElem.textContent = currentText;
-  if(!isDeleting && j === fullText.length){ isDeleting=true; setTimeout(type,1000); return; }
-  if(isDeleting && j===0){ isDeleting=false; i++; setTimeout(type,200); return; }
+  let fullText = typingText[i];
+  let current = isDeleting ? fullText.substring(0, j--) : fullText.substring(0, j++);
+  typingElem.textContent = current;
+
+  if(!isDeleting && j===fullText.length){ isDeleting=true; setTimeout(type,1000); return;}
+  if(isDeleting && j===0){ isDeleting=false; i=(i+1)%typingText.length; setTimeout(type,200); return;}
   setTimeout(type,isDeleting?50:100);
 }
 type();
 
-// Animate Skill Bars
-window.addEventListener("load", () => {
-  document.querySelectorAll(".progress-bar div").forEach(bar => {
-    bar.style.width = bar.dataset.width;
-  });
-});
-
-// Project Modal Logic
-document.querySelectorAll(".view-btn").forEach(btn=>{
-  btn.addEventListener("click", e=>{
-    const modal = document.getElementById(btn.dataset.modal);
-    modal.style.display="flex";
-  });
-});
-document.querySelectorAll(".close").forEach(span=>{
-  span.addEventListener("click", e=>{
-    span.parentElement.parentElement.style.display="none";
-  });
-});
-window.addEventListener("click", e=>{
-  if(e.target.classList.contains("modal")) e.target.style.display="none";
-});
-
-// Project Filter
-const filterButtons = document.querySelectorAll(".project-filters button");
+// PROJECT FILTER
+const filterBtns = document.querySelectorAll(".project-filters button");
 const projects = document.querySelectorAll(".project-card");
-filterButtons.forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    const filter = btn.dataset.filter;
-    projects.forEach(p=>{
-      if(filter==="all" || p.dataset.category.includes(filter)) p.style.display="block";
-      else p.style.display="none";
-    });
-  });
+filterBtns.forEach(btn => btn.addEventListener("click", ()=>{
+  const filter = btn.dataset.filter;
+  projects.forEach(p => p.style.display = (filter==='all'||p.dataset.category.includes(filter)) ? 'block':'none');
+}));
+
+// PROJECT MODALS (Open links)
+document.querySelectorAll(".view-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=> window.open(btn.dataset.link, "_blank"));
 });
 
-// Contact form (simple alert validation)
+// SKILLS CHART (Chart.js)
+const ctx = document.getElementById('skillsChart').getContext('2d');
+const skillsChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["Power BI & Tableau", "Excel & DAX", "Python & SQL", "Financial Analysis"],
+    datasets: [{
+      label: 'Skill Level %',
+      data: [90,100,60,85],
+      backgroundColor:'#64ffda'
+    }]
+  },
+  options: {
+    indexAxis:'y',
+    scales:{ x:{ max:100 } },
+    plugins:{ legend:{ display:false } }
+  }
+});
+
+// GSAP Animations
+gsap.from(".hero-container", {opacity:0, y:-50, duration:1});
+gsap.from("#about", {opacity:0, y:50, duration:1, delay:0.2});
+gsap.from("#skills", {opacity:0, y:50, duration:1, delay:0.4});
+gsap.from("#projects", {opacity:0, y:50, duration:1, delay:0.6});
+gsap.from("#resume", {opacity:0, y:50, duration:1, delay:0.8});
+gsap.from("#contact", {opacity:0, y:50, duration:1, delay:1});
+
+// CONTACT FORM ALERT
 document.getElementById("contact-form").addEventListener("submit", e=>{
   e.preventDefault();
-  alert("Message sent! (For demo purposes)");
+  alert("Message sent! (Demo only)");
   e.target.reset();
 });

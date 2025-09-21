@@ -1,121 +1,234 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dilip Choudhary | Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dilip Choudhary — Portfolio</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- TOP NAVIGATION -->
-  <header>
-    <nav class="navbar">
+<body class="theme-dark">
+
+  <!-- particles -->
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <!-- top ribbon -->
+  <header class="top-ribbon" role="navigation" id="topRibbon">
+    <div class="nav-inner">
       <div class="nav-left">
-        <a href="#home">Home</a>
-        <div class="dropdown">
-          <button class="dropbtn">Projects</button>
-          <div class="dropdown-content">
-            <a href="#project1">Project 1</a>
-            <a href="#project2">Project 2</a>
+        <div class="brand-square">
+          <img src="Image/Profile.JPG" alt="Dilip" class="nav-profile">
+        </div>
+        <div class="brand-name">
+          <div class="name-line" id="brandName">Dilip Choudhary</div>
+          <div class="title-line">Business Analytics · Finance · Dashboarding</div>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <a class="nav-link" href="#home">Home</a>
+
+        <div class="dropdown" id="projectsDropdown">
+          <a class="nav-link" href="#projects">Projects ▾</a>
+          <div class="dropdown-menu" id="projectsMenu" aria-hidden="true">
+            <div class="proj-item" data-pid="p1">
+              <div class="proj-title">Project 1 — Crypto Risk</div>
+              <div class="proj-actions">
+                <button class="proj-view" data-link="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo">View</button>
+                <button class="proj-download" data-link="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo">Download</button>
+              </div>
+            </div>
+            <div class="proj-item" data-pid="p2">
+              <div class="proj-title">Project 2 — E-Commerce</div>
+              <div class="proj-actions">
+                <button class="proj-view" data-link="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg">View</button>
+                <button class="proj-download" data-link="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg">Download</button>
+              </div>
+            </div>
           </div>
         </div>
-        <a href="#about">About</a>
-        <a href="#resume">Resume</a>
-        <a href="#work">Work Experience</a>
-        <a href="#contact">Contact</a>
+
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#resume">Resume</a>
+        <a class="nav-link" href="#work">Work</a>
+        <a class="nav-link" href="#contact">Contact</a>
+
+        <div class="theme-btn-wrap">
+          <button id="themeToggle" class="theme-btn">Light Mode</button>
+        </div>
       </div>
-      <div class="nav-right">
-        <button id="themeToggle">Dark Mode</button>
-      </div>
-    </nav>
+    </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section id="home" class="hero">
-    <div class="hero-left">
-      <img src="images/profile.jpg" alt="Dilip Choudhary" class="profile-img">
-    </div>
-    <div class="hero-right">
-      <h1>Dilip Choudhary</h1>
-      <h2>Business Analytics | Finance | Dashboarding</h2>
-      <div class="hero-links">
-        <a href="mailto:choudharydilip947@gmail.com">Email</a>
-        <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank">LinkedIn</a>
-        <a href="#resume">Resume</a>
-      </div>
-    </div>
-  </section>
+  <!-- main -->
+  <main id="scrollContainer">
 
-  <!-- ABOUT ME -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am a Business Analytics student passionate about finance, data visualization, and risk analysis. I help companies transform raw data into actionable insights.</p>
-  </section>
+    <!-- HERO -->
+    <section id="home" class="snap-section hero-section">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="square-photo">
+            <img src="Image/Profile.JPG" alt="Dilip">
+          </div>
+        </div>
 
-  <!-- WHAT I DO -->
-  <section id="what">
-    <h2>What I Do</h2>
-    <div class="services">
-      <div class="service" data-images="images/project1/2.png,images/project2/2.png">
-        <h3>Data & Dashboarding</h3>
-        <div class="preview-images"></div>
-      </div>
-      <div class="service">
-        <h3>Financial Modeling</h3>
-        <div class="preview-images">
-          <img src="images/project1/1.png" alt="Graph">
+        <div class="hero-right">
+          <h1 class="hero-name" id="heroName">Dilip Choudhary</h1>
+          <h2 class="hero-role" id="typingLine"></h2>
+
+          <div class="hero-actions">
+            <a href="mailto:choudharydilip947@gmail.com" class="btn btn-outline">Email</a>
+            <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank" class="btn btn-outline">LinkedIn</a>
+            <a href="Resume.pdf" target="_blank" class="btn btn-outline">Resume</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-slider">
-      <button class="slide-left">&#10094;</button>
-      <div class="project-wrapper">
-        <div class="project-card" id="project1">
-          <h3>Crypto Market Risk Dashboard</h3>
-          <p>Power BI dashboard analyzing crypto volatility.</p>
-          <a href="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" target="_blank">View / Download</a>
-        </div>
-        <div class="project-card" id="project2">
-          <h3>E-Commerce Sales Insights</h3>
-          <p>Analyzed 128K+ orders to uncover trends.</p>
-          <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" target="_blank">View / Download</a>
+    <!-- ABOUT -->
+    <section id="about" class="snap-section section about-section">
+      <div class="panel">
+        <h2>About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="reveal-words">I’m a Business Analytics student focused on financial markets, risk analysis, and data-driven decision-making. I transform messy datasets into clear insights and dashboards that empower stakeholders to act. My core tools are Power BI, Tableau, Excel and SQL.</p>
+            <ul class="quick-stats">
+              <li><strong>Role:</strong> Aspiring Financial / Business Analyst</li>
+              <li><strong>Location:</strong> India</li>
+              <li id="availability"><strong>Availability:</strong> #SeekingOpportunities</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <button class="slide-right">&#10095;</button>
-    </div>
-  </section>
+    </section>
 
-  <!-- RESUME -->
-  <section id="resume">
-    <h2>Resume</h2>
-    <div class="resume-controls">
-      <button id="zoomIn">+</button>
-      <button id="zoomOut">-</button>
-    </div>
-    <iframe src="resume.pdf" class="resume-frame" frameborder="0"></iframe>
-  </section>
+    <!-- SERVICES -->
+    <section id="services" class="snap-section section services-section">
+      <div class="panel">
+        <h2>What I Do</h2>
+        <div class="services-grid">
+          <div class="service-card" id="svc-dashboard" data-svc="dashboard">
+            <h3>Data & Dashboarding</h3>
+            <p>Power BI / Tableau dashboards — insights & storytelling for decisions.</p>
+            <div class="svc-preview" id="svcPreviewDash" aria-hidden="true">
+              <img src="Image/Project1/2.png" alt="P1 preview" class="preview-left">
+              <img src="Image/Project2/2.png" alt="P2 preview" class="preview-right">
+            </div>
+          </div>
 
-  <!-- WORK EXPERIENCE -->
-  <section id="work">
-    <h2>Work Experience</h2>
-    <p id="workStatus">#SeekingOpportunities</p>
-  </section>
+          <div class="service-card" id="svc-finmodel" data-svc="finmodel">
+            <h3>Financial Modeling</h3>
+            <p>Valuations, scenario analysis & modeling in Excel for business cases.</p>
+            <div class="svc-preview" id="svcPreviewFin" aria-hidden="true">
+              <canvas id="finCanvas" width="360" height="180"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <div class="contact-bar">
-      <a href="mailto:choudharydilip947@gmail.com">Email</a>
-      <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank">LinkedIn</a>
-      <a href="tel:+919346053750">Call</a>
-    </div>
-    <p class="footer">© 2025 Dilip Choudhary | Designed with AI & Data</p>
-  </section>
+    <!-- PROJECTS (carousel) -->
+    <section id="projects" class="snap-section section projects-section">
+      <div class="panel">
+        <h2>Selected Projects</h2>
+
+        <div class="carousel-wrap">
+          <button class="carousel-arrow left" id="carouselLeft" aria-label="Previous project">◀</button>
+
+          <div class="carousel" id="carousel">
+            <!-- slides -->
+            <div class="slide project-card" data-index="0" data-link-view="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo">
+              <div class="project-media"><img src="Image/Project1/1.png" alt="Crypto"></div>
+              <div class="project-meta">
+                <h3>Crypto Market Risk Dashboard</h3>
+                <p class="muted">Power BI — volatility & sentiment analysis</p>
+                <div class="card-actions">
+                  <button class="btn view" data-link="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo">View</button>
+                  <button class="btn download" data-link="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo">Download</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide project-card" data-index="1" data-link-view="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg">
+              <div class="project-media"><img src="Image/Project2/1.png" alt="Ecom"></div>
+              <div class="project-meta">
+                <h3>E-Commerce Sales Insights</h3>
+                <p class="muted">Order-level analysis & cancellation drivers</p>
+                <div class="card-actions">
+                  <button class="btn view" data-link="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg">View</button>
+                  <button class="btn download" data-link="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg">Download</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-arrow right" id="carouselRight" aria-label="Next project">▶</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume" class="snap-section section resume-section">
+      <div class="panel resume-panel">
+        <h2>Resume</h2>
+        <div class="resume-frame-wrap">
+          <div class="resume-blur-edge top-blur"></div>
+          <iframe src="Resume.pdf" title="Resume" class="resume-frame"></iframe>
+          <div class="resume-blur-edge bottom-blur"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="snap-section section work-section">
+      <div class="panel">
+        <h2>Work Experience</h2>
+        <div class="work-card">
+          <p id="workStatus">#SeekingOpportunities</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MORE ABOUT -->
+    <section id="more" class="snap-section section more-section">
+      <div class="panel">
+        <h2>More About Me</h2>
+        <p class="muted">I enjoy converting data into decisions. Outside work, I follow markets and build analytics projects.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT (big bar) -->
+    <section id="contact" class="snap-section contact-section">
+      <div class="contact-bigbar">
+        <div class="contact-inner">
+          <h2>Contact</h2>
+          <p class="muted">Let’s talk — internships, roles, or freelance projects.</p>
+          <div class="contact-buttons">
+            <a class="big-btn email" href="mailto:choudharydilip947@gmail.com">Mail</a>
+            <a class="big-btn linkedin" href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank">LinkedIn</a>
+            <a class="big-btn call" href="tel:+919346053750">Call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>© 2025 Dilip Choudhary</span>
+        <span class="right-tag">Designed with AI & Data</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- libs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <script src="script.js"></script>
 </body>

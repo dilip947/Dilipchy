@@ -2,7 +2,6 @@
 const typingText=["Business Analytics","Finance","Dashboarding","Data Visualization"];
 let i=0,j=0,isDeleting=false;
 const typingElem=document.querySelector(".typing");
-
 function type(){
   let fullText=typingText[i];
   let current=isDeleting? fullText.substring(0,j--): fullText.substring(0,j++);
@@ -34,8 +33,13 @@ document.getElementById("contact-form").addEventListener("submit",e=>{
 // DARK/LIGHT MODE TOGGLE
 const themeBtn=document.getElementById("themeBtn");
 themeBtn.addEventListener("click",()=>{
-  if(document.body.classList.contains("light")){document.body.classList.replace("light","dark"); themeBtn.textContent="🌙";}
-  else{document.body.classList.replace("dark","light"); themeBtn.textContent="☀️";}
+  if(document.body.classList.contains("dark")){
+    document.body.classList.replace("dark","light");
+    themeBtn.textContent="Dark Mode";
+  }else{
+    document.body.classList.replace("light","dark");
+    themeBtn.textContent="Light Mode";
+  }
 });
 // Default dark mode
 document.body.classList.add("dark");
@@ -50,3 +54,15 @@ gsap.from("#skills",{opacity:0,y:50,duration:1, delay:1.1});
 gsap.from("#projects",{opacity:0,y:50,duration:1, delay:1.3});
 gsap.from("#resume",{opacity:0,y:50,duration:1, delay:1.5});
 gsap.from("#contact",{opacity:0,y:50,duration:1, delay:1.7});
+
+// PARTICLES JS INIT
+particlesJS("particles-js",{
+  "particles": {
+    "number": {"value":50,"density":{"enable":true,"value_area":800}},
+    "color":{"value":"#64ffda"},
+    "shape":{"type":"circle"},
+    "opacity":{"value":0.3},
+    "size":{"value":3},
+    "move":{"enable":true,"speed":1.5,"direction":"none","out_mode":"out"}
+  }
+});

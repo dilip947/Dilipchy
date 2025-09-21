@@ -1,73 +1,60 @@
-// Dark Mode Toggle
-const body = document.body;
-const toggleDarkMode = () => {
-  body.classList.toggle('dark-mode');
-  body.classList.toggle('light-mode');
-};
-document.getElementById('themeToggle').addEventListener('click', toggleDarkMode);
-
-// Dropdown Menu Fix
-document.querySelectorAll('.dropdown').forEach(drop => {
-  drop.addEventListener('mouseenter', () => {
-    drop.querySelector('.dropdown-menu').style.display = 'block';
-  });
-  drop.addEventListener('mouseleave', () => {
-    drop.querySelector('.dropdown-menu').style.display = 'none';
-  });
+// DARK/LIGHT MODE
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  themeBtn.innerText = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
 });
 
-// Project Carousel
-const slides = document.querySelectorAll('.project-slide');
-let currentSlide = 0;
+// PROJECT SLIDER
+const projectWrapper = document.querySelector('.project-wrapper');
+const leftBtn = document.querySelector('.slide-left');
+const rightBtn = document.querySelector('.slide-right');
+let projectIndex = 0;
+const projects = document.querySelectorAll('.project-card');
 
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.style.transform = `translateX(${100 * (i - index)}%)`;
-  });
+function updateSlider() {
+  projectWrapper.style.transform = `translateX(-${projectIndex * 320}px)`;
 }
-
-document.querySelector('.carousel-btn.left').addEventListener('click', () => {
-  currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
-  showSlide(currentSlide);
+leftBtn.addEventListener('click', () => {
+  projectIndex = projectIndex > 0 ? projectIndex - 1 : projects.length -1;
+  updateSlider();
+});
+rightBtn.addEventListener('click', () => {
+  projectIndex = projectIndex < projects.length -1 ? projectIndex +1 : 0;
+  updateSlider();
 });
 
-document.querySelector('.carousel-btn.right').addEventListener('click', () => {
-  currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
-  showSlide(currentSlide);
+// RESUME ZOOM
+const zoomIn = document.getElementById('zoomIn');
+const zoomOut = document.getElementById('zoomOut');
+const resumeFrame = document.querySelector('.resume-frame');
+let scale = 1;
+zoomIn.addEventListener('click', () => { scale += 0.1; resumeFrame.style.transform = `scale(${scale})`; });
+zoomOut.addEventListener('click', () => { scale -= 0.1; resumeFrame.style.transform = `scale(${scale})`; });
+
+// SERVICES IMAGE HOVER
+document.querySelectorAll('.service').forEach(service=>{
+  const imagesDiv = service.querySelector('.preview-images');
+  const imageUrls = service.dataset.images ? service.dataset.images.split(',') : [];
+  let current = 0;
+  let interval;
+  service.addEventListener('mouseenter', ()=>{
+    if(imageUrls.length===0) return;
+    interval = setInterval(()=>{
+      imagesDiv.innerHTML = `<img src="${imageUrls[current]}" width="100">`;
+      current = (current+1)%imageUrls.length;
+    }, 1000);
+  });
+  service.addEventListener('mouseleave', ()=>{
+    clearInterval(interval);
+    imagesDiv.innerHTML = '';
+  });
 });
 
-showSlide(currentSlide);
-
-// Shuffle Images on Hover
-const shuffleContainer = document.querySelector('.shuffle-container');
-const shuffleImages = shuffleContainer.querySelectorAll('img');
-let shuffleIndex = 0;
-let shuffleInterval;
-
-shuffleContainer.addEventListener('mouseenter', () => {
-  shuffleInterval = setInterval(() => {
-    shuffleImages.forEach((img, idx) => {
-      img.classList.toggle('active', idx === shuffleIndex);
-    });
-    shuffleIndex = (shuffleIndex + 1) % shuffleImages.length;
-  }, 1000);
-});
-
-shuffleContainer.addEventListener('mouseleave', () => {
-  clearInterval(shuffleInterval);
-  shuffleImages.forEach(img => img.classList.remove('active'));
-});
-
-// Resume Zoom Controls
-const resume = document.querySelector('.resume-content');
-let zoomLevel = 1;
-
-document.getElementById('zoomIn').addEventListener('click', () => {
-  zoomLevel += 0.1;
-  resume.style.transform = `scale(${zoomLevel})`;
-});
-
-document.getElementById('zoomOut').addEventListener('click', () => {
-  zoomLevel = Math.max(0.5, zoomLevel - 0.1);
-  resume.style.transform = `scale(${zoomLevel})`;
+// DROP-DOWN NAVIGATION (STAY OPEN)
+document.querySelectorAll('.dropdown').forEach(dropdown=>{
+  const button = dropdown.querySelector('.dropbtn');
+  const content = dropdown.querySelector('.dropdown-content');
+  dropdown.addEventListener('mouseenter', ()=>{ content.style.display='block'; });
+  dropdown.addEventListener('mouseleave', ()=>{ content.style.display='none'; });
 });

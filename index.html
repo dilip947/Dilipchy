@@ -7,70 +7,126 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Animated Background -->
-  <canvas id="bgCanvas"></canvas>
-
-  <!-- HEADER -->
-  <header class="hero section">
-    <div class="hero-content">
-      <h1 class="logo-reveal">Dilip <span>Choudhary</span></h1>
-      <h2 class="typing">Finance • Analytics • Investments</h2>
+  <!-- HEADER / HERO -->
+  <header id="hero">
+    <div class="hero-container">
+      <img src="images/profile.jpg" alt="Dilip Choudhary" class="profile-img" />
+      <h1>Hi, I'm <span>Dilip Choudhary</span></h1>
+      <h2 class="typing"></h2>
       <div class="hero-links">
         <a href="mailto:choudharydilip947@gmail.com">Email</a>
         <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank">LinkedIn</a>
-        <a href="https://github.com/yourusername/yourrepo/raw/main/Dilip_Choudhary_Resume1.pdf" target="_blank">Resume</a>
+        <a href="resume.pdf" target="_blank">Resume</a>
       </div>
+      <div class="scroll-down">&#8595;</div>
     </div>
   </header>
 
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
   <!-- ABOUT -->
-  <section class="about section">
+  <section id="about">
     <h2>About Me</h2>
-    <p>
-      I’m a Business Analytics student passionate about financial markets, risk analysis, and data visualization. 
-      My mission is to transform complex data into strategic insights that drive investment decisions.
-    </p>
+    <p>I’m a Business Analytics student passionate about financial markets, risk analysis, and data visualization. Skilled in Power BI, Tableau, Excel, SQL, and Python. I transform raw data into actionable insights.</p>
   </section>
 
   <!-- SKILLS -->
-  <section class="skills section">
-    <h2>Skills</h2>
-    <div class="skill-grid">
-      <div class="skill-card">Power BI & Tableau</div>
-      <div class="skill-card">Financial Modeling</div>
-      <div class="skill-card">Excel & DAX</div>
-      <div class="skill-card">Risk Analysis</div>
-      <div class="skill-card">Stakeholder Communication</div>
+  <section id="skills">
+    <h2>Skills & Progress</h2>
+    <div class="skills-container">
+      <div class="skill">
+        <p>Power BI & Tableau</p>
+        <div class="progress-bar"><div data-width="90%">90%</div></div>
+      </div>
+      <div class="skill">
+        <p>Excel & DAX</p>
+        <div class="progress-bar"><div data-width="100%">100%</div></div>
+      </div>
+      <div class="skill">
+        <p>Python & SQL</p>
+        <div class="progress-bar"><div data-width="60%">60%</div></div>
+      </div>
+      <div class="skill">
+        <p>Financial Analysis</p>
+        <div class="progress-bar"><div data-width="85%">85%</div></div>
+      </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
-  <section class="projects section">
+  <section id="projects">
     <h2>Projects</h2>
-    <div class="project-card">
-      <h3>Crypto Market Risk Dashboard</h3>
-      <p>Analyzed volatility & sentiment using Power BI.</p>
-      <a href="https://github.com/yourusername/yourrepo/tree/main/Crypto-Dashboard" target="_blank">View Project</a>
+    <div class="project-filters">
+      <button data-filter="all">All</button>
+      <button data-filter="finance">Finance</button>
+      <button data-filter="powerbi">Power BI</button>
+      <button data-filter="python">Python</button>
     </div>
-    <div class="project-card">
-      <h3>E-Commerce Sales Insights</h3>
-      <p>Uncovered trends & cancellation patterns from 128K+ orders.</p>
-      <a href="https://github.com/yourusername/yourrepo/tree/main/Ecommerce-Insights" target="_blank">View Project</a>
+    <div class="projects-grid">
+      <div class="project-card" data-category="powerbi finance">
+        <img src="images/crypto-dashboard.jpg" alt="Crypto Dashboard">
+        <h3>Crypto Market Risk Dashboard</h3>
+        <p>Power BI dashboard analyzing crypto volatility and sentiment.</p>
+        <button class="view-btn" data-modal="modal1">View Project</button>
+      </div>
+      <div class="project-card" data-category="powerbi finance">
+        <img src="images/ecommerce-dashboard.jpg" alt="E-Commerce">
+        <h3>E-Commerce Sales Insights</h3>
+        <p>Analyzed 128K+ orders to uncover trends and cancellation patterns.</p>
+        <button class="view-btn" data-modal="modal2">View Project</button>
+      </div>
     </div>
   </section>
 
+  <!-- MODALS -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Crypto Market Risk Dashboard</h3>
+      <iframe src="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" frameborder="0"></iframe>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>E-Commerce Sales Insights</h3>
+      <iframe src="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" frameborder="0"></iframe>
+    </div>
+  </div>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <h2>Resume</h2>
+    <iframe src="resume.pdf" width="100%" height="600px"></iframe>
+    <a href="resume.pdf" target="_blank" class="download-btn">Download Resume</a>
+  </section>
+
   <!-- CONTACT -->
-  <section class="contact section">
+  <section id="contact">
     <h2>Contact</h2>
-    <p>📧 choudharydilip947@gmail.com</p>
-    <p>📞 +91-9346053750</p>
+    <form id="contact-form">
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Dilip Choudhary | Finance • Analytics • Investments</p>
+    <p>© 2025 Dilip Choudhary | Designed with 💡 & Data</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>

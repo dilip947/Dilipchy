@@ -1,49 +1,62 @@
-// Reveal sections on scroll
-const sections = document.querySelectorAll('.section');
-const revealOnScroll = () => {
-  const trigger = window.innerHeight * 0.8;
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if (top < trigger) sec.classList.add('visible');
-  });
-};
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
+// Typing Animation
+const typingText = ["Business Analytics", "Finance", "Dashboarding", "Data Visualization"];
+let i=0, j=0, currentText="", isDeleting=false;
+const typingElem = document.querySelector(".typing");
 
-// Particle background animation
-const canvas = document.getElementById('bgCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-for (let i = 0; i < 100; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    dx: (Math.random() - 0.5) * 0.5,
-    dy: (Math.random() - 0.5) * 0.5,
-    radius: Math.random() * 2 + 1
-  });
+function type() {
+  if(i >= typingText.length) i=0;
+  const fullText = typingText[i];
+  if(isDeleting){
+    currentText = fullText.substring(0,j--);
+  }else{
+    currentText = fullText.substring(0,j++);
+  }
+  typingElem.textContent = currentText;
+  if(!isDeleting && j === fullText.length){ isDeleting=true; setTimeout(type,1000); return; }
+  if(isDeleting && j===0){ isDeleting=false; i++; setTimeout(type,200); return; }
+  setTimeout(type,isDeleting?50:100);
 }
+type();
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-    ctx.fillStyle = '#64ffda';
-    ctx.fill();
-    p.x += p.dx;
-    p.y += p.dy;
-    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+// Animate Skill Bars
+window.addEventListener("load", () => {
+  document.querySelectorAll(".progress-bar div").forEach(bar => {
+    bar.style.width = bar.dataset.width;
   });
-  requestAnimationFrame(animate);
-}
-animate();
+});
 
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+// Project Modal Logic
+document.querySelectorAll(".view-btn").forEach(btn=>{
+  btn.addEventListener("click", e=>{
+    const modal = document.getElementById(btn.dataset.modal);
+    modal.style.display="flex";
+  });
+});
+document.querySelectorAll(".close").forEach(span=>{
+  span.addEventListener("click", e=>{
+    span.parentElement.parentElement.style.display="none";
+  });
+});
+window.addEventListener("click", e=>{
+  if(e.target.classList.contains("modal")) e.target.style.display="none";
+});
+
+// Project Filter
+const filterButtons = document.querySelectorAll(".project-filters button");
+const projects = document.querySelectorAll(".project-card");
+filterButtons.forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const filter = btn.dataset.filter;
+    projects.forEach(p=>{
+      if(filter==="all" || p.dataset.category.includes(filter)) p.style.display="block";
+      else p.style.display="none";
+    });
+  });
+});
+
+// Contact form (simple alert validation)
+document.getElementById("contact-form").addEventListener("submit", e=>{
+  e.preventDefault();
+  alert("Message sent! (For demo purposes)");
+  e.target.reset();
 });

@@ -1,5 +1,5 @@
 // TYPING EFFECT
-const typingText = ["Business Analytics","Finance","Dashboarding","Data Visualization"];
+const typingText=["Business Analytics","Finance","Dashboarding","Data Visualization"];
 let i=0,j=0,isDeleting=false;
 const typingElem=document.querySelector(".typing");
 
@@ -13,36 +13,40 @@ function type(){
 }
 type();
 
-// PROJECT FILTER
-const filterBtns=document.querySelectorAll(".project-filters button");
-const projects=document.querySelectorAll(".project-card");
-filterBtns.forEach(btn=>btn.addEventListener("click",()=>{
-  const filter=btn.dataset.filter;
-  projects.forEach(p=>p.style.display=(filter==='all'||p.dataset.category.includes(filter))?'block':'none');
-}));
+// SKILL BAR ANIMATION ON SCROLL
+const skillFills=document.querySelectorAll(".skill-fill");
+window.addEventListener("scroll",()=>{
+  const trigger=window.innerHeight*0.8;
+  skillFills.forEach(bar=>{
+    const top=bar.getBoundingClientRect().top;
+    if(top<trigger){bar.style.width=bar.dataset.percent;}
+  });
+});
 
 // PROJECT BUTTON LINKS
 document.querySelectorAll(".view-btn").forEach(btn=>btn.addEventListener("click",()=>window.open(btn.dataset.link,"_blank")));
 
-// SKILLS CHART
-const ctx=document.getElementById('skillsChart').getContext('2d');
-const skillsChart=new Chart(ctx,{
-  type:'bar',
-  data:{
-    labels:["Power BI & Tableau","Excel & DAX","Python & SQL","Financial Analysis"],
-    datasets:[{label:'Skill Level %',data:[90,100,60,85],backgroundColor:'#64ffda'}]
-  },
-  options:{indexAxis:'y',scales:{x:{max:100}},plugins:{legend:{display:false}}}
+// CONTACT FORM DEMO
+document.getElementById("contact-form").addEventListener("submit",e=>{
+  e.preventDefault(); alert("Message sent! (Demo only)"); e.target.reset();
 });
 
-// GSAP ANIMATIONS
-gsap.from(".hero-container",{opacity:0,y:-50,duration:1});
-gsap.from("#about",{opacity:0,y:50,duration:1,delay:0.2});
-gsap.from("#skills",{opacity:0,y:50,duration:1,delay:0.4});
-gsap.from("#projects",{opacity:0,y:50,duration:1,delay:0.6});
-gsap.from("#resume",{opacity:0,y:50,duration:1,delay:0.8});
-gsap.from("#contact",{opacity:0,y:50,duration:1,delay:1});
+// DARK/LIGHT MODE TOGGLE
+const themeBtn=document.getElementById("themeBtn");
+themeBtn.addEventListener("click",()=>{
+  if(document.body.classList.contains("light")){document.body.classList.replace("light","dark"); themeBtn.textContent="🌙";}
+  else{document.body.classList.replace("dark","light"); themeBtn.textContent="☀️";}
+});
+// Default dark mode
+document.body.classList.add("dark");
 
-// CONTACT FORM ALERT
-document.getElementById("contact-form").addEventListener("submit",e=>{
-  e.pr
+// GSAP Animations
+gsap.from(".hero-left img",{opacity:0,x:-50,duration:1});
+gsap.from(".hero-right h1",{opacity:0,x:50,duration:1,delay:0.3});
+gsap.from(".hero-right h2",{opacity:0,x:50,duration:1,delay:0.5});
+gsap.from(".hero-links a",{opacity:0,y:20,duration:1,delay:0.7, stagger:0.2});
+gsap.from("#about",{opacity:0,y:50,duration:1, delay:0.9});
+gsap.from("#skills",{opacity:0,y:50,duration:1, delay:1.1});
+gsap.from("#projects",{opacity:0,y:50,duration:1, delay:1.3});
+gsap.from("#resume",{opacity:0,y:50,duration:1, delay:1.5});
+gsap.from("#contact",{opacity:0,y:50,duration:1, delay:1.7});

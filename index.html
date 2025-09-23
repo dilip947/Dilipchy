@@ -197,7 +197,7 @@
         .logo-img {
             width: 40px;
             height: 40px;
-            border-radius: 10px;
+            border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--border);
         }
@@ -424,12 +424,12 @@
             border-radius: var(--border-radius-lg);
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            /* REMOVED THE TILT EFFECT */
             transition: var(--transition);
         }
 
         .hero-img-container:hover {
-            transform: perspective(1000px) rotateY(0) rotateX(0);
+            /* REMOVED THE TILT EFFECT */
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
         }
 
@@ -1068,8 +1068,8 @@
     <header id="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <!-- Placeholder for logo image -->
-                <div class="logo-img" style="background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">DC</div>
+                <!-- Updated to use actual profile picture -->
+                <img src="Profile.JPG" alt="Dilip Choudhary" class="logo-img">
                 <span>Dilip Choudhary</span>
             </a>
 
@@ -1117,13 +1117,8 @@
             </div>
             <div class="hero-image">
                 <div class="hero-img-container">
-                    <!-- Placeholder for hero image -->
-                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                        <div style="text-align: center;">
-                            <i class="fas fa-user-tie" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                            <p>Dilip Choudhary</p>
-                        </div>
-                    </div>
+                    <!-- Updated to use actual profile picture -->
+                    <img src="Profile.JPG" alt="Dilip Choudhary" class="hero-img">
                 </div>
             </div>
         </div>
@@ -1151,10 +1146,8 @@
                 </a>
             </div>
             <div class="about-image">
-                <!-- Placeholder for about image -->
-                <div style="width: 100%; height: 400px; background: var(--card-bg); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
-                    <i class="fas fa-chart-line" style="font-size: 4rem; color: var(--primary);"></i>
-                </div>
+                <!-- Updated to use actual profile picture -->
+                <img src="Profile.JPG" alt="Dilip Choudhary" style="width: 100%; height: 400px; object-fit: cover; border-radius: var(--border-radius); border: 1px solid var(--border);">
             </div>
         </div>
     </section>
@@ -1202,17 +1195,15 @@
             <div class="projects-grid">
                 <div id="project1" class="project-card fade-in">
                     <div class="project-image hover-gallery">
-                        <!-- Main project image -->
-                        <div class="project-img" style="background: linear-gradient(135deg, #4d94ff, #00c7b6); display: flex; align-items: center; justify-content: center; color: white;">
-                            <i class="fas fa-chart-bar" style="font-size: 3rem;"></i>
-                        </div>
+                        <!-- Updated to use actual project thumbnail -->
+                        <img src="Project1/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
                         
                         <!-- Hover gallery images -->
                         <div class="hover-images">
-                            <div class="hover-image" style="background: linear-gradient(135deg, #4d94ff, #00c7b6);"></div>
-                            <div class="hover-image" style="background: linear-gradient(135deg, #3385ff, #00b3a1);"></div>
-                            <div class="hover-image" style="background: linear-gradient(135deg, #1a75ff, #009f8b);"></div>
-                            <div class="hover-image" style="background: linear-gradient(135deg, #0066cc, #008c7a);"></div>
+                            <div class="hover-image" style="background-image: url('Project1/1.png');"></div>
+                            <div class="hover-image" style="background-image: url('Project1/2.png');"></div>
+                            <div class="hover-image" style="background-image: url('Project1/3.png');"></div>
+                            <div class="hover-image" style="background-image: url('Project1/4.png');"></div>
                         </div>
                         
                         <div class="project-overlay">
@@ -1236,16 +1227,14 @@
                 </div>
                 <div id="project2" class="project-card fade-in">
                     <div class="project-image hover-gallery">
-                        <!-- Main project image -->
-                        <div class="project-img" style="background: linear-gradient(135deg, #ff6b6b, #ffd93d); display: flex; align-items: center; justify-content: center; color: white;">
-                            <i class="fas fa-shopping-cart" style="font-size: 3rem;"></i>
-                        </div>
+                        <!-- Updated to use actual project thumbnail -->
+                        <img src="Project2/1.png" alt="E-Commerce Sales Insights" class="project-img">
                         
                         <!-- Hover gallery images -->
                         <div class="hover-images">
-                            <div class="hover-image" style="background: linear-gradient(135deg, #ff6b6b, #ffd93d);"></div>
-                            <div class="hover-image" style="background: linear-gradient(135deg, #ff5252, #ffcc29);"></div>
-                            <div class="hover-image" style="background: linear-gradient(135deg, #ff3838, #ffbf00);"></div>
+                            <div class="hover-image" style="background-image: url('Project2/1.png');"></div>
+                            <div class="hover-image" style="background-image: url('Project2/2.png');"></div>
+                            <div class="hover-image" style="background-image: url('Project2/3.png');"></div>
                         </div>
                         
                         <div class="project-overlay">
@@ -1280,18 +1269,11 @@
             </div>
             <div class="gallery-body">
                 <div class="gallery-images">
-                    <div class="gallery-img" style="background: linear-gradient(135deg, #4d94ff, #00c7b6); height: 200px; display: flex; align-items: center; justify-content: center; color: white;">
-                        <i class="fas fa-chart-bar" style="font-size: 3rem;"></i>
-                    </div>
-                    <div class="gallery-img" style="background: linear-gradient(135deg, #3385ff, #00b3a1); height: 200px; display: flex; align-items: center; justify-content: center; color: white;">
-                        <i class="fas fa-chart-line" style="font-size: 3rem;"></i>
-                    </div>
-                    <div class="gallery-img" style="background: linear-gradient(135deg, #1a75ff, #009f8b); height: 200px; display: flex; align-items: center; justify-content: center; color: white;">
-                        <i class="fas fa-chart-pie" style="font-size: 3rem;"></i>
-                    </div>
-                    <div class="gallery-img" style="background: linear-gradient(135deg, #0066cc, #008c7a); height: 200px; display: flex; align-items: center; justify-content: center; color: white;">
-                        <i class="fas fa-table" style="font-size: 3rem;"></i>
-                    </div>
+                    <!-- Updated to show all Project1 images -->
+                    <img src="Project1/1.png" alt="Crypto Dashboard 1" class="gallery-img">
+                    <img src="Project1/2.png" alt="Crypto Dashboard 2" class="gallery-img">
+                    <img src="Project1/3.png" alt="Crypto Dashboard 3" class="gallery-img">
+                    <img src="Project1/4.png" alt="Crypto Dashboard 4" class="gallery-img">
                 </div>
                 <div class="gallery-details">
                     <h4>Project Details</h4>
@@ -1316,15 +1298,10 @@
             </div>
             <div class="gallery-body">
                 <div class="gallery-images">
-                    <div class="gallery-img" style="background: linear-gradient(135deg, #ff6b6b, #ffd93d); height: 200px; display: flex; align-items: center; justify-content: center; color: white;">
-                        <i class="fas fa-shopping-cart" style="font-size: 3rem;"></i>
-                    </div>
-                    <div class="gallery-img" style="background: linear-gradient(135deg, #ff5252, #ffcc29); height: 200px; display: flex; align-items: center; justify-content: center; color: white;">
-                        <i class="fas fa-chart-line" style="font-size: 3rem;"></i>
-                    </div>
-                    <div class="gallery-img" style="background: linear-gradient(135deg, #ff3838, #ffbf00); height: 200px; display: flex; align-items: center; justify-content: center; color: white;">
-                        <i class="fas fa-users" style="font-size: 3rem;"></i>
-                    </div>
+                    <!-- Updated to show all Project2 images -->
+                    <img src="Project2/1.png" alt="E-Commerce Dashboard 1" class="gallery-img">
+                    <img src="Project2/2.png" alt="E-Commerce Dashboard 2" class="gallery-img">
+                    <img src="Project2/3.png" alt="E-Commerce Dashboard 3" class="gallery-img">
                 </div>
                 <div class="gallery-details">
                     <h4>Project Details</h4>
@@ -1428,7 +1405,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="logo">
-                    <div class="logo-img" style="background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">DC</div>
+                    <img src="Profile.JPG" alt="Dilip Choudhary" class="logo-img">
                     <span>Dilip Choudhary</span>
                 </div>
                 <div class="social-links">
@@ -1586,15 +1563,6 @@
                         link.classList.add('active');
                     }
                 });
-            });
-            
-            // Parallax effect for hero background
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const heroBg = document.querySelector('.hero-bg');
-                if (heroBg) {
-                    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-                }
             });
             
             // Project gallery functionality

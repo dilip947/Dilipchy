@@ -424,12 +424,10 @@
             border-radius: var(--border-radius-lg);
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-            /* REMOVED THE TILT EFFECT */
             transition: var(--transition);
         }
 
         .hero-img-container:hover {
-            /* REMOVED THE TILT EFFECT */
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
         }
 
@@ -709,6 +707,56 @@
             margin-top: 2rem;
         }
 
+        /* Hover Gallery Effect */
+        .project-image.hover-gallery {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hover-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .hover-image {
+            flex: 1;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+            transform: translateY(100%);
+        }
+
+        .project-card:hover .hover-images {
+            opacity: 1;
+        }
+
+        .project-card:hover .hover-image {
+            transform: translateY(0);
+        }
+
+        .project-card:hover .hover-image:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .project-card:hover .hover-image:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .project-card:hover .hover-image:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .project-card:hover .hover-image:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
         /* Resume Section */
         .resume-container {
             text-align: center;
@@ -904,56 +952,6 @@
             }
         }
 
-        /* Hover Gallery Effect */
-        .project-image.hover-gallery {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hover-images {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .hover-image {
-            flex: 1;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: var(--transition);
-            transform: translateY(100%);
-        }
-
-        .project-card:hover .hover-images {
-            opacity: 1;
-        }
-
-        .project-card:hover .hover-image {
-            transform: translateY(0);
-        }
-
-        .project-card:hover .hover-image:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-
-        .project-card:hover .hover-image:nth-child(2) {
-            transition-delay: 0.2s;
-        }
-
-        .project-card:hover .hover-image:nth-child(3) {
-            transition-delay: 0.3s;
-        }
-
-        .project-card:hover .hover-image:nth-child(4) {
-            transition-delay: 0.4s;
-        }
-
         /* Scroll animations */
         .fade-in {
             opacity: 0;
@@ -1068,7 +1066,6 @@
     <header id="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <!-- CORRECTED PATH: Updated to use actual profile picture -->
                 <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="logo-img">
                 <span>Dilip Choudhary</span>
             </a>
@@ -1084,8 +1081,8 @@
                 <div class="dropdown">
                     <a href="#projects" class="nav-link">Projects ▾</a>
                     <div class="dropdown-menu">
-                        <a href="#project1" class="dropdown-item">Crypto Market Risk Dashboard</a>
-                        <a href="#project2" class="dropdown-item">E-Commerce Sales Insights</a>
+                        <a href="#project1" class="dropdown-item">E-Commerce Sales Insights</a>
+                        <a href="#project2" class="dropdown-item">Crypto Market Risk Dashboard</a>
                     </div>
                 </div>
                 
@@ -1117,7 +1114,6 @@
             </div>
             <div class="hero-image">
                 <div class="hero-img-container">
-                    <!-- CORRECTED PATH: Updated to use actual profile picture -->
                     <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="hero-img">
                 </div>
             </div>
@@ -1146,7 +1142,6 @@
                 </a>
             </div>
             <div class="about-image">
-                <!-- CORRECTED PATH: Updated to use actual profile picture -->
                 <img src="Image/Profile.JPG" alt="Dilip Choudhary" style="width: 100%; height: 400px; object-fit: cover; border-radius: var(--border-radius); border: 1px solid var(--border);">
             </div>
         </div>
@@ -1193,12 +1188,12 @@
                 <p class="text-lead">Showcasing my expertise through practical applications of data analytics</p>
             </div>
             <div class="projects-grid">
+                <!-- Project 1: E-Commerce Sales Insights (4 PNGs) -->
                 <div id="project1" class="project-card fade-in">
                     <div class="project-image hover-gallery">
-                        <!-- CORRECTED PATH: Updated to use actual project thumbnail -->
-                        <img src="Image/Project1/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
+                        <img src="Image/Project1/1.png" alt="E-Commerce Sales Insights" class="project-img">
                         
-                        <!-- Hover gallery images -->
+                        <!-- Hover gallery images - 4 PNGs for E-commerce -->
                         <div class="hover-images">
                             <div class="hover-image" style="background-image: url('Image/Project1/1.png');"></div>
                             <div class="hover-image" style="background-image: url('Image/Project1/2.png');"></div>
@@ -1213,24 +1208,25 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Crypto Market Risk Dashboard</h3>
-                        <p class="project-description">Power BI dashboard analyzing cryptocurrency volatility and market sentiment to assess risk factors and investment opportunities.</p>
+                        <h3 class="project-title">E-Commerce Sales Insights</h3>
+                        <p class="project-description">Comprehensive analysis of e-commerce order data with insights into cancellation drivers and sales performance optimization.</p>
                         <div class="project-actions">
                             <button class="btn btn-primary view-project-btn" data-project="project1">
                                 <i class="fas fa-eye"></i> View Project
                             </button>
-                            <a href="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" class="btn btn-secondary" target="_blank">
+                            <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" class="btn btn-secondary" target="_blank">
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Project 2: Crypto Market Risk Dashboard (3 PNGs) -->
                 <div id="project2" class="project-card fade-in">
                     <div class="project-image hover-gallery">
-                        <!-- CORRECTED PATH: Updated to use actual project thumbnail -->
-                        <img src="Image/Project2/1.png" alt="E-Commerce Sales Insights" class="project-img">
+                        <img src="Image/Project2/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
                         
-                        <!-- Hover gallery images -->
+                        <!-- Hover gallery images - 3 PNGs for Crypto -->
                         <div class="hover-images">
                             <div class="hover-image" style="background-image: url('Image/Project2/1.png');"></div>
                             <div class="hover-image" style="background-image: url('Image/Project2/2.png');"></div>
@@ -1244,13 +1240,13 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">E-Commerce Sales Insights</h3>
-                        <p class="project-description">Comprehensive analysis of e-commerce order data with insights into cancellation drivers and sales performance optimization.</p>
+                        <h3 class="project-title">Crypto Market Risk Dashboard</h3>
+                        <p class="project-description">Power BI dashboard analyzing cryptocurrency volatility and market sentiment to assess risk factors and investment opportunities.</p>
                         <div class="project-actions">
                             <button class="btn btn-primary view-project-btn" data-project="project2">
                                 <i class="fas fa-eye"></i> View Project
                             </button>
-                            <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" class="btn btn-secondary" target="_blank">
+                            <a href="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" class="btn btn-secondary" target="_blank">
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
@@ -1261,36 +1257,8 @@
     </section>
 
     <!-- Project Gallery Modals -->
+    <!-- E-Commerce Project Gallery (4 images) -->
     <div id="project1-gallery" class="project-gallery">
-        <div class="gallery-content">
-            <div class="gallery-header">
-                <h3>Crypto Market Risk Dashboard</h3>
-                <button class="close-gallery">&times;</button>
-            </div>
-            <div class="gallery-body">
-                <div class="gallery-images">
-                    <!-- CORRECTED PATH: Updated to show all Project1 images -->
-                    <img src="Image/Project1/1.png" alt="Crypto Dashboard 1" class="gallery-img">
-                    <img src="Image/Project1/2.png" alt="Crypto Dashboard 2" class="gallery-img">
-                    <img src="Image/Project1/3.png" alt="Crypto Dashboard 3" class="gallery-img">
-                    <img src="Image/Project1/4.png" alt="Crypto Dashboard 4" class="gallery-img">
-                </div>
-                <div class="gallery-details">
-                    <h4>Project Details</h4>
-                    <p>This Power BI dashboard provides comprehensive analysis of cryptocurrency market trends, volatility patterns, and risk assessment metrics. The project includes:</p>
-                    <ul>
-                        <li>Real-time cryptocurrency price tracking</li>
-                        <li>Volatility analysis and risk scoring</li>
-                        <li>Market sentiment indicators</li>
-                        <li>Portfolio optimization recommendations</li>
-                    </ul>
-                    <p>The dashboard helps investors make data-driven decisions by visualizing complex market data in an intuitive interface.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="project2-gallery" class="project-gallery">
         <div class="gallery-content">
             <div class="gallery-header">
                 <h3>E-Commerce Sales Insights</h3>
@@ -1298,10 +1266,10 @@
             </div>
             <div class="gallery-body">
                 <div class="gallery-images">
-                    <!-- CORRECTED PATH: Updated to show all Project2 images -->
-                    <img src="Image/Project2/1.png" alt="E-Commerce Dashboard 1" class="gallery-img">
-                    <img src="Image/Project2/2.png" alt="E-Commerce Dashboard 2" class="gallery-img">
-                    <img src="Image/Project2/3.png" alt="E-Commerce Dashboard 3" class="gallery-img">
+                    <img src="Image/Project1/1.png" alt="E-Commerce Dashboard 1" class="gallery-img">
+                    <img src="Image/Project1/2.png" alt="E-Commerce Dashboard 2" class="gallery-img">
+                    <img src="Image/Project1/3.png" alt="E-Commerce Dashboard 3" class="gallery-img">
+                    <img src="Image/Project1/4.png" alt="E-Commerce Dashboard 4" class="gallery-img">
                 </div>
                 <div class="gallery-details">
                     <h4>Project Details</h4>
@@ -1313,6 +1281,34 @@
                         <li>Inventory optimization recommendations</li>
                     </ul>
                     <p>The dashboard helps e-commerce businesses optimize their operations and increase profitability through data-driven insights.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crypto Project Gallery (3 images) -->
+    <div id="project2-gallery" class="project-gallery">
+        <div class="gallery-content">
+            <div class="gallery-header">
+                <h3>Crypto Market Risk Dashboard</h3>
+                <button class="close-gallery">&times;</button>
+            </div>
+            <div class="gallery-body">
+                <div class="gallery-images">
+                    <img src="Image/Project2/1.png" alt="Crypto Dashboard 1" class="gallery-img">
+                    <img src="Image/Project2/2.png" alt="Crypto Dashboard 2" class="gallery-img">
+                    <img src="Image/Project2/3.png" alt="Crypto Dashboard 3" class="gallery-img">
+                </div>
+                <div class="gallery-details">
+                    <h4>Project Details</h4>
+                    <p>This Power BI dashboard provides comprehensive analysis of cryptocurrency market trends, volatility patterns, and risk assessment metrics. The project includes:</p>
+                    <ul>
+                        <li>Real-time cryptocurrency price tracking</li>
+                        <li>Volatility analysis and risk scoring</li>
+                        <li>Market sentiment indicators</li>
+                        <li>Portfolio optimization recommendations</li>
+                    </ul>
+                    <p>The dashboard helps investors make data-driven decisions by visualizing complex market data in an intuitive interface.</p>
                 </div>
             </div>
         </div>
@@ -1405,7 +1401,6 @@
         <div class="container">
             <div class="footer-content">
                 <div class="logo">
-                    <!-- CORRECTED PATH: Updated to use actual profile picture -->
                     <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="logo-img">
                     <span>Dilip Choudhary</span>
                 </div>

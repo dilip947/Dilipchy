@@ -11,51 +11,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #007AFF;
-            --primary-dark: #0056CC;
-            --primary-light: #66AFFF;
-            --secondary: #1D1D1F;
-            --secondary-light: #424245;
-            --accent: #FF2D55;
-            --accent-gradient: linear-gradient(135deg, #FF2D55 0%, #FF6B6B 100%);
-            --text: #1D1D1F;
-            --text-light: #86868B;
-            --text-lighter: #AEAEB2;
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --primary-light: #3399FF;
+            --secondary: #1A1A1A;
+            --secondary-light: #2D2D2D;
+            --accent: #FF3366;
+            --accent-dark: #E62E5C;
+            --accent-light: #FF6699;
+            --accent-gradient: linear-gradient(135deg, #FF3366 0%, #FF6B9D 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --text: #FFFFFF;
+            --text-light: #B0B0B0;
+            --text-lighter: #808080;
+            --background: #0A0A0A;
+            --background-alt: #1A1A1A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --header-bg: rgba(10, 10, 10, 0.8);
+            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 24px;
+            --border-radius-lg: 40px;
+            --section-spacing: 160px;
+        }
+
+        .light-mode {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --primary-light: #3399FF;
+            --secondary: #FFFFFF;
+            --secondary-light: #F5F5F7;
+            --accent: #FF3366;
+            --accent-dark: #E62E5C;
+            --accent-light: #FF6699;
+            --accent-gradient: linear-gradient(135deg, #FF3366 0%, #FF6B9D 100%);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --text: #1A1A1A;
+            --text-light: #666666;
+            --text-lighter: #999999;
             --background: #FFFFFF;
             --background-alt: #F5F5F7;
             --card-bg: rgba(255, 255, 255, 0.8);
             --card-border: rgba(255, 255, 255, 0.2);
-            --card-shadow: rgba(0, 0, 0, 0.05);
-            --card-shadow-hover: rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             --header-bg: rgba(255, 255, 255, 0.8);
-            --glass-bg: rgba(255, 255, 255, 0.25);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --border-radius: 20px;
-            --border-radius-lg: 30px;
-            --section-spacing: 140px;
-        }
-
-        .dark-mode {
-            --primary: #0A84FF;
-            --primary-dark: #0066CC;
-            --primary-light: #66AFFF;
-            --secondary: #F5F5F7;
-            --secondary-light: #E8E8ED;
-            --accent: #FF375F;
-            --accent-gradient: linear-gradient(135deg, #FF375F 0%, #FF6B6B 100%);
-            --text: #F5F5F7;
-            --text-light: #AEAEB2;
-            --text-lighter: #86868B;
-            --background: #000000;
-            --background-alt: #1D1D1F;
-            --card-bg: rgba(29, 29, 31, 0.7);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --card-shadow: rgba(0, 0, 0, 0.3);
-            --card-shadow-hover: rgba(0, 0, 0, 0.5);
-            --header-bg: rgba(0, 0, 0, 0.8);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -71,109 +75,95 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: var(--background);
+            background: var(--background);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
             transition: var(--transition);
             font-weight: 400;
-            background: var(--background);
         }
 
-        /* Animated Background */
-        .animated-bg {
+        /* Advanced Glass Morphism Effects */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .glass-heavy {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Edge Glow Effects */
+        .edge-glow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edge-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .edge-glow:hover::before {
+            left: 100%;
+        }
+
+        /* Liquid Animation */
+        @keyframes liquid {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+
+        .liquid-animation {
+            animation: liquid 8s ease-in-out infinite;
+        }
+
+        /* Advanced Particle System */
+        .particles-advanced {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            opacity: 0.7;
+            z-index: -3;
+            pointer-events: none;
         }
 
-        .gradient-circle {
+        .particle-advanced {
             position: absolute;
+            background: var(--primary);
             border-radius: 50%;
-            filter: blur(40px);
-            animation: float 20s infinite linear;
+            opacity: 0;
+            animation: float-particle 20s infinite linear;
         }
 
-        .circle-1 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-            top: -200px;
-            left: -200px;
-            animation-delay: 0s;
-        }
-
-        .circle-2 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-            bottom: -150px;
-            right: -150px;
-            animation-delay: -10s;
-        }
-
-        .circle-3 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: -5s;
-        }
-
-        /* Smooth scrolling for older browsers */
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
             }
-            
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+            10% {
+                opacity: 0.3;
             }
-        }
-
-        /* Typography scale */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-
-        h3 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        .text-lead {
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: var(--text-light);
-            line-height: 1.6;
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         /* Layout */
@@ -191,13 +181,19 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
         }
 
         .section-title {
             position: relative;
             display: inline-block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .section-title::after {
@@ -206,29 +202,28 @@
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 100px;
             height: 4px;
             background: var(--accent-gradient);
             border-radius: 2px;
         }
 
-        /* Header & Navigation - Apple Style */
+        /* Advanced Navigation with Liquid Effects */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: var(--header-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1.2rem 0;
+            padding: 1.5rem 0;
             transition: var(--transition);
-            border-bottom: 1px solid transparent;
         }
 
         header.scrolled {
             padding: 1rem 0;
+            background: var(--header-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             border-bottom: 1px solid var(--glass-border);
         }
 
@@ -243,74 +238,93 @@
             align-items: center;
             gap: 1rem;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--text);
             text-decoration: none;
             transition: var(--transition);
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
+            z-index: 1001;
         }
 
         .logo-img {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--primary);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-img::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-img::before {
+            left: 100%;
         }
 
         .logo:hover .logo-img {
             border-color: var(--accent);
-            transform: rotate(10deg);
+            transform: rotate(5deg) scale(1.1);
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             align-items: center;
         }
 
         .nav-link {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-light);
             text-decoration: none;
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.8rem 1.5rem;
             transition: var(--transition);
             font-size: 1.1rem;
+            border-radius: 50px;
+            background: transparent;
+            overflow: hidden;
         }
 
-        .nav-link::after {
+        .nav-link::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
             background: var(--accent-gradient);
             transition: var(--transition);
+            z-index: -1;
+            border-radius: 50px;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
         }
 
         .nav-link:hover {
-            color: var(--text);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
+            color: white;
+            transform: translateY(-3px);
         }
 
         .nav-link.active {
+            background: var(--glass-bg);
             color: var(--text);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        /* Dropdown */
+        /* Advanced Dropdown with Liquid Animation */
         .dropdown {
             position: relative;
         }
@@ -319,99 +333,171 @@
             position: absolute;
             top: 100%;
             left: 0;
-            width: 240px;
+            width: 280px;
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
             border-radius: var(--border-radius);
-            box-shadow: 0 20px 40px var(--card-shadow);
+            box-shadow: var(--card-shadow);
             border: 1px solid var(--glass-border);
-            padding: 0.8rem;
+            padding: 1rem;
             display: none;
             z-index: 1000;
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s, transform 0.3s;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: liquid 4s ease-in-out infinite;
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         .dropdown-item {
             display: block;
-            padding: 0.8rem 1rem;
-            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
             transition: var(--transition);
             color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
+            margin: 0.5rem 0;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dropdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transition: var(--transition);
+            z-index: -1;
+            border-radius: 16px;
+        }
+
+        .dropdown-item:hover::before {
+            left: 0;
         }
 
         .dropdown-item:hover {
-            background: var(--primary);
             color: white;
-            transform: translateX(5px);
+            transform: translateX(10px);
         }
 
         .theme-toggle {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px var(--card-shadow);
+            box-shadow: var(--glass-shadow);
             transition: var(--transition);
             border: 1px solid var(--glass-border);
             cursor: pointer;
             color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .theme-toggle:hover::before {
+            left: 0;
         }
 
         .theme-toggle:hover {
             transform: rotate(180deg) scale(1.1);
-            background: var(--primary);
             color: white;
         }
 
         .mobile-menu-btn {
             display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
+            font-size: 1.8rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            width: 55px;
+            height: 55px;
+            border: 1px solid var(--glass-border);
             color: var(--text);
             cursor: pointer;
             z-index: 1001;
+            transition: var(--transition);
         }
 
-        /* Hero Section - Apple Style */
+        .mobile-menu-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section with Advanced Effects */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 100px;
+            padding-top: 120px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, var(--primary) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, var(--accent) 0%, transparent 50%);
+            opacity: 0.3;
         }
 
         .hero-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
+            gap: 6rem;
             align-items: center;
         }
 
         .hero-content {
-            animation: fadeInUp 1.2s ease;
+            animation: fadeInUp 1.5s ease;
         }
 
         .hero-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 900;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -423,39 +509,42 @@
             position: absolute;
             bottom: -10px;
             left: 0;
-            width: 100px;
-            height: 4px;
+            width: 200px;
+            height: 6px;
             background: var(--accent-gradient);
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
         .hero-description {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             margin-bottom: 3rem;
             color: var(--text-light);
+            line-height: 1.8;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1rem;
             text-decoration: none;
             cursor: pointer;
             border: none;
             font-family: inherit;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .btn::before {
@@ -465,8 +554,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
         }
 
         .btn:hover::before {
@@ -476,24 +565,26 @@
         .btn-primary {
             background: var(--accent-gradient);
             color: white;
-            box-shadow: 0 10px 30px rgba(255, 45, 85, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 51, 102, 0.4);
+            border: 2px solid transparent;
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(255, 45, 85, 0.6);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(255, 51, 102, 0.6);
         }
 
         .btn-secondary {
-            background: transparent;
+            background: var(--glass-bg);
             color: var(--text);
             border: 2px solid var(--glass-border);
-            backdrop-filter: blur(10px);
+            box-shadow: var(--glass-shadow);
         }
 
         .btn-secondary:hover {
-            background: var(--glass-bg);
-            transform: translateY(-5px);
+            background: var(--primary);
+            color: white;
+            transform: translateY(-8px);
             border-color: var(--primary);
         }
 
@@ -506,662 +597,228 @@
             position: relative;
             border-radius: var(--border-radius-lg);
             overflow: hidden;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3);
             transition: var(--transition);
-            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+            border: 2px solid transparent;
+            background: var(--accent-gradient);
+            padding: 4px;
         }
 
-        .hero-img-container:hover {
-            transform: perspective(1000px) rotateY(0) rotateX(0) scale(1.05);
-            box-shadow: 0 60px 120px rgba(0, 0, 0, 0.2);
+        .hero-img-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            z-index: -1;
+            border-radius: var(--border-radius-lg);
+            animation: liquid 8s ease-in-out infinite;
         }
 
         .hero-img {
             width: 100%;
-            height: auto;
+            height: 600px;
+            object-fit: cover;
             display: block;
             transition: var(--transition);
+            border-radius: calc(var(--border-radius-lg) - 4px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-img-container:hover {
+            transform: perspective(1000px) rotateY(0) rotateX(0) scale(1.05);
+            box-shadow: 0 80px 160px rgba(0, 0, 0, 0.4);
         }
 
         .hero-img-container:hover .hero-img {
             transform: scale(1.1);
         }
 
-        /* About Section */
-        .about {
-            background: var(--background-alt);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(10, 132, 255, 0.05) 0%, transparent 50%);
-        }
-
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-content h2 {
-            text-align: left;
-        }
-
-        .about-content h2::after {
-            left: 0;
-            transform: none;
-        }
-
-        .about-text {
-            margin-bottom: 2.5rem;
-        }
-
-        .about-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .skill {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 500;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 8px 20px var(--card-shadow);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .skill:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px var(--card-shadow-hover);
-            background: var(--primary);
-            color: white;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--primary);
-            border-radius: var(--border-radius);
-            z-index: -1;
-            transition: var(--transition);
-        }
-
-        .about-image:hover::before {
-            top: 0;
-            left: 0;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: var(--border-radius);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .about-image:hover img {
-            transform: scale(1.02);
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-        }
-
-        .service-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-radius: var(--border-radius);
-            padding: 3rem 2.5rem;
-            box-shadow: 0 20px 40px var(--card-shadow);
-            border: 1px solid var(--glass-border);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.7s;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 60px var(--card-shadow-hover);
-        }
-
-        .service-icon {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-gradient);
-            color: white;
-            font-size: 2.2rem;
-            margin: 0 auto 2rem;
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-icon {
-            transform: rotate(15deg) scale(1.1);
-        }
-
-        .service-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-description {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        /* Projects Section */
+        /* Projects Section with Horizontal Navigation */
         .projects {
-            background: var(--background-alt);
             position: relative;
             overflow: hidden;
         }
 
-        .projects::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 50%, rgba(255, 45, 85, 0.05) 0%, transparent 50%);
+        .projects-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        .projects-carousel {
+            display: flex;
             gap: 3rem;
-            position: relative;
-            z-index: 1;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 2rem 0;
+            margin: 0 -2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .projects-carousel::-webkit-scrollbar {
+            display: none;
         }
 
         .project-card {
+            flex: 0 0 auto;
+            width: 450px;
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(30px);
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 20px 40px var(--card-shadow);
+            box-shadow: var(--card-shadow);
             border: 1px solid var(--glass-border);
             transition: var(--transition);
             position: relative;
         }
 
         .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px var(--card-shadow-hover);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
         }
 
-        .project-image {
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-img {
-            transform: scale(1.1);
-        }
-
-        .project-overlay {
+        .carousel-nav {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-content {
-            padding: 2.5rem;
-        }
-
-        .project-title {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-description {
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .project-actions {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        /* Hover Gallery Effect */
-        .project-image.hover-gallery {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hover-images {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .hover-image {
-            flex: 1;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: var(--transition);
-            transform: translateY(100%);
-        }
-
-        .project-card:hover .hover-images {
-            opacity: 1;
-        }
-
-        .project-card:hover .hover-image {
-            transform: translateY(0);
-        }
-
-        .project-card:hover .hover-image:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-
-        .project-card:hover .hover-image:nth-child(2) {
-            transition-delay: 0.2s;
-        }
-
-        .project-card:hover .hover-image:nth-child(3) {
-            transition-delay: 0.3s;
-        }
-
-        .project-card:hover .hover-image:nth-child(4) {
-            transition-delay: 0.4s;
-        }
-
-        /* Project Gallery Modals */
-        .project-gallery {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .gallery-content {
-            background: var(--card-bg);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
-            border-radius: var(--border-radius);
-            max-width: 1000px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
             border: 1px solid var(--glass-border);
-        }
-
-        .gallery-header {
-            padding: 2rem;
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .close-gallery {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: var(--text);
-            cursor: pointer;
-            transition: var(--transition);
-            width: 50px;
-            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .close-gallery:hover {
-            background: var(--primary);
-            color: white;
-            transform: rotate(90deg);
-        }
-
-        .gallery-body {
-            padding: 2rem;
-        }
-
-        .gallery-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .gallery-img {
-            width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: var(--transition);
             cursor: pointer;
-        }
-
-        .gallery-img:hover {
-            transform: scale(1.05);
-        }
-
-        .gallery-details {
-            margin-top: 2rem;
-        }
-
-        /* Resume Section */
-        .resume-container {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .resume-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.2rem 2.5rem;
-            background: var(--accent-gradient);
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 15px 30px rgba(255, 45, 85, 0.4);
             transition: var(--transition);
-            margin-top: 2rem;
-            font-size: 1.2rem;
+            z-index: 10;
+            color: var(--text);
+            font-size: 1.5rem;
         }
 
-        .resume-download:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(255, 45, 85, 0.6);
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: var(--border-radius);
-            border: 1px solid var(--glass-border);
-            transition: var(--transition);
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-            background: var(--primary);
-        }
-
-        .contact-item:hover .contact-icon {
-            background: white;
-            color: var(--primary);
-        }
-
-        .contact-item:hover .contact-details a,
-        .contact-item:hover .contact-details p {
-            color: white;
-        }
-
-        .contact-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .carousel-nav:hover {
             background: var(--primary);
             color: white;
-            font-size: 1.8rem;
-            flex-shrink: 0;
-            transition: var(--transition);
+            transform: translateY(-50%) scale(1.1);
         }
 
-        .contact-details h3 {
-            margin-bottom: 0.5rem;
+        .carousel-prev {
+            left: -30px;
         }
 
-        .contact-details a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: var(--transition);
+        .carousel-next {
+            right: -30px;
         }
 
-        .contact-details a:hover {
-            color: var(--primary);
-        }
-
-        .contact-form {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            padding: 3rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 20px 40px var(--card-shadow);
-            border: 1px solid var(--glass-border);
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 1.2rem;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            background: var(--glass-bg);
-            color: var(--text);
-            transition: var(--transition);
-            font-family: inherit;
-            font-size: 1.1rem;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        textarea.form-input {
-            min-height: 180px;
-            resize: vertical;
-        }
-
-        /* Footer */
+        /* Enhanced Footer with Glass Effects */
         footer {
-            background: var(--secondary);
-            color: white;
-            padding: 5rem 0 2rem;
+            background: var(--background-alt);
+            padding: 6rem 0 3rem;
             position: relative;
             overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 0%, rgba(10, 132, 255, 0.1) 0%, transparent 50%);
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
             z-index: 1;
         }
 
-        .social-links {
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover .footer-logo-img {
+            border-color: var(--accent);
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .social-links-enhanced {
             display: flex;
             gap: 1.5rem;
         }
 
-        .social-link {
-            width: 55px;
-            height: 55px;
+        .social-link-enhanced {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            color: var(--text);
             transition: var(--transition);
-            font-size: 1.3rem;
+            border: 2px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.5rem;
         }
 
-        .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-5px) scale(1.1);
+        .social-link-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .social-link-enhanced:hover::before {
+            left: 0;
+        }
+
+        .social-link-enhanced:hover {
+            transform: translateY(-8px) scale(1.1);
+            color: white;
+            border-color: transparent;
         }
 
         .copyright {
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-light);
             padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--glass-border);
             position: relative;
             z-index: 1;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
+        /* Advanced Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(80px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
             }
         }
 
@@ -1170,24 +827,23 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-30px);
             }
         }
 
-        @keyframes pulse {
+        @keyframes glow {
             0%, 100% {
-                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
             }
             50% {
-                transform: scale(1.05);
+                box-shadow: 0 0 40px rgba(255, 51, 102, 0.8);
             }
         }
 
-        /* Scroll animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(60px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .fade-in.visible {
@@ -1195,47 +851,25 @@
             transform: translateY(0);
         }
 
-        /* Particle Background */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--primary);
-            opacity: 0.3;
-            animation: float 15s infinite linear;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .container {
-                max-width: 1140px;
-            }
-        }
-
+        /* Mobile Responsive Design */
         @media (max-width: 1024px) {
-            .hero-container,
-            .about-container,
-            .contact-container {
+            .hero-container {
                 grid-template-columns: 1fr;
                 gap: 4rem;
-            }
-
-            .about-content h2::after {
-                left: 50%;
-                transform: translateX(-50%);
+                text-align: center;
             }
 
             .hero-image {
                 order: -1;
+            }
+
+            .carousel-nav {
+                display: none;
+            }
+
+            .projects-carousel {
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
         }
 
@@ -1245,33 +879,33 @@
             }
 
             .section {
-                padding: 100px 0;
+                padding: 120px 0;
             }
 
             .nav-links {
-                display: none;
                 position: fixed;
                 top: 0;
-                left: 0;
+                left: -100%;
                 width: 100%;
                 height: 100vh;
-                background: var(--header-bg);
-                backdrop-filter: blur(20px);
+                background: var(--glass-bg);
+                backdrop-filter: blur(40px);
                 flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                z-index: 999;
                 justify-content: center;
                 align-items: center;
                 gap: 2rem;
+                transition: var(--transition);
+                z-index: 999;
             }
 
             .nav-links.active {
-                display: flex;
+                left: 0;
             }
 
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .hero-buttons {
@@ -1279,23 +913,24 @@
                 align-items: center;
             }
 
-            .project-actions {
-                flex-direction: column;
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .project-card {
+                width: 350px;
             }
 
             .footer-content {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 3rem;
                 text-align: center;
             }
 
-            .gallery-images {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .social-links-enhanced {
+                justify-content: center;
             }
         }
 
@@ -1305,38 +940,24 @@
             }
 
             .section {
-                padding: 80px 0;
+                padding: 100px 0;
             }
 
-            .contact-form {
-                padding: 2rem;
+            .project-card {
+                width: 300px;
             }
 
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                justify-content: center;
+            .social-link-enhanced {
+                width: 60px;
+                height: 60px;
+                font-size: 1.3rem;
             }
         }
     </style>
 </head>
-<body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="gradient-circle circle-1"></div>
-        <div class="gradient-circle circle-2"></div>
-        <div class="gradient-circle circle-3"></div>
-    </div>
-
-    <!-- Particle Background -->
-    <div class="particles" id="particles"></div>
+<body class="light-mode">
+    <!-- Advanced Particle System -->
+    <div class="particles-advanced" id="particlesAdvanced"></div>
 
     <!-- Header -->
     <header id="header">
@@ -1356,7 +977,7 @@
                 
                 <div class="dropdown">
                     <a href="#projects" class="nav-link">Projects ▾</a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu glass">
                         <a href="#project1" class="dropdown-item">E-Commerce Sales Insights</a>
                         <a href="#project2" class="dropdown-item">Crypto Market Risk Dashboard</a>
                     </div>
@@ -1374,21 +995,22 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-bg"></div>
         <div class="container hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">Dilip Choudhary</h1>
                 <p class="hero-description">Business Analytics professional specializing in financial markets, risk analysis, and data-driven decision-making.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">
+                    <a href="#contact" class="btn btn-primary edge-glow">
                         <i class="fas fa-paper-plane"></i> Get In Touch
                     </a>
-                    <a href="#projects" class="btn btn-secondary">
+                    <a href="#projects" class="btn btn-secondary edge-glow">
                         <i class="fas fa-eye"></i> View My Work
                     </a>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="hero-img-container">
+                <div class="hero-img-container liquid-animation">
                     <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="hero-img">
                 </div>
             </div>
@@ -1396,301 +1018,104 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container about-container">
-            <div class="about-content">
-                <h2 class="section-title">About Me</h2>
-                <p class="about-text">I'm a Business Analytics student focused on financial markets, risk analysis, and data-driven decision-making. I transform messy datasets into clear insights and dashboards that empower stakeholders to act.</p>
-                <p class="about-text">My expertise includes financial modeling, data visualization, and creating interactive dashboards that tell compelling stories with data. I'm passionate about using analytics to solve complex business problems and drive strategic decisions.</p>
-                <div class="about-skills">
-                    <span class="skill">Power BI</span>
-                    <span class="skill">Tableau</span>
-                    <span class="skill">Excel</span>
-                    <span class="skill">SQL</span>
-                    <span class="skill">Financial Analysis</span>
-                    <span class="skill">Data Visualization</span>
-                    <span class="skill">Dashboarding</span>
-                    <span class="skill">Risk Analysis</span>
-                </div>
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-comment"></i> Let's Discuss
-                </a>
-            </div>
-            <div class="about-image">
-                <img src="Image/Profile.JPG" alt="Dilip Choudhary">
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section">
+    <section id="about" class="section">
         <div class="container">
-            <div class="section-header center">
-                <h2 class="section-title">What I Do</h2>
-                <p class="text-lead">Transforming complex data into actionable insights through cutting-edge visualization techniques</p>
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="text-lead">Transforming data into actionable insights through advanced analytics and visualization</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="service-title">Data & Dashboarding</h3>
-                    <p class="service-description">Creating insightful Power BI and Tableau dashboards that transform complex data into actionable business intelligence.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3 class="service-title">Financial Modeling</h3>
-                    <p class="service-description">Building robust financial models in Excel for valuations, scenario analysis, and business case development.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="service-title">Data Analysis</h3>
-                    <p class="service-description">Extracting meaningful insights from complex datasets using SQL and statistical analysis techniques.</p>
-                </div>
-            </div>
+            <!-- About content will be added here -->
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section with Horizontal Carousel -->
     <section id="projects" class="section projects">
         <div class="container">
-            <div class="section-header center">
+            <div class="section-header">
                 <h2 class="section-title">Featured Projects</h2>
-                <p class="text-lead">Showcasing my expertise through practical applications of data analytics</p>
+                <p class="text-lead">Showcasing cutting-edge data analytics solutions</p>
             </div>
-            <div class="projects-grid">
-                <!-- Project 1: E-Commerce Sales Insights (4 PNGs) -->
-                <div id="project1" class="project-card fade-in">
-                    <div class="project-image hover-gallery">
-                        <img src="Image/Projectec/1.png" alt="E-Commerce Sales Insights" class="project-img">
-                        
-                        <!-- Hover gallery images - 4 PNGs for E-commerce -->
-                        <div class="hover-images">
-                            <div class="hover-image" style="background-image: url('Image/Projectec/1.png');"></div>
-                            <div class="hover-image" style="background-image: url('Image/Projectec/2.png');"></div>
-                            <div class="hover-image" style="background-image: url('Image/Projectec/3.png');"></div>
-                            <div class="hover-image" style="background-image: url('Image/Projectec/4.png');"></div>
+            
+            <div class="projects-container">
+                <button class="carousel-nav carousel-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="projects-carousel">
+                    <!-- Project 1 -->
+                    <div class="project-card glass edge-glow">
+                        <div class="project-image">
+                            <img src="Image/Projectec/1.png" alt="E-Commerce Sales Insights" class="project-img">
                         </div>
-                        
-                        <div class="project-overlay">
-                            <button class="btn btn-primary view-project-btn" data-project="project1">
-                                <i class="fas fa-external-link-alt"></i> View Project
-                            </button>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-Commerce Sales Insights</h3>
-                        <p class="project-description">Comprehensive analysis of e-commerce order data with insights into cancellation drivers and sales performance optimization.</p>
-                        <div class="project-actions">
-                            <button class="btn btn-primary view-project-btn" data-project="project1">
-                                <i class="fas fa-eye"></i> View Project
-                            </button>
-                            <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" class="btn btn-secondary" target="_blank">
-                                <i class="fas fa-download"></i> Download
-                            </a>
+                        <div class="project-content">
+                            <h3>E-Commerce Sales Insights</h3>
+                            <p>Advanced analytics dashboard for e-commerce optimization</p>
+                            <div class="project-actions">
+                                <button class="btn btn-primary">View Project</button>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card glass edge-glow">
+                        <div class="project-image">
+                            <img src="Image/Projectcrypto/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
+                        </div>
+                        <div class="project-content">
+                            <h3>Crypto Market Risk Dashboard</h3>
+                            <p>Real-time cryptocurrency risk analysis and visualization</p>
+                            <div class="project-actions">
+                                <button class="btn btn-primary">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more project cards as needed -->
                 </div>
                 
-                <!-- Project 2: Crypto Market Risk Dashboard (3 PNGs) -->
-                <div id="project2" class="project-card fade-in">
-                    <div class="project-image hover-gallery">
-                        <img src="Image/Projectcrypto/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
-                        
-                        <!-- Hover gallery images - 3 PNGs for Crypto -->
-                        <div class="hover-images">
-                            <div class="hover-image" style="background-image: url('Image/Projectcrypto/1.png');"></div>
-                            <div class="hover-image" style="background-image: url('Image/Projectcrypto/2.png');"></div>
-                            <div class="hover-image" style="background-image: url('Image/Projectcrypto/3.png');"></div>
-                        </div>
-                        
-                        <div class="project-overlay">
-                            <button class="btn btn-primary view-project-btn" data-project="project2">
-                                <i class="fas fa-external-link-alt"></i> View Project
-                            </button>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Crypto Market Risk Dashboard</h3>
-                        <p class="project-description">Power BI dashboard analyzing cryptocurrency volatility and market sentiment to assess risk factors and investment opportunities.</p>
-                        <div class="project-actions">
-                            <button class="btn btn-primary view-project-btn" data-project="project2">
-                                <i class="fas fa-eye"></i> View Project
-                            </button>
-                            <a href="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" class="btn btn-secondary" target="_blank">
-                                <i class="fas fa-download"></i> Download
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-nav carousel-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
-        </div>
-    </section>
-
-    <!-- Project Gallery Modals -->
-    <!-- E-Commerce Project Gallery (4 images) -->
-    <div id="project1-gallery" class="project-gallery">
-        <div class="gallery-content">
-            <div class="gallery-header">
-                <h3>E-Commerce Sales Insights</h3>
-                <button class="close-gallery">&times;</button>
-            </div>
-            <div class="gallery-body">
-                <div class="gallery-images">
-                    <img src="Image/Projectec/1.png" alt="E-Commerce Dashboard 1" class="gallery-img">
-                    <img src="Image/Projectec/2.png" alt="E-Commerce Dashboard 2" class="gallery-img">
-                    <img src="Image/Projectec/3.png" alt="E-Commerce Dashboard 3" class="gallery-img">
-                    <img src="Image/Projectec/4.png" alt="E-Commerce Dashboard 4" class="gallery-img">
-                </div>
-                <div class="gallery-details">
-                    <h4>Project Details</h4>
-                    <p>This e-commerce analytics dashboard provides insights into sales performance, customer behavior, and operational efficiency. Key features include:</p>
-                    <ul>
-                        <li>Sales performance tracking by product category and region</li>
-                        <li>Customer segmentation and behavior analysis</li>
-                        <li>Order cancellation pattern identification</li>
-                        <li>Inventory optimization recommendations</li>
-                    </ul>
-                    <p>The dashboard helps e-commerce businesses optimize their operations and increase profitability through data-driven insights.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Crypto Project Gallery (3 images) -->
-    <div id="project2-gallery" class="project-gallery">
-        <div class="gallery-content">
-            <div class="gallery-header">
-                <h3>Crypto Market Risk Dashboard</h3>
-                <button class="close-gallery">&times;</button>
-            </div>
-            <div class="gallery-body">
-                <div class="gallery-images">
-                    <img src="Image/Projectcrypto/1.png" alt="Crypto Dashboard 1" class="gallery-img">
-                    <img src="Image/Projectcrypto/2.png" alt="Crypto Dashboard 2" class="gallery-img">
-                    <img src="Image/Projectcrypto/3.png" alt="Crypto Dashboard 3" class="gallery-img">
-                </div>
-                <div class="gallery-details">
-                    <h4>Project Details</h4>
-                    <p>This Power BI dashboard provides comprehensive analysis of cryptocurrency market trends, volatility patterns, and risk assessment metrics. The project includes:</p>
-                    <ul>
-                        <li>Real-time cryptocurrency price tracking</li>
-                        <li>Volatility analysis and risk scoring</li>
-                        <li>Market sentiment indicators</li>
-                        <li>Portfolio optimization recommendations</li>
-                    </ul>
-                    <p>The dashboard helps investors make data-driven decisions by visualizing complex market data in an intuitive interface.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Resume Section -->
-    <section id="resume" class="section">
-        <div class="container resume-container">
-            <div class="section-header center">
-                <h2 class="section-title">My Resume</h2>
-                <p class="text-lead">Download my complete resume to learn more about my experience, education, and skills</p>
-            </div>
-            <a href="Resume.pdf" download class="resume-download">
-                <i class="fas fa-download"></i> Download Resume
-            </a>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
-            <div class="section-header center">
+            <div class="section-header">
                 <h2 class="section-title">Get In Touch</h2>
-                <p class="text-lead">Let's discuss how data analytics can transform your business decisions</p>
+                <p class="text-lead">Let's discuss how data analytics can transform your business</p>
             </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <a href="mailto:choudharydilip947@gmail.com">choudharydilip947@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <a href="tel:+919346053750">+91 9346053750</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>LinkedIn</h3>
-                            <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank">linkedin.com/in/dilip-choudhary-analytics</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>India</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Your Name</label>
-                            <input type="text" id="name" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Your Email</label>
-                            <input type="email" id="email" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Your Message</label>
-                            <textarea id="message" class="form-input" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
+            <!-- Contact form will be added here -->
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Enhanced Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="logo">
-                    <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="logo-img">
-                    <span>Dilip Choudhary</span>
+                <div class="footer-logo">
+                    <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="footer-logo-img">
+                    <div>
+                        <h3>Dilip Choudhary</h3>
+                        <p>Business Analytics Specialist</p>
+                    </div>
                 </div>
-                <div class="social-links">
-                    <a href="mailto:choudharydilip947@gmail.com" class="social-link">
+                
+                <div class="social-links-enhanced">
+                    <a href="mailto:choudharydilip947@gmail.com" class="social-link-enhanced">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="https://linkedin.com/in/dilip-choudhary-analytics" class="social-link" target="_blank">
+                    <a href="https://linkedin.com/in/dilip-choudhary-analytics" class="social-link-enhanced" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="Resume.pdf" class="social-link" target="_blank">
+                    <a href="Resume.pdf" class="social-link-enhanced" target="_blank">
                         <i class="fas fa-file-pdf"></i>
                     </a>
                 </div>
             </div>
+            
             <div class="copyright">
                 <p>© 2025 Dilip Choudhary. All rights reserved.</p>
             </div>
@@ -1698,58 +1123,147 @@
     </footer>
 
     <script>
-        // Initialize when DOM is loaded
+        // Advanced JavaScript for enhanced interactions
         document.addEventListener('DOMContentLoaded', function() {
-            // Theme Toggle
+            // Theme Toggle with Advanced Effects
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = themeToggle.querySelector('i');
             
-            // Check for saved theme preference or respect OS preference
-            if (localStorage.getItem('theme') === 'dark' || 
-                (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'))) {
-                document.body.classList.add('dark-mode');
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.remove('light-mode');
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
             }
             
             themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
+                document.body.classList.toggle('light-mode');
                 
-                if (document.body.classList.contains('dark-mode')) {
-                    localStorage.setItem('theme', 'dark');
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
-                } else {
+                if (document.body.classList.contains('light-mode')) {
                     localStorage.setItem('theme', 'light');
                     themeIcon.classList.remove('fa-sun');
                     themeIcon.classList.add('fa-moon');
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
                 }
             });
-            
-            // Mobile Menu Toggle
+
+            // Mobile Menu with Advanced Animation
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navLinks = document.getElementById('navLinks');
+            const navItems = document.querySelectorAll('.nav-link');
             
             mobileMenuBtn.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
                 
                 if (navLinks.classList.contains('active')) {
                     mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                    // Animate nav items sequentially
+                    navItems.forEach((item, index) => {
+                        item.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1}s`;
+                    });
                 } else {
                     mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    navItems.forEach(item => {
+                        item.style.animation = '';
+                    });
                 }
             });
-            
-            // Header scroll effect
+
+            // Header Scroll Effect
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
+                if (window.scrollY > 100) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
             });
+
+            // Projects Carousel Navigation
+            const carousel = document.querySelector('.projects-carousel');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            const projectCards = document.querySelectorAll('.project-card');
             
+            let currentIndex = 0;
+            const cardWidth = projectCards[0].offsetWidth + 48; // width + gap
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % projectCards.length;
+                carousel.scrollLeft = currentIndex * cardWidth;
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + projectCards.length) % projectCards.length;
+                carousel.scrollLeft = currentIndex * cardWidth;
+            });
+
+            // Touch swipe for mobile
+            let startX;
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            carousel.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        nextBtn.click();
+                    } else {
+                        prevBtn.click();
+                    }
+                }
+            });
+
+            // Advanced Particle System
+            function createAdvancedParticles() {
+                const container = document.getElementById('particlesAdvanced');
+                const particleCount = 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle-advanced');
+                    
+                    const size = Math.random() * 8 + 2;
+                    const posX = Math.random() * 100;
+                    const delay = Math.random() * 20;
+                    const duration = Math.random() * 15 + 10;
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${posX}%`;
+                    particle.style.animationDelay = `${delay}s`;
+                    particle.style.animationDuration = `${duration}s`;
+                    particle.style.background = i % 2 === 0 ? 'var(--primary)' : 'var(--accent)';
+                    
+                    container.appendChild(particle);
+                }
+            }
+
+            createAdvancedParticles();
+
+            // Scroll Animations
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+
+            window.addEventListener('load', fadeInOnScroll);
+            window.addEventListener('scroll', fadeInOnScroll);
+
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -1766,12 +1280,6 @@
                             mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                         }
                         
-                        // Update active nav link
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                        
                         window.scrollTo({
                             top: targetElement.offsetTop - 100,
                             behavior: 'smooth'
@@ -1779,128 +1287,18 @@
                     }
                 });
             });
-            
-            // Form submission
-            const contactForm = document.getElementById('contactForm');
-            
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                // Get form values
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                // Here you would typically send this data to a server
-                // For now, we'll just show an alert and reset the form
-                alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
-                contactForm.reset();
-            });
-            
-            // Scroll animations
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const fadeInOnScroll = () => {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('visible');
-                    }
-                });
-            };
-            
-            // Check on load and scroll
-            window.addEventListener('load', fadeInOnScroll);
-            window.addEventListener('scroll', fadeInOnScroll);
-            
-            // Initialize scroll position for nav highlights
-            window.addEventListener('scroll', () => {
-                let current = '';
-                const sections = document.querySelectorAll('section');
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollY >= (sectionTop - 150)) {
-                        current = section.getAttribute('id');
-                    }
+
+            // Edge glow effects for interactive elements
+            const edgeGlowElements = document.querySelectorAll('.edge-glow');
+            edgeGlowElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    element.style.animation = 'glow 2s ease-in-out infinite';
                 });
                 
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
+                element.addEventListener('mouseleave', () => {
+                    element.style.animation = '';
                 });
             });
-            
-            // Project gallery functionality
-            const viewProjectButtons = document.querySelectorAll('.view-project-btn');
-            const projectGalleries = document.querySelectorAll('.project-gallery');
-            const closeGalleryButtons = document.querySelectorAll('.close-gallery');
-            
-            // Open project gallery
-            viewProjectButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const projectId = button.getAttribute('data-project');
-                    const gallery = document.getElementById(`${projectId}-gallery`);
-                    
-                    if (gallery) {
-                        gallery.style.display = 'flex';
-                        document.body.style.overflow = 'hidden'; // Prevent scrolling
-                    }
-                });
-            });
-            
-            // Close project gallery
-            closeGalleryButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const gallery = button.closest('.project-gallery');
-                    gallery.style.display = 'none';
-                    document.body.style.overflow = 'auto'; // Re-enable scrolling
-                });
-            });
-            
-            // Close gallery when clicking outside
-            projectGalleries.forEach(gallery => {
-                gallery.addEventListener('click', (e) => {
-                    if (e.target === gallery) {
-                        gallery.style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-            });
-            
-            // Create particle background
-            function createParticles() {
-                const particlesContainer = document.getElementById('particles');
-                const particleCount = 50;
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    
-                    // Random properties
-                    const size = Math.random() * 5 + 2;
-                    const posX = Math.random() * 100;
-                    const posY = Math.random() * 100;
-                    const delay = Math.random() * 20;
-                    const duration = Math.random() * 20 + 10;
-                    
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    particle.style.left = `${posX}%`;
-                    particle.style.top = `${posY}%`;
-                    particle.style.animationDelay = `${delay}s`;
-                    particle.style.animationDuration = `${duration}s`;
-                    
-                    particlesContainer.appendChild(particle);
-                }
-            }
-            
-            createParticles();
         });
     </script>
 </body>

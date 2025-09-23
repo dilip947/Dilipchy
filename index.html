@@ -3,31 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dilip Choudhary | Business Analytics Specialist</title>
-    <meta name="description" content="Dilip Choudhary - Business Analytics professional specializing in financial markets, risk analysis, and data-driven decision-making.">
+    <title>Dilip Choudhary | Business Analytics & Data Visualization Specialist</title>
+    <meta name="description" content="Dilip Choudhary - Business Analytics professional specializing in financial markets, risk analysis, and data-driven decision-making with expertise in Power BI, Tableau, and SQL.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #3b82f6;
-            --secondary: #0f172a;
-            --secondary-light: #1e293b;
-            --accent: #06b6d4;
-            --accent-light: #22d3ee;
-            --text: #0f172a;
-            --text-light: #475569;
-            --text-lighter: #94a3b8;
+            --primary: #0066cc;
+            --primary-dark: #0052a3;
+            --primary-light: #4d94ff;
+            --secondary: #1a1a1a;
+            --secondary-light: #333333;
+            --accent: #00c7b6;
+            --text: #1a1a1a;
+            --text-light: #666666;
+            --text-lighter: #999999;
             --background: #ffffff;
-            --background-alt: #f8fafc;
+            --background-alt: #f5f7fa;
             --card-bg: #ffffff;
-            --card-shadow: rgba(0, 0, 0, 0.05);
-            --card-shadow-hover: rgba(0, 0, 0, 0.1);
+            --card-shadow: rgba(0, 0, 0, 0.08);
+            --card-shadow-hover: rgba(0, 0, 0, 0.12);
             --header-bg: rgba(255, 255, 255, 0.95);
-            --border: rgba(0, 0, 0, 0.06);
+            --border: rgba(0, 0, 0, 0.08);
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --border-radius: 12px;
             --border-radius-lg: 20px;
@@ -35,22 +34,21 @@
         }
 
         .dark-mode {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --primary-light: #60a5fa;
-            --secondary: #f1f5f9;
-            --secondary-light: #e2e8f0;
-            --accent: #06b6d4;
-            --accent-light: #22d3ee;
-            --text: #f1f5f9;
-            --text-light: #cbd5e1;
-            --text-lighter: #94a3b8;
-            --background: #0f172a;
-            --background-alt: #1e293b;
-            --card-bg: #1e293b;
+            --primary: #4d94ff;
+            --primary-dark: #3385ff;
+            --primary-light: #80b3ff;
+            --secondary: #f0f0f0;
+            --secondary-light: #e0e0e0;
+            --accent: #00e6d4;
+            --text: #f0f0f0;
+            --text-light: #b0b0b0;
+            --text-lighter: #808080;
+            --background: #0a0a0a;
+            --background-alt: #1a1a1a;
+            --card-bg: #1a1a1a;
             --card-shadow: rgba(0, 0, 0, 0.3);
             --card-shadow-hover: rgba(0, 0, 0, 0.5);
-            --header-bg: rgba(15, 23, 42, 0.95);
+            --header-bg: rgba(10, 10, 10, 0.95);
             --border: rgba(255, 255, 255, 0.08);
         }
 
@@ -75,7 +73,20 @@
             font-weight: 400;
         }
 
-        /* Typography */
+        /* Smooth scrolling for older browsers */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Typography scale */
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             line-height: 1.2;
@@ -136,12 +147,16 @@
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             width: 60px;
             height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
             border-radius: 2px;
+        }
+
+        .section-header.center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         /* Header & Navigation */
@@ -213,12 +228,62 @@
             transition: var(--transition);
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover {
             color: var(--text);
         }
 
-        .nav-link:hover::after, .nav-link.active::after {
+        .nav-link:hover::after {
             width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--text);
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 220px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--card-shadow);
+            border: 1px solid var(--border);
+            padding: 0.5rem;
+            display: none;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .dropdown-item:hover {
+            background: var(--background-alt);
+            color: var(--text);
         }
 
         .theme-toggle {
@@ -232,7 +297,6 @@
             box-shadow: 0 4px 12px var(--card-shadow);
             transition: var(--transition);
             border: 1px solid var(--border);
-            cursor: pointer;
         }
 
         .theme-toggle:hover {
@@ -330,12 +394,12 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 102, 204, 0.4);
         }
 
         .btn-secondary {
@@ -360,10 +424,12 @@
             border-radius: var(--border-radius-lg);
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            /* REMOVED THE TILT EFFECT */
             transition: var(--transition);
         }
 
         .hero-img-container:hover {
+            /* REMOVED THE TILT EFFECT */
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
         }
 
@@ -660,14 +726,14 @@
             border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3);
             transition: var(--transition);
             margin-top: 2rem;
         }
 
         .resume-download:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 102, 204, 0.4);
         }
 
         /* Contact Section */
@@ -748,7 +814,7 @@
         .form-input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
         }
 
         textarea.form-input {
@@ -836,6 +902,56 @@
                 opacity: 1;
                 transform: translateX(0);
             }
+        }
+
+        /* Hover Gallery Effect */
+        .project-image.hover-gallery {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hover-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .hover-image {
+            flex: 1;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+            transform: translateY(100%);
+        }
+
+        .project-card:hover .hover-images {
+            opacity: 1;
+        }
+
+        .project-card:hover .hover-image {
+            transform: translateY(0);
+        }
+
+        .project-card:hover .hover-image:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .project-card:hover .hover-image:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .project-card:hover .hover-image:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .project-card:hover .hover-image:nth-child(4) {
+            transition-delay: 0.4s;
         }
 
         /* Scroll animations */
@@ -952,6 +1068,7 @@
     <header id="header">
         <div class="container nav-container">
             <a href="#" class="logo">
+                <!-- CORRECTED PATH: Updated to use actual profile picture -->
                 <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="logo-img">
                 <span>Dilip Choudhary</span>
             </a>
@@ -963,8 +1080,16 @@
             <nav class="nav-links" id="navLinks">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About</a>
+                
+                <div class="dropdown">
+                    <a href="#projects" class="nav-link">Projects ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="#project1" class="dropdown-item">Crypto Market Risk Dashboard</a>
+                        <a href="#project2" class="dropdown-item">E-Commerce Sales Insights</a>
+                    </div>
+                </div>
+                
                 <a href="#services" class="nav-link">Services</a>
-                <a href="#projects" class="nav-link">Projects</a>
                 <a href="#resume" class="nav-link">Resume</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <button class="theme-toggle" id="themeToggle">
@@ -992,6 +1117,7 @@
             </div>
             <div class="hero-image">
                 <div class="hero-img-container">
+                    <!-- CORRECTED PATH: Updated to use actual profile picture -->
                     <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="hero-img">
                 </div>
             </div>
@@ -1020,6 +1146,7 @@
                 </a>
             </div>
             <div class="about-image">
+                <!-- CORRECTED PATH: Updated to use actual profile picture -->
                 <img src="Image/Profile.JPG" alt="Dilip Choudhary" style="width: 100%; height: 400px; object-fit: cover; border-radius: var(--border-radius); border: 1px solid var(--border);">
             </div>
         </div>
@@ -1067,8 +1194,18 @@
             </div>
             <div class="projects-grid">
                 <div id="project1" class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="Image/Projectec/1.png" alt="Projectoryrio" class="project-img">
+                    <div class="project-image hover-gallery">
+                        <!-- CORRECTED PATH: Updated to use actual project thumbnail -->
+                        <img src="Image/Project1/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
+                        
+                        <!-- Hover gallery images -->
+                        <div class="hover-images">
+                            <div class="hover-image" style="background-image: url('Image/Project1/1.png');"></div>
+                            <div class="hover-image" style="background-image: url('Image/Project1/2.png');"></div>
+                            <div class="hover-image" style="background-image: url('Image/Project1/3.png');"></div>
+                            <div class="hover-image" style="background-image: url('Image/Project1/4.png');"></div>
+                        </div>
+                        
                         <div class="project-overlay">
                             <button class="btn btn-primary view-project-btn" data-project="project1">
                                 <i class="fas fa-external-link-alt"></i> View Project
@@ -1076,21 +1213,30 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Projectoryrio</h3>
-                        <p class="project-description">Advanced analytics dashboard for tracking project metrics, resource allocation, and performance indicators.</p>
+                        <h3 class="project-title">Crypto Market Risk Dashboard</h3>
+                        <p class="project-description">Power BI dashboard analyzing cryptocurrency volatility and market sentiment to assess risk factors and investment opportunities.</p>
                         <div class="project-actions">
                             <button class="btn btn-primary view-project-btn" data-project="project1">
                                 <i class="fas fa-eye"></i> View Project
                             </button>
-                            <a href="#" class="btn btn-secondary">
+                            <a href="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" class="btn btn-secondary" target="_blank">
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
                     </div>
                 </div>
                 <div id="project2" class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="Image/Projectoryrio/1.png" alt="Projectec" class="project-img">
+                    <div class="project-image hover-gallery">
+                        <!-- CORRECTED PATH: Updated to use actual project thumbnail -->
+                        <img src="Image/Project2/1.png" alt="E-Commerce Sales Insights" class="project-img">
+                        
+                        <!-- Hover gallery images -->
+                        <div class="hover-images">
+                            <div class="hover-image" style="background-image: url('Image/Project2/1.png');"></div>
+                            <div class="hover-image" style="background-image: url('Image/Project2/2.png');"></div>
+                            <div class="hover-image" style="background-image: url('Image/Project2/3.png');"></div>
+                        </div>
+                        
                         <div class="project-overlay">
                             <button class="btn btn-primary view-project-btn" data-project="project2">
                                 <i class="fas fa-external-link-alt"></i> View Project
@@ -1098,13 +1244,13 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Projectec</h3>
-                        <p class="project-description">E-commerce analytics platform providing insights into sales trends, customer behavior, and inventory optimization.</p>
+                        <h3 class="project-title">E-Commerce Sales Insights</h3>
+                        <p class="project-description">Comprehensive analysis of e-commerce order data with insights into cancellation drivers and sales performance optimization.</p>
                         <div class="project-actions">
                             <button class="btn btn-primary view-project-btn" data-project="project2">
                                 <i class="fas fa-eye"></i> View Project
                             </button>
-                            <a href="#" class="btn btn-secondary">
+                            <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" class="btn btn-secondary" target="_blank">
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
@@ -1118,26 +1264,27 @@
     <div id="project1-gallery" class="project-gallery">
         <div class="gallery-content">
             <div class="gallery-header">
-                <h3>Projectoryrio</h3>
+                <h3>Crypto Market Risk Dashboard</h3>
                 <button class="close-gallery">&times;</button>
             </div>
             <div class="gallery-body">
                 <div class="gallery-images">
-                    <img src="Image/Projectec/1.png" alt="Projectoryrio 1" class="gallery-img">
-                    <img src="Image/Projectec/2.png" alt="Projectoryrio 2" class="gallery-img">
-                    <img src="Image/Projectec/3.png" alt="Projectoryrio 3" class="gallery-img">
-                    <img src="Image/Projectec/4.png" alt="Projectoryrio 4" class="gallery-img">
+                    <!-- CORRECTED PATH: Updated to show all Project1 images -->
+                    <img src="Image/Project1/1.png" alt="Crypto Dashboard 1" class="gallery-img">
+                    <img src="Image/Project1/2.png" alt="Crypto Dashboard 2" class="gallery-img">
+                    <img src="Image/Project1/3.png" alt="Crypto Dashboard 3" class="gallery-img">
+                    <img src="Image/Project1/4.png" alt="Crypto Dashboard 4" class="gallery-img">
                 </div>
                 <div class="gallery-details">
                     <h4>Project Details</h4>
-                    <p>This comprehensive project management dashboard provides real-time insights into project performance, resource allocation, and milestone tracking. The platform includes:</p>
+                    <p>This Power BI dashboard provides comprehensive analysis of cryptocurrency market trends, volatility patterns, and risk assessment metrics. The project includes:</p>
                     <ul>
-                        <li>Real-time project status monitoring</li>
-                        <li>Resource utilization analytics</li>
-                        <li>Budget tracking and forecasting</li>
-                        <li>Team performance metrics</li>
+                        <li>Real-time cryptocurrency price tracking</li>
+                        <li>Volatility analysis and risk scoring</li>
+                        <li>Market sentiment indicators</li>
+                        <li>Portfolio optimization recommendations</li>
                     </ul>
-                    <p>The dashboard helps project managers make data-driven decisions to optimize resource allocation and ensure project success.</p>
+                    <p>The dashboard helps investors make data-driven decisions by visualizing complex market data in an intuitive interface.</p>
                 </div>
             </div>
         </div>
@@ -1146,25 +1293,26 @@
     <div id="project2-gallery" class="project-gallery">
         <div class="gallery-content">
             <div class="gallery-header">
-                <h3>Projectec</h3>
+                <h3>E-Commerce Sales Insights</h3>
                 <button class="close-gallery">&times;</button>
             </div>
             <div class="gallery-body">
                 <div class="gallery-images">
-                    <img src="Image/Projectoryrio/1.png" alt="Projectec 1" class="gallery-img">
-                    <img src="Image/Projectoryrio/2.png" alt="Projectec 2" class="gallery-img">
-                    <img src="Image/Projectoryrio/3.png" alt="Projectec 3" class="gallery-img">
+                    <!-- CORRECTED PATH: Updated to show all Project2 images -->
+                    <img src="Image/Project2/1.png" alt="E-Commerce Dashboard 1" class="gallery-img">
+                    <img src="Image/Project2/2.png" alt="E-Commerce Dashboard 2" class="gallery-img">
+                    <img src="Image/Project2/3.png" alt="E-Commerce Dashboard 3" class="gallery-img">
                 </div>
                 <div class="gallery-details">
                     <h4>Project Details</h4>
-                    <p>This e-commerce analytics platform provides comprehensive insights into sales performance, customer behavior, and operational efficiency. Key features include:</p>
+                    <p>This e-commerce analytics dashboard provides insights into sales performance, customer behavior, and operational efficiency. Key features include:</p>
                     <ul>
                         <li>Sales performance tracking by product category and region</li>
                         <li>Customer segmentation and behavior analysis</li>
+                        <li>Order cancellation pattern identification</li>
                         <li>Inventory optimization recommendations</li>
-                        <li>Marketing campaign effectiveness analysis</li>
                     </ul>
-                    <p>The platform helps e-commerce businesses optimize their operations and increase profitability through data-driven insights.</p>
+                    <p>The dashboard helps e-commerce businesses optimize their operations and increase profitability through data-driven insights.</p>
                 </div>
             </div>
         </div>
@@ -1257,6 +1405,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="logo">
+                    <!-- CORRECTED PATH: Updated to use actual profile picture -->
                     <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="logo-img">
                     <span>Dilip Choudhary</span>
                 </div>

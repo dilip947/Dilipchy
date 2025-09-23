@@ -493,6 +493,45 @@
             border-color: var(--primary);
         }
 
+        /* Skill Progress Bars */
+        .skills-progress {
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+        }
+
+        .skill-percentage {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
         /* Services Section */
         .services-grid {
             display: grid;
@@ -560,6 +599,31 @@
             background: var(--background-alt);
         }
 
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -574,6 +638,17 @@
             border: 1px solid var(--border);
             transition: var(--transition);
             position: relative;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-card.fade-out {
+            opacity: 0;
+            transform: scale(0.9);
         }
 
         .project-card:hover {
@@ -629,6 +704,21 @@
             color: var(--text-light);
             margin-bottom: 1.5rem;
             font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: var(--background-alt);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--text-light);
         }
 
         .project-actions {
@@ -906,6 +996,11 @@
                 gap: 2rem;
                 text-align: center;
             }
+
+            .project-filters {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -941,7 +1036,8 @@
     <header id="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="logo-img">
+                <!-- Using a placeholder image since the original path might not work -->
+                <div class="logo-img" style="background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">DC</div>
                 <span>Dilip Choudhary</span>
             </a>
 
@@ -989,7 +1085,13 @@
             </div>
             <div class="hero-image">
                 <div class="hero-img-container">
-                    <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="hero-img">
+                    <!-- Using a placeholder image since the original path might not work -->
+                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-user-tie" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <p>Dilip Choudhary</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1012,9 +1114,57 @@
                     <span class="skill">Dashboarding</span>
                     <span class="skill">Risk Analysis</span>
                 </div>
+                
+                <!-- Skill Progress Bars -->
+                <div class="skills-progress">
+                    <h3>Technical Proficiency</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Power BI</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Tableau</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">SQL</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Excel</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                </div>
+                
                 <a href="#contact" class="btn btn-primary">
                     <i class="fas fa-comment"></i> Let's Discuss
                 </a>
+            </div>
+            <div class="about-image">
+                <!-- Placeholder for about image -->
+                <div style="width: 100%; height: 400px; background: var(--card-bg); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
+                    <i class="fas fa-chart-line" style="font-size: 4rem; color: var(--primary);"></i>
+                </div>
             </div>
         </div>
     </section>
@@ -1059,10 +1209,22 @@
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="text-lead">Showcasing my expertise through practical applications of data analytics</p>
             </div>
+            
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="finance">Finance</button>
+                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+            </div>
+            
             <div class="projects-grid">
-                <div id="project1" class="project-card fade-in">
+                <div id="project1" class="project-card fade-in" data-category="finance dashboard">
                     <div class="project-image">
-                        <img src="Image/Project1/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
+                        <!-- Placeholder image -->
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4d94ff, #00c7b6); display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-chart-bar" style="font-size: 3rem;"></i>
+                        </div>
                         <div class="project-overlay">
                             <a href="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" class="btn btn-primary" target="_blank">
                                 <i class="fas fa-external-link-alt"></i> View Live
@@ -1071,6 +1233,11 @@
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Crypto Market Risk Dashboard</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Finance</span>
+                            <span class="project-tag">Dashboard</span>
+                            <span class="project-tag">Power BI</span>
+                        </div>
                         <p class="project-description">Power BI dashboard analyzing cryptocurrency volatility and market sentiment to assess risk factors and investment opportunities.</p>
                         <div class="project-actions">
                             <a href="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" class="btn btn-primary" target="_blank">
@@ -1082,9 +1249,12 @@
                         </div>
                     </div>
                 </div>
-                <div id="project2" class="project-card fade-in">
+                <div id="project2" class="project-card fade-in" data-category="ecommerce dashboard">
                     <div class="project-image">
-                        <img src="Image/Project2/1.png" alt="E-Commerce Sales Insights" class="project-img">
+                        <!-- Placeholder image -->
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ff6b6b, #ffd93d); display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-shopping-cart" style="font-size: 3rem;"></i>
+                        </div>
                         <div class="project-overlay">
                             <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" class="btn btn-primary" target="_blank">
                                 <i class="fas fa-external-link-alt"></i> View Live
@@ -1093,12 +1263,48 @@
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">E-Commerce Sales Insights</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">E-Commerce</span>
+                            <span class="project-tag">Dashboard</span>
+                            <span class="project-tag">Tableau</span>
+                        </div>
                         <p class="project-description">Comprehensive analysis of e-commerce order data with insights into cancellation drivers and sales performance optimization.</p>
                         <div class="project-actions">
                             <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" class="btn btn-primary" target="_blank">
                                 <i class="fas fa-eye"></i> View Project
                             </a>
                             <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" class="btn btn-secondary" target="_blank">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional project for demonstration -->
+                <div class="project-card fade-in" data-category="finance">
+                    <div class="project-image">
+                        <!-- Placeholder image -->
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #6c5ce7, #a29bfe); display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-chart-line" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> View Live
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Stock Market Analysis</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Finance</span>
+                            <span class="project-tag">Excel</span>
+                            <span class="project-tag">Analysis</span>
+                        </div>
+                        <p class="project-description">Advanced Excel models for stock market analysis, including trend prediction and portfolio optimization strategies.</p>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-eye"></i> View Project
+                            </a>
+                            <a href="#" class="btn btn-secondary">
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
@@ -1195,7 +1401,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="logo">
-                    <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="logo-img">
+                    <div class="logo-img" style="background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">DC</div>
                     <span>Dilip Choudhary</span>
                 </div>
                 <div class="social-links">
@@ -1310,10 +1516,18 @@
                 const email = document.getElementById('email').value;
                 const message = document.getElementById('message').value;
                 
-                // Here you would typically send this data to a server
-                // For now, we'll just show an alert and reset the form
-                alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
-                contactForm.reset();
+                // Show success message
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    contactForm.reset();
+                }, 3000);
             });
             
             // Scroll animations
@@ -1363,6 +1577,57 @@
                     heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
                 }
             });
+            
+            // Project filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filterValue = button.getAttribute('data-filter');
+                    
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all') {
+                            card.classList.remove('hidden');
+                            card.classList.remove('fade-out');
+                        } else {
+                            const categories = card.getAttribute('data-category').split(' ');
+                            if (categories.includes(filterValue)) {
+                                card.classList.remove('hidden');
+                                card.classList.remove('fade-out');
+                            } else {
+                                card.classList.add('fade-out');
+                                setTimeout(() => {
+                                    card.classList.add('hidden');
+                                }, 300);
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Animate skill progress bars when in view
+            const skillProgressBars = document.querySelectorAll('.skill-progress');
+            
+            const animateSkills = () => {
+                skillProgressBars.forEach(bar => {
+                    const barTop = bar.getBoundingClientRect().top;
+                    const barVisible = 100;
+                    
+                    if (barTop < window.innerHeight - barVisible) {
+                        const width = bar.getAttribute('data-width');
+                        bar.style.width = width + '%';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateSkills);
+            window.addEventListener('load', animateSkills);
         });
     </script>
 </body>

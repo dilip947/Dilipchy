@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | Web Developer</title>
-    <meta name="description" content="A professional portfolio showcasing projects in web development, user acceptance testing, and data visualization.">
+    <title>Dilip Choudhary | Business Analytics Portfolio</title>
+    <meta name="description" content="Portfolio of Dilip Choudhary, a Business Analytics professional specializing in Power BI, UAT, and data-driven decision-making.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -96,8 +96,12 @@
 
         .about { background: var(--background-alt); }
         
+        .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+        .skill-card { background: var(--glass-bg); backdrop-filter: blur(10px); padding: 0.75rem 1.5rem; border-radius: 50px; border: 1px solid var(--border); transition: var(--transition); }
+        .skill-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-        .project-card { background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.2); border: 1px solid var(--border); transition: var(--transition); }
+        .project-card { background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.2); border: 1px solid var(--border); transition: var(--transition); cursor: pointer; }
         .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .project-image { height: 220px; overflow: hidden; }
         .project-img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
@@ -117,10 +121,9 @@
         .gallery-img { width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s; }
         .gallery-img:hover { transform: scale(1.05); }
 
-        .contact-form { background: var(--glass-bg); backdrop-filter: blur(10px); padding: 2.5rem; border-radius: var(--border-radius); border: 1px solid var(--border); max-width: 700px; margin: 0 auto; }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-input { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--background); color: var(--text); transition: var(--transition); }
-        .form-input:focus { outline: none; border-color: var(--primary); }
+        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center; }
+        .contact-info-item { display: flex; align-items: center; gap: 1rem; background: var(--glass-bg); padding: 1rem; border-radius: var(--border-radius); }
+        .contact-icon { font-size: 1.5rem; color: var(--primary); }
         
         footer { background: var(--secondary); padding: 4rem 0 2rem; text-align: center; }
         .social-links { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 1rem; }
@@ -146,13 +149,14 @@
 
     <header id="header">
         <div class="container nav-container">
-            <a href="#" class="logo">My Portfolio</a>
+            <a href="#" class="logo">Dilip Choudhary</a>
             <nav class="nav-links" id="navLinks">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#contact" class="nav-link">Contact</a>
-                <a href="resume.pdf" class="nav-link" target="_blank">Resume</a>
+                <a href="Dilip_ch_resume.pdf" class="nav-link" target="_blank">Resume</a>
                 <button class="theme-toggle" id="themeToggle"><i class="fas fa-sun"></i></button>
             </nav>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
@@ -163,16 +167,16 @@
         <section id="home" class="hero">
             <div class="container hero-container">
                 <div class="hero-content animate-on-scroll">
-                    <h1 class="hero-title">John Doe</h1>
-                    <p class="hero-description">A passionate developer building web applications with a focus on user experience and performance.</p>
+                    <h1 class="hero-title">Dilip Choudhary</h1>
+                    <p class="hero-description">Business Analytics fresher with hands-on experience in requirements gathering, UAT coordination, stakeholder communication, and dashboard development.</p>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get In Touch</a>
-                        <a href="resume.pdf" target="_blank" class="btn btn-secondary"><i class="fas fa-download"></i> My Resume</a>
+                        <a href="Dilip_ch_resume.pdf" target="_blank" class="btn btn-secondary"><i class="fas fa-download"></i> My Resume</a>
                     </div>
                 </div>
                 <div class="hero-image animate-on-scroll">
                     <div class="hero-img-container">
-                        <img src="Image/Profile.JPG" alt="Profile Picture" class="hero-img">
+                        <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="hero-img">
                     </div>
                 </div>
             </div>
@@ -181,7 +185,23 @@
         <section id="about" class="section about">
             <div class="container text-center animate-on-scroll">
                 <h2 class="section-title">About Me</h2>
-                <p class="text-lead max-w-3xl mx-auto">I'm a dedicated and results-oriented developer with a knack for creating intuitive, efficient, and visually appealing web applications. With a strong foundation in modern web technologies, I enjoy tackling complex problems and turning ideas into reality. My goal is to write clean, maintainable code that provides real value to users.</p>
+                <p class="text-lead max-w-3xl mx-auto">I am a skilled Business Analytics professional proficient in Excel, Power BI, and Agile methodologies. My experience in UAT coordination, sprint planning, and KPI tracking allows me to deliver insights that enhance processes, minimize risk, and foster data-driven decision-making.</p>
+            </div>
+        </section>
+        
+        <section id="skills" class="section">
+            <div class="container text-center animate-on-scroll">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">Power BI (DAX, Power Query)</div>
+                    <div class="skill-card">Excel (Advanced)</div>
+                    <div class="skill-card">Tableau</div>
+                    <div class="skill-card">SQL (Basic)</div>
+                    <div class="skill-card">Requirements Gathering</div>
+                    <div class="skill-card">UAT Coordination</div>
+                    <div class="skill-card">Agile Methodologies</div>
+                    <div class="skill-card">Financial Modeling</div>
+                </div>
             </div>
         </section>
 
@@ -192,25 +212,25 @@
                     <p class="text-lead">A selection of my work. Click on any project to see more.</p>
                 </div>
                 <div class="projects-grid">
-                    <div class="project-card animate-on-scroll" data-project="p3abc">
-                        <div class="project-image"><img src="Image/P3ABC/Sprint.png" alt="P3ABC Project" class="project-img"></div>
+                    <div class="project-card animate-on-scroll" data-project="payment">
+                        <div class="project-image"><img src="Image/P3ABC/1.png" alt="Payment & Revenue Dashboard" class="project-img"></div>
                         <div class="project-content">
-                            <h3 class="project-title">P3ABC</h3>
-                            <p class="project-description">A comprehensive project showcasing planning, user acceptance testing (UAT), sprint management, and quality assurance processes.</p>
-                        </div>
-                    </div>
-                    <div class="project-card animate-on-scroll" data-project="crypto">
-                        <div class="project-image"><img src="Image/Projectcrypto/1.png" alt="Crypto Project" class="project-img"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Project Crypto</h3>
-                            <p class="project-description">A data-focused project related to cryptocurrency, showcasing data visualization, market analysis, and dashboarding.</p>
+                            <h3 class="project-title">Customer Payment & Revenue Insights</h3>
+                            <p class="project-description">A Power BI dashboard analyzing 100+ invoices to track revenue and identify at-risk payments, improving profitability and decision-making.</p>
                         </div>
                     </div>
                     <div class="project-card animate-on-scroll" data-project="ecommerce">
                         <div class="project-image"><img src="Image/Projectec/1.png" alt="E-commerce Project" class="project-img"></div>
                         <div class="project-content">
-                            <h3 class="project-title">Project E-commerce</h3>
-                            <p class="project-description">An e-commerce platform build, highlighting product pages, shopping cart functionality, and user checkout flows.</p>
+                            <h3 class="project-title">E-Commerce Sales & Order Insights</h3>
+                            <p class="project-description">Analyzed over 128,000 orders to identify a high cancellation rate, leading to improved process efficiency for an e-commerce platform.</p>
+                        </div>
+                    </div>
+                    <div class="project-card animate-on-scroll" data-project="crypto">
+                        <div class="project-image"><img src="Image/Projectcrypto/1.png" alt="Crypto Project" class="project-img"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Crypto Market Risk & Sentiment</h3>
+                            <p class="project-description">Designed KPIs for CAGR and volatility, reducing manual work by 40% and allowing for better focus on strategic analysis.</p>
                         </div>
                     </div>
                 </div>
@@ -221,15 +241,21 @@
              <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Get In Touch</h2>
-                    <p class="text-lead">Have a project in mind or want to connect? Send me a message!</p>
+                    <p class="text-lead">Have a project in mind or want to connect? Reach out to me!</p>
                 </div>
-                <div class="contact-form animate-on-scroll">
-                    <form id="contactForm">
-                        <div class="form-group"><input type="text" id="name" class="form-input" placeholder="Your Name" required></div>
-                        <div class="form-group"><input type="email" id="email" class="form-input" placeholder="Your Email" required></div>
-                        <div class="form-group"><textarea id="message" class="form-input" placeholder="Your Message" rows="5" required></textarea></div>
-                        <button type="submit" class="btn btn-primary w-full justify-center"><i class="fas fa-paper-plane"></i> Send Message</button>
-                    </form>
+                <div class="contact-container animate-on-scroll">
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <a href="mailto:choudharydilip947@gmail.com" class="text-light">choudharydilip947@gmail.com</a>
+                    </div>
+                    <div class="contact-info-item">
+                         <i class="fas fa-phone contact-icon"></i>
+                        <a href="tel:+919346053750" class="text-light">+91 9346053750</a>
+                    </div>
+                     <div class="contact-info-item">
+                        <i class="fab fa-linkedin contact-icon"></i>
+                        <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank" class="text-light">linkedin.com/in/dilip-choudhary-analytics</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -238,17 +264,17 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-github"></i></a>
             </div>
-            <p class="copyright text-light">&copy; 2025 John Doe. All rights reserved.</p>
+            <p class="copyright text-light">&copy; 2025 Dilip Choudhary. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Project Galleries -->
-    <div id="p3abc-gallery" class="project-gallery">
+    <div id="payment-gallery" class="project-gallery">
         <div class="gallery-content">
-            <div class="gallery-header"><h3>P3ABC Details</h3><button class="close-gallery">&times;</button></div>
+            <div class="gallery-header"><h3>Customer Payment & Revenue Insights</h3><button class="close-gallery">&times;</button></div>
             <div class="gallery-body">
                 <div class="gallery-images">
                     <img src="Image/P3ABC/1.png" alt="P3ABC Image 1" class="gallery-img">
@@ -264,7 +290,7 @@
     </div>
     <div id="crypto-gallery" class="project-gallery">
         <div class="gallery-content">
-            <div class="gallery-header"><h3>Project Crypto Details</h3><button class="close-gallery">&times;</button></div>
+            <div class="gallery-header"><h3>Crypto Market Risk & Sentiment</h3><button class="close-gallery">&times;</button></div>
             <div class="gallery-body">
                 <div class="gallery-images">
                     <img src="Image/Projectcrypto/1.png" alt="Crypto Image 1" class="gallery-img">
@@ -276,7 +302,7 @@
     </div>
     <div id="ecommerce-gallery" class="project-gallery">
         <div class="gallery-content">
-            <div class="gallery-header"><h3>Project E-commerce Details</h3><button class="close-gallery">&times;</button></div>
+            <div class="gallery-header"><h3>E-Commerce Sales & Order Insights</h3><button class="close-gallery">&times;</button></div>
             <div class="gallery-body">
                 <div class="gallery-images">
                     <img src="Image/Projectec/1.png" alt="E-commerce Image 1" class="gallery-img">
@@ -362,13 +388,6 @@
         closeButtons.forEach(button => button.addEventListener('click', () => closeGallery(button.closest('.project-gallery'))));
         galleries.forEach(gallery => gallery.addEventListener('click', (e) => e.target === gallery && closeGallery(gallery)));
         window.addEventListener('keydown', (e) => e.key === 'Escape' && galleries.forEach(g => closeGallery(g)));
-
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            e.target.reset();
-        });
     });
     </script>
 </body>

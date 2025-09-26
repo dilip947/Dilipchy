@@ -3,38 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dilip Choudhary | Futuristic Data Analytics Portfolio</title>
-    <meta name="description" content="Cinematic portfolio of Dilip Choudhary - Business Analytics specialist transforming data into impactful decisions">
+    <title>Dilip Choudhary | Business Analytics & Data Visualization Specialist</title>
+    <meta name="description" content="Dilip Choudhary - Business Analytics professional specializing in financial markets, risk analysis, and data-driven decision-making with expertise in Power BI, Tableau, and SQL.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #00BFFF;  /* Electric Blue */
-            --primary-dark: #0077CC;
-            --primary-light: #40E0D0;
-            --secondary: #121212;  /* Deep Charcoal */
-            --secondary-light: #1E1E1E;
-            --accent: #39FF14;  /* Lime Green */
-            --accent-light: #7CFC00;
-            --text: #FFFFFF;
-            --text-light: #B0B0B0;
-            --text-lighter: #808080;
-            --background: #0A0A0A;
-            --background-alt: #121212;
-            --card-bg: rgba(30, 30, 30, 0.7);
-            --card-shadow: rgba(0, 0, 0, 0.5);
-            --card-shadow-hover: rgba(0, 191, 255, 0.3);
-            --header-bg: rgba(18, 18, 18, 0.95);
-            --border: rgba(255, 255, 255, 0.1);
-            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            --border-radius: 12px;
-            --border-radius-lg: 20px;
-            --section-spacing: 140px;
-            --glass-bg: rgba(30, 30, 30, 0.3);
-            --glass-border: rgba(255, 255, 255, 0.05);
-            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --primary: #6c5ce7;
+            --primary-dark: #5649c2;
+            --primary-light: #8579e9;
+            --secondary: #0d0d12;
+            --secondary-light: #1a1a23;
+            --accent: #00cec9;
+            --accent-light: #00f5d4;
+            --text: #f5f6fa;
+            --text-light: #a5b1c2;
+            --text-lighter: #778ca3;
+            --background: #1a1b26;
+            --background-alt: #24283b;
+            --card-bg: rgba(36, 40, 59, 0.7);
+            --card-shadow: rgba(0, 0, 0, 0.3);
+            --card-shadow-hover: rgba(0, 0, 0, 0.5);
+            --header-bg: rgba(26, 27, 38, 0.85);
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --section-spacing: 120px;
+            --glass-bg: rgba(36, 40, 59, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --cinematic-glow: 0 0 20px rgba(108, 92, 231, 0.5);
+        }
+
+        .light-mode {
+            --primary: #6c5ce7;
+            --primary-dark: #5649c2;
+            --primary-light: #8579e9;
+            --secondary: #f5f6fa;
+            --secondary-light: #dfe6e9;
+            --accent: #00cec9;
+            --accent-light: #00f5d4;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --text-lighter: #b2bec3;
+            --background: #ffffff;
+            --background-alt: #f5f6fa;
+            --card-bg: rgba(245, 246, 250, 0.7);
+            --card-shadow: rgba(0, 0, 0, 0.05);
+            --card-shadow-hover: rgba(0, 0, 0, 0.1);
+            --header-bg: rgba(255, 255, 255, 0.85);
+            --border: rgba(0, 0, 0, 0.06);
+            --glass-bg: rgba(245, 246, 250, 0.3);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --cinematic-glow: 0 0 20px rgba(108, 92, 231, 0.3);
         }
 
         * {
@@ -54,267 +78,464 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: var(--transition);
             font-weight: 400;
-            position: relative;
         }
 
-        /* Particle Background */
-        #particles-js {
+        /* Cinematic Background */
+        .cinematic-bg {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             z-index: -3;
+            background: radial-gradient(ellipse at center, #1a1b26 0%, #0d0d12 100%);
         }
 
-        /* Animated Gradient Background */
-        .gradient-bg {
+        .starfield {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: linear-gradient(-45deg, #0A0A0A 0%, #121212 25%, #1E1E1E 50%, #0A0A0A 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite ease-in-out;
         }
 
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        .glass-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .floating-nav {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-orb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-light);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-orb.active {
+            background: var(--primary);
+            transform: scale(1.3);
+            box-shadow: var(--cinematic-glow);
+        }
+
+        .nav-orb:hover {
+            background: var(--accent);
+            transform: scale(1.5);
+        }
+
+        .nav-orb::after {
+            content: attr(data-section);
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .nav-orb:hover::after {
+            opacity: 1;
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            position: relative;
+            border: 3px solid var(--primary);
+            box-shadow: var(--cinematic-glow);
+            overflow: hidden;
+            transition: var(--transition);
+            animation: avatarGlow 3s infinite alternate;
+        }
+
+        @keyframes avatarGlow {
+            0% { box-shadow: 0 0 20px rgba(108, 92, 231, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(108, 92, 231, 0.8), 0 0 60px rgba(0, 206, 201, 0.4); }
+        }
+
+        .profile-avatar:hover {
+            transform: scale(1.05);
+            animation: none;
+            box-shadow: 0 0 50px rgba(108, 92, 231, 0.8), 0 0 80px rgba(0, 206, 201, 0.6);
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.02em;
-        }
-
-        h2 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
             position: relative;
-            display: inline-block;
         }
 
-        h3 {
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-
-        .text-lead {
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: var(--text-light);
-        }
-
-        /* Layout */
-        .container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            padding: var(--section-spacing) 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title::after {
+        .hero-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 80px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
             height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
             border-radius: 2px;
         }
 
-        .section-header.center .section-title::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Header with Glassmorphism */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--header-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1.2rem 0;
-            transition: var(--transition);
-            border-bottom: 1px solid var(--border);
-        }
-
-        header.scrolled {
-            padding: 0.8rem 0;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--text);
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary);
-            transition: var(--transition);
-        }
-
-        .logo:hover .logo-img {
-            border-color: var(--accent);
-            transform: scale(1.1);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            font-weight: 600;
+        .hero-description {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
             color: var(--text-light);
-            text-decoration: none;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: var(--transition);
-        }
-
-        .nav-link:hover {
-            color: var(--text);
-        }
-
-        .nav-link:hover::before {
-            width: 100%;
-        }
-
-        .nav-link.active {
-            color: var(--text);
-        }
-
-        .nav-link.active::before {
-            width: 100%;
-        }
-
-        /* Hero Section - Cinematic */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            z-index: 2;
-            position: relative;
-        }
-
-        .hero-title {
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero-tagline {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            margin-bottom: 3rem;
-            color: var(--text-light);
-            opacity: 0;
-            transform: translateY(30px);
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(30px);
         }
 
+        /* Enhanced Project Section with Horizontal Scroll */
+        .projects-horizontal {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 2rem 0;
+        }
+
+        .projects-horizontal::-webkit-scrollbar {
+            display: none;
+        }
+
+        .projects-track {
+            display: flex;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .project-panel {
+            flex: 0 0 80%;
+            scroll-snap-align: start;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 20px var(--card-shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .project-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--card-shadow-hover);
+        }
+
+        .project-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            padding: 1.5rem;
+        }
+
+        .project-thumb {
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .project-thumb:hover {
+            transform: scale(1.05);
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        /* Interactive Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-orb {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 15px var(--card-shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-orb:hover {
+            transform: scale(1.1) translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px var(--card-shadow-hover);
+        }
+
+        .skill-orb i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .skill-orb:hover i {
+            color: var(--accent);
+            transform: rotate(15deg);
+        }
+
+        .skill-info {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .skill-orb:hover .skill-info {
+            opacity: 1;
+            bottom: -45px;
+        }
+
+        /* Conversational Contact Form */
+        .conversational-form {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: 0 10px 20px var(--card-shadow);
+            border: 1px solid var(--border);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-question {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--background);
+            color: var(--text);
+            transition: var(--transition);
+            font-family: inherit;
+            margin-bottom: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Enhanced Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .floating-nav {
+                display: none;
+            }
+
+            .profile-avatar {
+                width: 150px;
+                height: 150px;
+            }
+
+            .projects-track {
+                padding: 0 1rem;
+            }
+
+            .project-panel {
+                flex: 0 0 90%;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .skills-container {
+                gap: 0.5rem;
+            }
+
+            .skill-orb {
+                width: 70px;
+                height: 70px;
+            }
+
+            .skill-orb i {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-orb {
+                width: 60px;
+                height: 60px;
+            }
+
+            .skill-orb i {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Keep existing styles but enhance with cinematic elements */
+        /* ... (your existing CSS styles) ... */
+        
+        /* Enhanced buttons with cinematic effects */
         .btn {
-            padding: 1rem 2.5rem;
+            padding: 0.875rem 1.75rem;
             border-radius: 50px;
             font-weight: 600;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             text-decoration: none;
             cursor: pointer;
             border: none;
             font-family: inherit;
-            font-size: 1.1rem;
+            font-size: 1rem;
             position: relative;
             overflow: hidden;
         }
@@ -327,7 +548,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.6s;
+            transition: left 0.5s;
         }
 
         .btn:hover::before {
@@ -335,521 +556,47 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: var(--secondary);
-            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.4);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 191, 255, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4), var(--cinematic-glow);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text);
-            border: 2px solid var(--primary);
+            border: 2px solid var(--border);
         }
 
         .btn-secondary:hover {
-            background: rgba(0, 191, 255, 0.1);
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--text-light);
-            font-size: 1.5rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        /* About Section - Storytelling */
-        .about {
             background: var(--background-alt);
-            position: relative;
-        }
-
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .about-content h2 {
-            text-align: left;
-        }
-
-        .about-content h2::after {
-            left: 0;
-            transform: none;
-        }
-
-        .about-text {
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .about-image {
-            position: relative;
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-            transition: var(--transition);
-        }
-
-        .about-image:hover {
-            transform: perspective(1000px) rotateY(0) rotateX(0);
-        }
-
-        .about-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Skills Section - 3D Sphere */
-        .skills-section {
-            position: relative;
-            padding: 150px 0;
-            overflow: hidden;
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .skills-content {
-            z-index: 2;
-        }
-
-        .skills-sphere-container {
-            position: relative;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 1000px;
-        }
-
-        .skills-sphere {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            transform-style: preserve-3d;
-            animation: rotateSphere 30s infinite linear;
-        }
-
-        .skill-point {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--card-bg);
-            border: 2px solid var(--primary);
-            color: var(--text);
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-            transform-style: preserve-3d;
-            backdrop-filter: blur(10px);
-        }
-
-        .skill-point:hover {
-            background: var(--primary);
-            color: var(--secondary);
-            transform: scale(1.2);
-            box-shadow: 0 0 20px var(--primary);
-        }
-
-        .skill-info {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--glass-shadow);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            width: 300px;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 10;
-        }
-
-        .skill-info.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        @keyframes rotateSphere {
-            0% { transform: rotateY(0deg) rotateX(10deg); }
-            100% { transform: rotateY(360deg) rotateX(10deg); }
-        }
-
-        /* Projects Section - Horizontal Gallery */
-        .projects {
-            background: var(--background-alt);
-            position: relative;
-            padding: 150px 0;
-        }
-
-        .projects-container {
-            position: relative;
-        }
-
-        .projects-horizontal {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 2rem;
-            padding: 2rem 0;
-            scrollbar-width: none;
-        }
-
-        .projects-horizontal::-webkit-scrollbar {
-            display: none;
-        }
-
-        .project-panel {
-            flex: 0 0 85%;
-            scroll-snap-align: start;
-            background: var(--card-bg);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-            position: relative;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-        }
-
-        .project-panel:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(0, 191, 255, 0.2);
-        }
-
-        .project-image {
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .project-panel:hover .project-img {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 2.5rem;
-        }
-
-        .project-title {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-description {
-            margin-bottom: 2rem;
-        }
-
-        .project-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 3rem;
-            gap: 1rem;
-        }
-
-        .project-nav-btn {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--text-light);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .project-nav-btn.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-
-        /* Contact Section - Conversational */
-        .contact {
-            position: relative;
-            padding: 150px 0;
-        }
-
-        .contact-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .conversation-form {
-            background: var(--card-bg);
-            border-radius: var(--border-radius-lg);
-            padding: 3rem;
-            box-shadow: var(--glass-shadow);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-        }
-
-        .conversation-step {
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: var(--transition);
-        }
-
-        .conversation-step.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .conversation-question {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 1.2rem;
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border);
-            background: var(--background);
-            color: var(--text);
-            transition: var(--transition);
-            font-family: inherit;
-            font-size: 1.1rem;
-        }
-
-        .form-input:focus {
-            outline: none;
+            transform: translateY(-3px);
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
-        }
-
-        textarea.form-input {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            margin-top: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: var(--transition);
-        }
-
-        .submit-btn.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--secondary);
-            padding: 4rem 0 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--card-bg);
-            color: var(--text);
-            transition: var(--transition);
-            border: 1px solid var(--border);
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            color: var(--secondary);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            color: var(--text-light);
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Scroll animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .about-container,
-            .skills-container {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-
-            .about-content h2::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .section {
-                padding: 100px 0;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .project-panel {
-                flex: 0 0 90%;
-            }
-
-            .skills-sphere-container {
-                height: 300px;
-            }
-
-            .skills-sphere {
-                width: 250px;
-                height: 250px;
-            }
-
-            .conversation-form {
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .section {
-                padding: 80px 0;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .btn {
-                padding: 0.875rem 1.75rem;
-                font-size: 1rem;
-            }
-
-            .project-content {
-                padding: 1.5rem;
-            }
+            box-shadow: var(--cinematic-glow);
         }
     </style>
 </head>
 <body>
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
-    <div class="gradient-bg"></div>
+    <!-- Cinematic Background -->
+    <div class="cinematic-bg"></div>
+    <div class="starfield" id="starfield"></div>
+    <div class="glass-overlay"></div>
 
-    <!-- Header -->
+    <!-- Floating Navigation -->
+    <div class="floating-nav">
+        <div class="nav-orb active" data-section="Home" data-target="home"></div>
+        <div class="nav-orb" data-section="About" data-target="about"></div>
+        <div class="nav-orb" data-section="Skills" data-target="skills"></div>
+        <div class="nav-orb" data-section="Projects" data-target="projects"></div>
+        <div class="nav-orb" data-section="Resume" data-target="resume"></div>
+        <div class="nav-orb" data-section="Contact" data-target="contact"></div>
+    </div>
+
+    <!-- Header (keep your existing header) -->
     <header id="header">
         <div class="container nav-container">
             <a href="#" class="logo">
@@ -857,22 +604,41 @@
                 <span>Dilip Choudhary</span>
             </a>
 
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
             <nav class="nav-links" id="navLinks">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
+                
+                <div class="dropdown">
+                    <a href="#projects" class="nav-link">Projects ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="#project1" class="dropdown-item">E-Commerce Sales Insights</a>
+                        <a href="#project2" class="dropdown-item">Crypto Market Risk Dashboard</a>
+                    </div>
+                </div>
+                
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#resume" class="nav-link">Resume</a>
                 <a href="#contact" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i>
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Enhanced Hero Section -->
+    <section id="home" class="hero section visible">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title" id="typed-name">Dilip Choudhary</h1>
-                <p class="hero-tagline" id="typed-tagline">Crafting experiences, not just dashboards.</p>
+                <div class="profile-avatar">
+                    <img src="Image/Profile.JPG" alt="Dilip Choudhary">
+                </div>
+                <h1 class="hero-title">Dilip Choudhary</h1>
+                <p class="hero-description">Business Analytics professional specializing in financial markets, risk analysis, and data-driven decision-making.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i> Get In Touch
@@ -883,141 +649,157 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section about">
         <div class="container about-container">
             <div class="about-content">
-                <h2 class="section-title">My Journey</h2>
-                <p class="about-text animate-on-scroll">I'm a Business Analytics student focused on financial markets, risk analysis, and data-driven decision-making. I transform messy datasets into clear insights and dashboards that empower stakeholders to act.</p>
-                <p class="about-text animate-on-scroll">My expertise includes financial modeling, data visualization, and creating interactive dashboards that tell compelling stories with data. I'm passionate about using analytics to solve complex business problems and drive strategic decisions.</p>
+                <h2 class="section-title">About Me</h2>
+                <p class="about-text">I'm a Business Analytics student focused on financial markets, risk analysis, and data-driven decision-making. I transform messy datasets into clear insights and dashboards that empower stakeholders to act.</p>
+                <p class="about-text">My expertise includes financial modeling, data visualization, and creating interactive dashboards that tell compelling stories with data. I'm passionate about using analytics to solve complex business problems and drive strategic decisions.</p>
+                
+                <!-- Interactive Skills Section -->
+                <div class="skills-container">
+                    <div class="skill-orb">
+                        <i class="fab fa-microsoft"></i>
+                        <div class="skill-info">Power BI</div>
+                    </div>
+                    <div class="skill-orb">
+                        <i class="fas fa-chart-bar"></i>
+                        <div class="skill-info">Tableau</div>
+                    </div>
+                    <div class="skill-orb">
+                        <i class="fas fa-file-excel"></i>
+                        <div class="skill-info">Excel</div>
+                    </div>
+                    <div class="skill-orb">
+                        <i class="fas fa-database"></i>
+                        <div class="skill-info">SQL</div>
+                    </div>
+                    <div class="skill-orb">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="skill-info">Financial Analysis</div>
+                    </div>
+                    <div class="skill-orb">
+                        <i class="fas fa-eye"></i>
+                        <div class="skill-info">Data Visualization</div>
+                    </div>
+                </div>
+                
                 <a href="#contact" class="btn btn-primary">
                     <i class="fas fa-comment"></i> Let's Discuss
                 </a>
             </div>
-            <div class="about-image animate-on-scroll">
-                <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="about-img">
-            </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section skills-section">
-        <div class="container skills-container">
-            <div class="skills-content">
-                <h2 class="section-title">My Expertise</h2>
-                <p class="animate-on-scroll">I specialize in transforming complex data into actionable insights through cutting-edge visualization techniques and analytical methodologies.</p>
-                <div class="skill-info" id="skillInfo">
-                    <h3 id="skillTitle">Select a Skill</h3>
-                    <p id="skillDescription">Hover over or click on a skill point to learn more about my expertise in that area.</p>
-                </div>
-            </div>
-            <div class="skills-sphere-container">
-                <div class="skills-sphere" id="skillsSphere">
-                    <!-- Skill points will be generated by JavaScript -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
+    <!-- Projects Section with Horizontal Scroll -->
     <section id="projects" class="section projects">
         <div class="container">
             <div class="section-header center">
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="text-lead">Showcasing my expertise through practical applications of data analytics</p>
             </div>
-            <div class="projects-container">
-                <div class="projects-horizontal" id="projectsHorizontal">
-                    <!-- Project 1 -->
-                    <div class="project-panel animate-on-scroll">
-                        <div class="project-image">
-                            <img src="Image/Projectec/1.png" alt="E-Commerce Sales Insights" class="project-img">
+            
+            <div class="projects-horizontal">
+                <div class="projects-track">
+                    <!-- E-Commerce Project -->
+                    <div class="project-panel">
+                        <div class="project-header">
+                            <h3>E-Commerce Sales Insights</h3>
+                            <p>Comprehensive analysis of e-commerce order data with insights into cancellation drivers and sales performance optimization.</p>
                         </div>
-                        <div class="project-content">
-                            <h3 class="project-title">E-Commerce Sales Insights</h3>
-                            <p class="project-description">Comprehensive analysis of e-commerce order data with insights into cancellation drivers and sales performance optimization.</p>
-                            <div class="project-actions">
-                                <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" class="btn btn-primary" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i> View Project
-                                </a>
+                        <div class="project-gallery">
+                            <div class="project-thumb">
+                                <img src="Image/Projectec/1.png" alt="E-Commerce Dashboard 1">
                             </div>
+                            <div class="project-thumb">
+                                <img src="Image/Projectec/2.png" alt="E-Commerce Dashboard 2">
+                            </div>
+                            <div class="project-thumb">
+                                <img src="Image/Projectec/3.png" alt="E-Commerce Dashboard 3">
+                            </div>
+                            <div class="project-thumb">
+                                <img src="Image/Projectec/4.png" alt="E-Commerce Dashboard 4">
+                            </div>
+                        </div>
+                        <div class="project-actions" style="padding: 1.5rem; border-top: 1px solid var(--border);">
+                            <a href="https://drive.google.com/drive/folders/1ujHD_MZVCvIBBHDwB72kwxqbdRDrXSyg" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-download"></i> Download Project
+                            </a>
                         </div>
                     </div>
                     
-                    <!-- Project 2 -->
-                    <div class="project-panel animate-on-scroll">
-                        <div class="project-image">
-                            <img src="Image/Projectcrypto/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
+                    <!-- Crypto Project -->
+                    <div class="project-panel">
+                        <div class="project-header">
+                            <h3>Crypto Market Risk Dashboard</h3>
+                            <p>Power BI dashboard analyzing cryptocurrency volatility and market sentiment to assess risk factors and investment opportunities.</p>
                         </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Crypto Market Risk Dashboard</h3>
-                            <p class="project-description">Power BI dashboard analyzing cryptocurrency volatility and market sentiment to assess risk factors and investment opportunities.</p>
-                            <div class="project-actions">
-                                <a href="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" class="btn btn-primary" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i> View Project
-                                </a>
+                        <div class="project-gallery">
+                            <div class="project-thumb">
+                                <img src="Image/Projectcrypto/1.png" alt="Crypto Dashboard 1">
+                            </div>
+                            <div class="project-thumb">
+                                <img src="Image/Projectcrypto/2.png" alt="Crypto Dashboard 2">
+                            </div>
+                            <div class="project-thumb">
+                                <img src="Image/Projectcrypto/3.png" alt="Crypto Dashboard 3">
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Project 3 -->
-                    <div class="project-panel animate-on-scroll">
-                        <div class="project-image">
-                            <img src="Image/P3ABC/Sprint.png" alt="Project Management Dashboard" class="project-img">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Project Management Dashboard</h3>
-                            <p class="project-description">Comprehensive project tracking dashboard with sprint planning, UAT results, and test case management functionalities.</p>
-                            <div class="project-actions">
-                                <a href="#" class="btn btn-primary">
-                                    <i class="fas fa-external-link-alt"></i> View Project
-                                </a>
-                            </div>
+                        <div class="project-actions" style="padding: 1.5rem; border-top: 1px solid var(--border);">
+                            <a href="https://drive.google.com/drive/folders/1cvIZ0nbRI022NNEHhLUcRlc6VFNQEGCo" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-download"></i> Download Project
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="project-nav" id="projectNav">
-                    <button class="project-nav-btn active" data-index="0"></button>
-                    <button class="project-nav-btn" data-index="1"></button>
-                    <button class="project-nav-btn" data-index="2"></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
+    <!-- Contact Section with Conversational Form -->
+    <section id="contact" class="section">
         <div class="container">
             <div class="section-header center">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="text-lead">Ready to turn your data into decisions? Let's start a conversation.</p>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="text-lead">Let's discuss how data analytics can transform your business decisions</p>
             </div>
-            <div class="contact-container">
-                <div class="conversation-form">
-                    <div class="conversation-step active" id="step1">
-                        <p class="conversation-question">Hey there 👋 What's your name?</p>
-                        <input type="text" class="form-input" id="userName" placeholder="Your name...">
+            
+            <div class="conversational-form">
+                <form id="conversationalForm">
+                    <div class="form-step active" id="step1">
+                        <div class="form-question">Hi there! What's your name?</div>
+                        <input type="text" class="form-input" id="conversationalName" placeholder="Your name" required>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="next1">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
                     </div>
-                    <div class="conversation-step" id="step2">
-                        <p class="conversation-question">Nice to meet you, <span id="nameDisplay"></span>! What's your email?</p>
-                        <input type="email" class="form-input" id="userEmail" placeholder="Your email...">
+                    
+                    <div class="form-step" id="step2">
+                        <div class="form-question">Nice to meet you, <span id="namePlaceholder"></span>! What's your email?</div>
+                        <input type="email" class="form-input" id="conversationalEmail" placeholder="your.email@example.com" required>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="prev2"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn btn-secondary" id="next2">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
                     </div>
-                    <div class="conversation-step" id="step3">
-                        <p class="conversation-question">Great! What can I help you with?</p>
-                        <textarea class="form-input" id="userMessage" placeholder="Tell me about your project or question..."></textarea>
+                    
+                    <div class="form-step" id="step3">
+                        <div class="form-question">Great! What would you like to discuss?</div>
+                        <textarea class="form-input" id="conversationalMessage" placeholder="Tell me about your project or question..." required></textarea>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="prev3"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="submit" class="btn btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
+                        </div>
                     </div>
-                    <button class="btn btn-primary submit-btn" id="submitBtn">Send Message</button>
-                </div>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (keep your existing footer) -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1025,7 +807,6 @@
                     <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="logo-img">
                     <span>Dilip Choudhary</span>
                 </div>
-                <p>"Turning data into stories that drive decisions."</p>
                 <div class="social-links">
                     <a href="mailto:choudharydilip947@gmail.com" class="social-link">
                         <i class="fas fa-envelope"></i>
@@ -1044,293 +825,203 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Initialize when DOM is loaded
+        // Enhanced JavaScript for cinematic experience
         document.addEventListener('DOMContentLoaded', function() {
-            // Particle.js configuration
-            particlesJS('particles-js', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: "#00BFFF" },
-                    shape: { type: "circle" },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: {
-                        enable: true,
-                        distance: 150,
-                        color: "#00BFFF",
-                        opacity: 0.2,
-                        width: 1
-                    },
-                    move: {
-                        enable: true,
-                        speed: 2,
-                        direction: "none",
-                        random: true,
-                        straight: false,
-                        out_mode: "out",
-                        bounce: false
-                    }
-                },
-                interactivity: {
-                    detect_on: "canvas",
-                    events: {
-                        onhover: { enable: true, mode: "repulse" },
-                        onclick: { enable: true, mode: "push" },
-                        resize: true
-                    }
-                },
-                retina_detect: true
-            });
-
-            // Typing animation for hero section
-            function typeWriter(element, text, speed, callback) {
-                let i = 0;
-                element.innerHTML = '';
+            // Create starfield background
+            function createStarfield() {
+                const starfield = document.getElementById('starfield');
+                const starCount = 150;
                 
-                function type() {
-                    if (i < text.length) {
-                        element.innerHTML += text.charAt(i);
-                        i++;
-                        setTimeout(type, speed);
-                    } else if (callback) {
-                        callback();
-                    }
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    
+                    const size = Math.random() * 3;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    const duration = Math.random() * 10 + 5;
+                    
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${posX}%`;
+                    star.style.top = `${posY}%`;
+                    star.style.animationDelay = `${delay}s`;
+                    star.style.animationDuration = `${duration}s`;
+                    
+                    starfield.appendChild(star);
                 }
-                
-                type();
             }
-
-            // Animate hero elements sequentially
-            setTimeout(() => {
-                typeWriter(document.getElementById('typed-name'), 'Dilip Choudhary', 100, () => {
-                    setTimeout(() => {
-                        typeWriter(document.getElementById('typed-tagline'), 'Crafting experiences, not just dashboards.', 50, () => {
-                            // Show buttons after typing completes
-                            document.querySelector('.hero-buttons').style.opacity = '1';
-                            document.querySelector('.hero-buttons').style.transform = 'translateY(0)';
+            
+            createStarfield();
+            
+            // Section visibility on scroll
+            function checkSectionVisibility() {
+                const sections = document.querySelectorAll('.section');
+                const navOrbs = document.querySelectorAll('.nav-orb');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const scrollPosition = window.scrollY + window.innerHeight / 2;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        section.classList.add('visible');
+                        
+                        // Update active nav orb
+                        const sectionId = section.getAttribute('id');
+                        navOrbs.forEach(orb => {
+                            orb.classList.remove('active');
+                            if (orb.getAttribute('data-target') === sectionId) {
+                                orb.classList.add('active');
+                            }
                         });
-                    }, 500);
+                    }
                 });
-            }, 500);
-
-            // Header scroll effect
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
+            }
+            
+            window.addEventListener('scroll', checkSectionVisibility);
+            window.addEventListener('load', checkSectionVisibility);
+            
+            // Floating navigation orb clicks
+            document.querySelectorAll('.nav-orb').forEach(orb => {
+                orb.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const targetSection = document.getElementById(targetId);
                     
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
+                    if (targetSection) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetSection.offsetTop - 80,
                             behavior: 'smooth'
                         });
                     }
                 });
             });
-
-            // Skills Sphere
-            const skillsSphere = document.getElementById('skillsSphere');
-            const skillInfo = document.getElementById('skillInfo');
-            const skillTitle = document.getElementById('skillTitle');
-            const skillDescription = document.getElementById('skillDescription');
             
-            const skills = [
-                { name: "Power BI", description: "Creating interactive dashboards and data visualizations for business intelligence." },
-                { name: "Tableau", description: "Designing compelling data stories and visual analytics solutions." },
-                { name: "Excel", description: "Advanced financial modeling, data analysis, and automation with macros." },
-                { name: "SQL", description: "Database querying, data extraction, and transformation for analysis." },
-                { name: "Python", description: "Data analysis, automation, and statistical modeling with pandas, numpy, and scikit-learn." },
-                { name: "R", description: "Statistical analysis, data visualization, and predictive modeling." },
-                { name: "Financial Analysis", description: "Valuation, risk assessment, and investment analysis." },
-                { name: "Data Visualization", description: "Transforming complex data into intuitive visual narratives." },
-                { name: "Dashboarding", description: "Designing user-friendly interfaces for data exploration and decision-making." },
-                { name: "Risk Analysis", description: "Identifying, assessing, and mitigating business and financial risks." }
-            ];
+            // Conversational form functionality
+            const formSteps = document.querySelectorAll('.form-step');
+            const next1 = document.getElementById('next1');
+            const next2 = document.getElementById('next2');
+            const prev2 = document.getElementById('prev2');
+            const prev3 = document.getElementById('prev3');
+            const nameInput = document.getElementById('conversationalName');
+            const namePlaceholder = document.getElementById('namePlaceholder');
+            const conversationalForm = document.getElementById('conversationalForm');
             
-            // Create skill points on the sphere
-            skills.forEach((skill, index) => {
-                const skillPoint = document.createElement('div');
-                skillPoint.className = 'skill-point';
-                skillPoint.textContent = skill.name;
-                skillPoint.setAttribute('data-skill', index);
+            next1.addEventListener('click', function() {
+                if (nameInput.value.trim() !== '') {
+                    formSteps[0].classList.remove('active');
+                    formSteps[1].classList.add('active');
+                    namePlaceholder.textContent = nameInput.value;
+                }
+            });
+            
+            next2.addEventListener('click', function() {
+                formSteps[1].classList.remove('active');
+                formSteps[2].classList.add('active');
+            });
+            
+            prev2.addEventListener('click', function() {
+                formSteps[1].classList.remove('active');
+                formSteps[0].classList.add('active');
+            });
+            
+            prev3.addEventListener('click', function() {
+                formSteps[2].classList.remove('active');
+                formSteps[1].classList.add('active');
+            });
+            
+            conversationalForm.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Calculate position on sphere
-                const phi = Math.acos(-1 + (2 * index) / skills.length);
-                const theta = Math.sqrt(skills.length * Math.PI) * phi;
+                const name = nameInput.value;
+                const email = document.getElementById('conversationalEmail').value;
+                const message = document.getElementById('conversationalMessage').value;
                 
-                const x = 150 * Math.cos(theta) * Math.sin(phi);
-                const y = 150 * Math.sin(theta) * Math.sin(phi);
-                const z = 150 * Math.cos(phi);
-                
-                skillPoint.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
-                
-                // Add hover effect
-                skillPoint.addEventListener('mouseenter', () => {
-                    skillInfo.classList.add('active');
-                    skillTitle.textContent = skill.name;
-                    skillDescription.textContent = skill.description;
+                // Here you would typically send the form data to a server
+                alert(`Thank you for your message, ${name}! I'll get back to you soon at ${email}.`);
+                conversationalForm.reset();
+                formSteps[2].classList.remove('active');
+                formSteps[0].classList.add('active');
+            });
+            
+            // Project gallery thumb click handlers
+            document.querySelectorAll('.project-thumb').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').src;
+                    // Create a modal to view the image
+                    const modal = document.createElement('div');
+                    modal.style.position = 'fixed';
+                    modal.style.top = '0';
+                    modal.style.left = '0';
+                    modal.style.width = '100%';
+                    modal.style.height = '100%';
+                    modal.style.backgroundColor = 'rgba(0,0,0,0.9)';
+                    modal.style.display = 'flex';
+                    modal.style.alignItems = 'center';
+                    modal.style.justifyContent = 'center';
+                    modal.style.zIndex = '2000';
+                    modal.style.cursor = 'pointer';
                     
-                    // Highlight this skill point
-                    skillPoint.style.background = 'var(--primary)';
-                    skillPoint.style.color = 'var(--secondary)';
-                    skillPoint.style.boxShadow = '0 0 20px var(--primary)';
-                    skillPoint.style.transform = `translate3d(${x}px, ${y}px, ${z}px) scale(1.3)`;
-                });
-                
-                skillPoint.addEventListener('mouseleave', () => {
-                    skillInfo.classList.remove('active');
-                    skillPoint.style.background = 'var(--card-bg)';
-                    skillPoint.style.color = 'var(--text)';
-                    skillPoint.style.boxShadow = 'none';
-                    skillPoint.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
-                });
-                
-                skillsSphere.appendChild(skillPoint);
-            });
-
-            // Projects horizontal scroll
-            const projectsHorizontal = document.getElementById('projectsHorizontal');
-            const projectNavButtons = document.querySelectorAll('.project-nav-btn');
-            
-            // Update active nav button based on scroll position
-            projectsHorizontal.addEventListener('scroll', () => {
-                const scrollPos = projectsHorizontal.scrollLeft;
-                const cardWidth = projectsHorizontal.querySelector('.project-panel').offsetWidth + 32; // 32px gap
-                const activeIndex = Math.round(scrollPos / cardWidth);
-                
-                projectNavButtons.forEach((btn, index) => {
-                    if (index === activeIndex) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
-                });
-            });
-            
-            // Navigate to specific project when clicking nav buttons
-            projectNavButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const index = parseInt(btn.getAttribute('data-index'));
-                    const cardWidth = projectsHorizontal.querySelector('.project-panel').offsetWidth + 32;
-                    projectsHorizontal.scrollTo({
-                        left: index * cardWidth,
-                        behavior: 'smooth'
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.style.maxWidth = '90%';
+                    img.style.maxHeight = '90%';
+                    img.style.objectFit = 'contain';
+                    img.style.borderRadius = '8px';
+                    
+                    modal.appendChild(img);
+                    document.body.appendChild(modal);
+                    
+                    modal.addEventListener('click', function() {
+                        document.body.removeChild(modal);
                     });
                 });
             });
-
-            // Conversational contact form
-            const steps = document.querySelectorAll('.conversation-step');
-            const userNameInput = document.getElementById('userName');
-            const userEmailInput = document.getElementById('userEmail');
-            const userMessageInput = document.getElementById('userMessage');
-            const nameDisplay = document.getElementById('nameDisplay');
-            const submitBtn = document.getElementById('submitBtn');
-            let currentStep = 0;
-
-            function showStep(stepIndex) {
-                steps.forEach((step, index) => {
-                    if (index === stepIndex) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
-                    }
-                });
+            
+            // Keep your existing functionality
+            // ... (your existing JavaScript code) ...
+            
+            // Enhanced theme toggle with cinematic effect
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-mode');
                 
-                // Show submit button on last step
-                if (stepIndex === steps.length - 1) {
-                    submitBtn.classList.add('active');
+                if (document.body.classList.contains('light-mode')) {
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    
+                    // Update stars for light mode
+                    document.querySelectorAll('.star').forEach(star => {
+                        star.style.backgroundColor = '#2d3436';
+                    });
                 } else {
-                    submitBtn.classList.remove('active');
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    
+                    // Update stars for dark mode
+                    document.querySelectorAll('.star').forEach(star => {
+                        star.style.backgroundColor = 'white';
+                    });
                 }
+            });
+            
+            // Initialize theme
+            if (localStorage.getItem('theme') === 'light' || 
+                (window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage.getItem('theme'))) {
+                document.body.classList.add('light-mode');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                
+                document.querySelectorAll('.star').forEach(star => {
+                    star.style.backgroundColor = '#2d3436';
+                });
             }
-
-            userNameInput.addEventListener('input', () => {
-                if (userNameInput.value.trim() !== '') {
-                    setTimeout(() => {
-                        nameDisplay.textContent = userNameInput.value;
-                        showStep(1);
-                    }, 800);
-                }
-            });
-
-            userEmailInput.addEventListener('input', () => {
-                if (userEmailInput.value.trim() !== '') {
-                    setTimeout(() => {
-                        showStep(2);
-                    }, 800);
-                }
-            });
-
-            submitBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                if (userNameInput.value && userEmailInput.value && userMessageInput.value) {
-                    // Here you would typically send the form data to a server
-                    alert(`Thank you for your message, ${userNameInput.value}! I'll get back to you soon at ${userEmailInput.value}.`);
-                    
-                    // Reset form
-                    userNameInput.value = '';
-                    userEmailInput.value = '';
-                    userMessageInput.value = '';
-                    showStep(0);
-                }
-            });
-
-            // Scroll animations
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
-            
-            const fadeInOnScroll = () => {
-                animateElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('visible');
-                    }
-                });
-            };
-            
-            // Check on load and scroll
-            window.addEventListener('load', fadeInOnScroll);
-            window.addEventListener('scroll', fadeInOnScroll);
-            
-            // Initialize scroll position for nav highlights
-            window.addEventListener('scroll', () => {
-                let current = '';
-                const sections = document.querySelectorAll('section');
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollY >= (sectionTop - 100)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
         });
     </script>
 </body>

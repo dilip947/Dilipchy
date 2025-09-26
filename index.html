@@ -1153,10 +1153,11 @@
             margin-bottom: 0.5rem;
         }
 
-        .contact-details a {
+        .contact-details a, .contact-details p {
             color: var(--text-light);
             text-decoration: none;
             transition: var(--transition);
+            margin-bottom: 0;
         }
 
         .contact-details a:hover {
@@ -1243,6 +1244,7 @@
             border: 1px solid var(--glass-border);
             position: relative;
             overflow: hidden;
+            text-decoration: none;
         }
 
         .social-link::before {
@@ -1452,6 +1454,7 @@
                     <div class="dropdown-menu">
                         <a href="#project1" class="dropdown-item">E-Commerce Sales Insights</a>
                         <a href="#project2" class="dropdown-item">Crypto Market Risk Dashboard</a>
+                        <a href="#project3" class="dropdown-item">P3ABC UAT Dashboard</a>
                     </div>
                 </div>
                 
@@ -1557,7 +1560,7 @@
             </div>
             <div class="projects-container">
                 <div class="projects-grid" id="projectsGrid">
-                    <!-- Project 1: E-Commerce Sales Insights (4 PNGs) -->
+                    <!-- Project 1: E-Commerce Sales Insights -->
                     <div id="project1" class="project-card glass-card animate-on-scroll">
                         <div class="project-image">
                             <img src="Image/Projectec/1.png" alt="E-Commerce Sales Insights" class="project-img">
@@ -1581,7 +1584,7 @@
                         </div>
                     </div>
                     
-                    <!-- Project 2: Crypto Market Risk Dashboard (3 PNGs) -->
+                    <!-- Project 2: Crypto Market Risk Dashboard -->
                     <div id="project2" class="project-card glass-card animate-on-scroll">
                         <div class="project-image">
                             <img src="Image/Projectcrypto/1.png" alt="Crypto Market Risk Dashboard" class="project-img">
@@ -1604,18 +1607,43 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Project 3: P3ABC UAT Dashboard -->
+                    <div id="project3" class="project-card glass-card animate-on-scroll">
+                        <div class="project-image">
+                            <img src="Image/P3ABC/1.png" alt="P3ABC UAT Dashboard" class="project-img">
+                            <div class="project-overlay">
+                                <button class="btn btn-primary view-project-btn" data-project="project3">
+                                    <i class="fas fa-external-link-alt"></i> View Project
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">P3ABC UAT Dashboard</h3>
+                            <p class="project-description">A project management dashboard tracking User Acceptance Testing (UAT) progress, sprint performance, and sign-off status.</p>
+                            <div class="project-actions">
+                                <button class="btn btn-primary view-project-btn" data-project="project3">
+                                    <i class="fas fa-eye"></i> View Project
+                                </button>
+                                <a href="#" class="btn btn-secondary">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Project Navigation for Mobile -->
                 <div class="project-nav" id="projectNav">
                     <button class="project-nav-btn active" data-index="0"></button>
                     <button class="project-nav-btn" data-index="1"></button>
+                    <button class="project-nav-btn" data-index="2"></button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Project Gallery Modals -->
-    <!-- E-Commerce Project Gallery (4 images) -->
+    <!-- E-Commerce Project Gallery -->
     <div id="project1-gallery" class="project-gallery">
         <div class="gallery-content glass-card">
             <div class="gallery-header">
@@ -1644,7 +1672,7 @@
         </div>
     </div>
 
-    <!-- Crypto Project Gallery (3 images) -->
+    <!-- Crypto Project Gallery -->
     <div id="project2-gallery" class="project-gallery">
         <div class="gallery-content glass-card">
             <div class="gallery-header">
@@ -1672,6 +1700,39 @@
         </div>
     </div>
 
+    <!-- P3ABC Project Gallery -->
+    <div id="project3-gallery" class="project-gallery">
+        <div class="gallery-content glass-card">
+            <div class="gallery-header">
+                <h3>P3ABC UAT Dashboard</h3>
+                <button class="close-gallery">&times;</button>
+            </div>
+            <div class="gallery-body">
+                <div class="gallery-images">
+                    <img src="Image/P3ABC/1.png" alt="P3ABC Dashboard Overview" class="gallery-img">
+                    <img src="Image/P3ABC/Sprint.png" alt="Sprint Details" class="gallery-img">
+                    <img src="Image/P3ABC/UAT Results.png" alt="UAT Test Results" class="gallery-img">
+                    <img src="Image/P3ABC/UAT Scenario.png" alt="UAT Scenarios" class="gallery-img">
+                    <img src="Image/P3ABC/UAT Signoff.png" alt="UAT Sign-off Status" class="gallery-img">
+                    <img src="Image/P3ABC/UAT.png" alt="UAT Main Page" class="gallery-img">
+                    <img src="Image/P3ABC/test_case.png" alt="Test Case Details" class="gallery-img">
+                </div>
+                <div class="gallery-details">
+                    <h4>Project Details</h4>
+                    <p>This dashboard provides a centralized view for managing the User Acceptance Testing (UAT) phase of a project. It visualizes key metrics to ensure transparency and facilitate decision-making.</p>
+                    <ul>
+                        <li>Tracks overall UAT progress and completion rates.</li>
+                        <li>Monitors sprint-specific tasks and performance.</li>
+                        <li>Details test scenarios and their outcomes (Pass/Fail).</li>
+                        <li>Visualizes UAT sign-off status from stakeholders.</li>
+                        <li>Provides a clear overview of test cases and results.</li>
+                    </ul>
+                    <p>The solution enables project managers and stakeholders to identify bottlenecks, assess testing quality, and ensure the project meets business requirements before deployment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Resume Section -->
     <section id="resume" class="section">
         <div class="container resume-container">
@@ -1679,7 +1740,7 @@
                 <h2 class="section-title">My Resume</h2>
                 <p class="text-lead">Download my complete resume to learn more about my experience, education, and skills</p>
             </div>
-            <a href="Resume.pdf" download class="resume-download glass-edge">
+            <a href="resume.pdf" download class="resume-download glass-edge">
                 <i class="fas fa-download"></i> Download Resume
             </a>
         </div>
@@ -1769,13 +1830,13 @@
                     <a href="https://linkedin.com/in/dilip-choudhary-analytics" class="social-link glass-edge" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="Resume.pdf" class="social-link glass-edge" target="_blank">
+                    <a href="resume.pdf" class="social-link glass-edge" target="_blank">
                         <i class="fas fa-file-pdf"></i>
                     </a>
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2025 Dilip Choudhary. All rights reserved.</p>
+                <p>© 2024 Dilip Choudhary. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1786,6 +1847,7 @@
             // Create floating elements
             function createFloatingElements() {
                 const container = document.getElementById('floatingElements');
+                if (!container) return;
                 const elementCount = 15;
                 
                 for (let i = 0; i < elementCount; i++) {
@@ -1814,71 +1876,87 @@
             
             // Animate hero title underline
             const heroTitle = document.getElementById('heroTitle');
-            setTimeout(() => {
-                heroTitle.classList.add('animate');
-            }, 500);
+            if (heroTitle) {
+                setTimeout(() => {
+                    heroTitle.classList.add('animate');
+                }, 500);
+            }
             
             // Theme Toggle
             const themeToggle = document.getElementById('themeToggle');
-            const themeIcon = themeToggle.querySelector('i');
-            
-            // Check for saved theme preference or respect OS preference
-            if (localStorage.getItem('theme') === 'light' || 
-                (window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage.getItem('theme'))) {
-                document.body.classList.add('light-mode');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-            
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('light-mode');
+            if (themeToggle) {
+                const themeIcon = themeToggle.querySelector('i');
                 
-                if (document.body.classList.contains('light-mode')) {
-                    localStorage.setItem('theme', 'light');
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
-                } else {
-                    localStorage.setItem('theme', 'dark');
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
+                // Check for saved theme preference or respect OS preference
+                if (localStorage.getItem('theme') === 'light' || 
+                    (window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage.getItem('theme'))) {
+                    document.body.classList.add('light-mode');
+                    if (themeIcon) {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
                 }
-            });
+                
+                themeToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('light-mode');
+                    
+                    if (document.body.classList.contains('light-mode')) {
+                        localStorage.setItem('theme', 'light');
+                        if (themeIcon) {
+                           themeIcon.classList.remove('fa-sun');
+                           themeIcon.classList.add('fa-moon');
+                        }
+                    } else {
+                        localStorage.setItem('theme', 'dark');
+                         if (themeIcon) {
+                           themeIcon.classList.remove('fa-moon');
+                           themeIcon.classList.add('fa-sun');
+                        }
+                    }
+                });
+            }
             
             // Mobile Menu Toggle
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileNav = document.getElementById('mobileNav');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
             
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileNav.classList.toggle('active');
-                
-                if (mobileNav.classList.contains('active')) {
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    document.body.style.overflow = 'auto';
-                }
-            });
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileNav.classList.toggle('active');
+                    
+                    if (mobileNav.classList.contains('active')) {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
             
             // Close mobile menu when clicking on a link
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileNav.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    document.body.style.overflow = 'auto';
+                    if (mobileNav && mobileNav.classList.contains('active')) {
+                        mobileNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        document.body.style.overflow = 'auto';
+                    }
                 });
             });
             
             // Header scroll effect
             const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
             
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1886,12 +1964,12 @@
                     e.preventDefault();
                     
                     const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+                    if (!targetId || targetId === '#') return;
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         // Close mobile menu if open
-                        if (mobileNav.classList.contains('active')) {
+                        if (mobileNav && mobileNav.classList.contains('active')) {
                             mobileNav.classList.remove('active');
                             mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                             document.body.style.overflow = 'auto';
@@ -1913,24 +1991,25 @@
             
             // Form submission
             const contactForm = document.getElementById('contactForm');
-            
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                // Get form values
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                // Here you would typically send this data to a server
-                // For now, we'll just show an alert and reset the form
-                alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
-                contactForm.reset();
-            });
+            if(contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const nameInput = document.getElementById('name');
+                    const name = nameInput ? nameInput.value : 'Guest';
+                    
+                    // NOTE: The alert() function may not work in some sandboxed environments.
+                    // A custom modal or message display would be a more robust solution.
+                    console.log(`Thank you for your message, ${name}!`);
+                    
+                    // You would typically send form data to a server here.
+                    // For now, just reset the form.
+                    contactForm.reset();
+                });
+            }
             
             // Scroll animations
             const animateElements = document.querySelectorAll('.animate-on-scroll');
-            
             const fadeInOnScroll = () => {
                 animateElements.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
@@ -1942,18 +2021,16 @@
                 });
             };
             
-            // Check on load and scroll
             window.addEventListener('load', fadeInOnScroll);
             window.addEventListener('scroll', fadeInOnScroll);
             
-            // Initialize scroll position for nav highlights
+            // Update nav active state on scroll
             window.addEventListener('scroll', () => {
                 let current = '';
                 const sections = document.querySelectorAll('section');
                 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
                     if (scrollY >= (sectionTop - 100)) {
                         current = section.getAttribute('id');
                     }
@@ -1972,29 +2049,29 @@
             const projectGalleries = document.querySelectorAll('.project-gallery');
             const closeGalleryButtons = document.querySelectorAll('.close-gallery');
             
-            // Open project gallery
             viewProjectButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const projectId = button.getAttribute('data-project');
+                    if(!projectId) return;
                     const gallery = document.getElementById(`${projectId}-gallery`);
                     
                     if (gallery) {
                         gallery.style.display = 'flex';
-                        document.body.style.overflow = 'hidden'; // Prevent scrolling
+                        document.body.style.overflow = 'hidden';
                     }
                 });
             });
             
-            // Close project gallery
             closeGalleryButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const gallery = button.closest('.project-gallery');
-                    gallery.style.display = 'none';
-                    document.body.style.overflow = 'auto'; // Re-enable scrolling
+                    if(gallery) {
+                        gallery.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
                 });
             });
             
-            // Close gallery when clicking outside
             projectGalleries.forEach(gallery => {
                 gallery.addEventListener('click', (e) => {
                     if (e.target === gallery) {
@@ -2007,57 +2084,36 @@
             // Mobile project navigation
             const projectsGrid = document.getElementById('projectsGrid');
             const projectNavButtons = document.querySelectorAll('.project-nav-btn');
-            
-            if (window.innerWidth <= 768) {
-                // Initialize scroll position
-                projectsGrid.scrollLeft = 0;
-                
-                // Update active nav button based on scroll position
+
+            if (projectsGrid && projectNavButtons.length > 0 && window.innerWidth <= 768) {
                 projectsGrid.addEventListener('scroll', () => {
+                    const firstCard = projectsGrid.querySelector('.project-card');
+                    if (!firstCard) return;
+
+                    const cardWidth = firstCard.offsetWidth + 16; // 1rem gap
                     const scrollPos = projectsGrid.scrollLeft;
-                    const cardWidth = projectsGrid.querySelector('.project-card').offsetWidth + 16; // 16px gap
                     const activeIndex = Math.round(scrollPos / cardWidth);
                     
                     projectNavButtons.forEach((btn, index) => {
-                        if (index === activeIndex) {
-                            btn.classList.add('active');
-                        } else {
-                            btn.classList.remove('active');
-                        }
+                        btn.classList.toggle('active', index === activeIndex);
                     });
                 });
-                
-                // Navigate to specific project when clicking nav buttons
+
                 projectNavButtons.forEach(btn => {
                     btn.addEventListener('click', () => {
                         const index = parseInt(btn.getAttribute('data-index'));
-                        const cardWidth = projectsGrid.querySelector('.project-card').offsetWidth + 16;
+                        const firstCard = projectsGrid.querySelector('.project-card');
+                         if (!firstCard) return;
+
+                        const cardWidth = firstCard.offsetWidth + 16; // 1rem gap
                         projectsGrid.scrollTo({
                             left: index * cardWidth,
                             behavior: 'smooth'
                         });
                     });
                 });
-                
-                // Add swipe functionality for touch devices
-                let startX = 0;
-                let scrollLeft = 0;
-                
-                projectsGrid.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].pageX - projectsGrid.offsetLeft;
-                    scrollLeft = projectsGrid.scrollLeft;
-                });
-                
-                projectsGrid.addEventListener('touchmove', (e) => {
-                    if (!startX) return;
-                    const x = e.touches[0].pageX - projectsGrid.offsetLeft;
-                    const walk = (x - startX) * 2;
-                    projectsGrid.scrollLeft = scrollLeft - walk;
-                });
             }
         });
     </script>
 </body>
 </html>
-
-

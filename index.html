@@ -45,25 +45,37 @@
         .nav-links a { margin: 0 1rem; text-decoration: none; color: var(--text-light); font-weight: 500; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
 
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center; }
-        .hero-title { font-size: clamp(3rem, 7vw, 6rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(0, 191, 255, 0.5); }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero-content-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .hero-image { width: 150px; height: 150px; border-radius: 50%; margin-bottom: 2rem; border: 4px solid var(--primary); box-shadow: 0 0 30px rgba(0, 191, 255, 0.5); }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        .hero-title { font-size: clamp(3rem, 7vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(0, 191, 255, 0.5); }
         .hero-tagline { font-size: 1.5rem; color: var(--text-light); margin-bottom: 2.5rem; }
-        .cta-button { background: var(--primary); color: #fff; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: var(--transition); }
+        .hero-buttons { display: flex; gap: 1rem; }
+        .cta-button { background: var(--primary); color: #fff; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: var(--transition); display: inline-block; border: 1px solid transparent; }
         .cta-button:hover { background: var(--primary-dark); transform: scale(1.05); }
+        .cta-button.secondary { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+        .cta-button.secondary:hover { background: var(--primary); color: #fff; }
 
         .about, .skills, .projects, .contact { opacity: 0; transform: translateY(50px); transition: opacity 1s, transform 1s; }
         .about.visible, .skills.visible, .projects.visible, .contact.visible { opacity: 1; transform: translateY(0); }
 
         .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 6px; background-color: var(--border); top: 0; bottom: 0; left: 50%; margin-left: -3px; }
+        .timeline::after { content: ''; position: absolute; width: 4px; background-color: var(--border); top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px; }
         .timeline-item { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; }
         .timeline-item.left { left: 0; }
         .timeline-item.right { left: 50%; }
-        .timeline-item::after { content: ''; position: absolute; width: 25px; height: 25px; right: -17px; background-color: var(--background); border: 4px solid var(--primary); top: 15px; border-radius: 50%; z-index: 1; }
-        .timeline-item.right::after { left: -16px; }
-        .timeline-content { padding: 20px 30px; background-color: var(--background-alt); position: relative; border-radius: var(--border-radius); }
+        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -14px; background-color: var(--background); border: 4px solid var(--primary); top: 15px; border-radius: 50%; z-index: 1; box-shadow: 0 0 15px var(--primary); }
+        .timeline-item.right::after { left: -14px; }
+        .timeline-content { padding: 20px 30px; background-color: var(--background-alt); position: relative; border-radius: var(--border-radius); border: 1px solid var(--border); }
+        .timeline-content h3 { color: var(--primary); }
+        .timeline-icon { position: absolute; top: 12px; font-size: 1.5rem; color: var(--primary); }
+        .timeline-item.left .timeline-icon { right: 50px; }
+        .timeline-item.right .timeline-icon { left: 50px; }
 
-        .skills-graph { height: 500px; position: relative; }
+
+        .skills-graph { height: 500px; position: relative; cursor: grab; }
+        #skills-canvas { display: block; width: 100%; height: 100%; }
 
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .project-card { background: var(--background-alt); border-radius: var(--border-radius); overflow: hidden; transition: var(--transition); border: 1px solid var(--border); }
@@ -72,7 +84,8 @@
         .project-content { padding: 1.5rem; }
 
         .contact-form .form-group { margin-bottom: 1.5rem; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; background: var(--background-alt); border: 1px solid var(--border); color: var(--text); border-radius: 10px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; background: var(--background-alt); border: 1px solid var(--border); color: var(--text); border-radius: 10px; transition: var(--transition); }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--primary); box-shadow: 0 0 10px var(--primary); outline: none; }
     </style>
 </head>
 <body>
@@ -86,6 +99,7 @@
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
+                <a href="resume.pdf" target="_blank">Resume</a>
                 <a href="#contact">Contact</a>
             </nav>
         </div>
@@ -93,9 +107,17 @@
 
     <main>
         <section id="home" class="hero">
-            <h1 class="hero-title">Transforming Data into Decisions</h1>
-            <p class="hero-tagline">One Insight at a Time.</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+            <div class="hero-content-wrapper">
+                <div class="hero-image">
+                    <img src="Image/Profile.JPG" alt="Dilip Choudhary">
+                </div>
+                <h1 class="hero-title">Transforming Data into Decisions</h1>
+                <p class="hero-tagline">One Insight at a Time.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="cta-button">View My Work</a>
+                    <a href="resume.pdf" target="_blank" class="cta-button secondary">View Resume</a>
+                </div>
+            </div>
         </section>
 
         <section id="about" class="section about">
@@ -104,12 +126,14 @@
                 <div class="timeline">
                     <div class="timeline-item left">
                         <div class="timeline-content">
+                             <i class="fas fa-graduation-cap timeline-icon"></i>
                             <h3>2021-2023</h3>
                             <p>Completed my intermediate education at Siva Sivani Junior College, laying the foundation for my analytical journey.</p>
                         </div>
                     </div>
                     <div class="timeline-item right">
                         <div class="timeline-content">
+                            <i class="fas fa-chart-line timeline-icon"></i>
                             <h3>2023-2026</h3>
                             <p>Pursuing a Bachelor of Business Analytics at Avinash College of Commerce, specializing in Finance.</p>
                         </div>
@@ -121,7 +145,9 @@
         <section id="skills" class="section skills">
             <div class="container">
                 <h2 style="text-align: center; font-size: 3rem; margin-bottom: 2rem;">Skills Network</h2>
-                <div id="skills-graph" class="skills-graph"></div>
+                <div id="skills-graph" class="skills-graph">
+                    <canvas id="skills-canvas"></canvas>
+                </div>
             </div>
         </section>
 
@@ -179,11 +205,7 @@
             // Header scroll effect
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+                header.classList.toggle('scrolled', window.scrollY > 50);
             });
 
             // Section visibility animations
@@ -208,25 +230,27 @@
             const particlesCount = 5000;
             const posArray = new Float32Array(particlesCount * 3);
             for (let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 5;
+                posArray[i] = (Math.random() - 0.5) * 10;
             }
             particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
             const particlesMaterial = new THREE.PointsMaterial({ size: 0.005, color: 0x00BFFF });
             const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
             scene.add(particlesMesh);
-            camera.position.z = 2;
+            camera.position.z = 5;
 
             document.addEventListener('mousemove', (event) => {
-                particlesMesh.rotation.y = .5 * (event.clientX / window.innerWidth);
-                particlesMesh.rotation.x = .5 * (event.clientY / window.innerHeight);
+                const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+                particlesMesh.rotation.y = mouseX * 0.5;
+                particlesMesh.rotation.x = mouseY * 0.5;
             });
 
-            const animate = function () {
-                requestAnimationFrame(animate);
+            const animateThree = function () {
+                requestAnimationFrame(animateThree);
                 particlesMesh.rotation.y += 0.0001;
                 renderer.render(scene, camera);
             };
-            animate();
+            animateThree();
             
             window.addEventListener('resize', () => {
                 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -234,21 +258,127 @@
                 camera.updateProjectionMatrix();
             });
 
-            // Skills Graph (Placeholder)
-            const skillsGraph = document.getElementById('skills-graph');
-            const skills = ['Power BI', 'Excel', 'Tableau', 'SQL', 'Agile', 'UAT', 'Financial Modeling'];
-            skills.forEach(skill => {
-                const node = document.createElement('div');
-                node.textContent = skill;
-                node.style.position = 'absolute';
-                node.style.left = `${10 + Math.random() * 80}%`;
-                node.style.top = `${10 + Math.random() * 80}%`;
-                node.style.padding = '10px 15px';
-                node.style.background = 'var(--background-alt)';
-                node.style.borderRadius = '20px';
-                node.style.border = '1px solid var(--border)';
-                skillsGraph.appendChild(node);
+            // Interactive Skills Graph
+            const canvas = document.getElementById('skills-canvas');
+            const ctx = canvas.getContext('2d');
+            const skillsContainer = document.getElementById('skills-graph');
+
+            let width = skillsContainer.offsetWidth;
+            let height = skillsContainer.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            const mouse = { x: null, y: null, radius: 150 };
+            window.addEventListener('mousemove', event => {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = event.clientX - rect.left;
+                mouse.y = event.clientY - rect.top;
             });
+            window.addEventListener('mouseout', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+
+            const skillNames = ['Power BI', 'Excel', 'Tableau', 'SQL', 'Agile', 'UAT', 'Financial Modeling'];
+            let particlesArray = [];
+
+            class Particle {
+                constructor(x, y, text) {
+                    this.x = x;
+                    this.y = y;
+                    this.text = text;
+                    this.size = 12;
+                    this.baseX = this.x;
+                    this.baseY = this.y;
+                    this.density = (Math.random() * 30) + 1;
+                }
+                draw() {
+                    ctx.fillStyle = 'rgba(0, 191, 255, 0.8)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.fillStyle = '#EAEAEA';
+                    ctx.font = '16px Inter';
+                    ctx.fillText(this.text, this.x + 10, this.y + 5);
+                }
+                update() {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let maxDistance = mouse.radius;
+                    let force = (maxDistance - distance) / maxDistance;
+                    let directionX = forceDirectionX * force * this.density;
+                    let directionY = forceDirectionY * force * this.density;
+
+                    if (distance < mouse.radius) {
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    } else {
+                        if (this.x !== this.baseX) {
+                            let dx = this.x - this.baseX;
+                            this.x -= dx / 10;
+                        }
+                        if (this.y !== this.baseY) {
+                            let dy = this.y - this.baseY;
+                            this.y -= dy / 10;
+                        }
+                    }
+                }
+            }
+
+            function init() {
+                particlesArray = [];
+                for (let i = 0; i < skillNames.length; i++) {
+                    let x = Math.random() * (width - 200) + 100;
+                    let y = Math.random() * (height - 100) + 50;
+                    particlesArray.push(new Particle(x, y, skillNames[i]));
+                }
+            }
+
+            function animateSkills() {
+                ctx.clearRect(0, 0, width, height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].draw();
+                    particlesArray[i].update();
+                }
+                connect();
+                requestAnimationFrame(animateSkills);
+            }
+
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                                       ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                        if (distance < (width / 7) * (height / 7)) {
+                            opacityValue = 1 - (distance / 20000);
+                            ctx.strokeStyle = 'rgba(0, 191, 255,' + opacityValue + ')';
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+            
+            window.addEventListener('resize', () => {
+                width = skillsContainer.offsetWidth;
+                height = skillsContainer.offsetHeight;
+                canvas.width = width;
+                canvas.height = height;
+                init();
+            });
+
+            init();
+            animateSkills();
         });
     </script>
 </body>

@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dilip Choudhary | Futuristic Portfolio</title>
-    <meta name="description" content="A futuristic, interactive portfolio for Dilip Choudhary, showcasing skills in Business Analytics through cinematic animations and seamless storytelling.">
+    <title>Dilip Choudhary | A Cinematic Portfolio Experience</title>
+    <meta name="description" content="An ultra-futuristic, interactive portfolio for Dilip Choudhary, built as a cinematic digital gallery to showcase expertise in Business Analytics.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00BFFF;
-            --primary-dark: #009ACD;
             --background: #121212;
-            --background-alt: #1A1A1A;
+            --primary: #00BFFF;
+            --primary-glow: rgba(0, 191, 255, 0.5);
             --text: #EAEAEA;
             --text-light: #A0A0A0;
             --border: rgba(255, 255, 255, 0.1);
-            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --border-radius: 20px;
+            --transition-fast: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-slow: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,355 +29,432 @@
             overflow-x: hidden;
         }
 
-        .animated-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: linear-gradient(-45deg, #121212, #1A1A1A, #001F3F, #121212); background-size: 400% 400%; animation: gradientShift 20s ease infinite; }
-        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .three-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .scroll-container { perspective: 1000px; height: 100vh; overflow-y: auto; overflow-x: hidden; scroll-snap-type: y mandatory; }
+        .section {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            scroll-snap-align: start;
+            transform-style: preserve-3d;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .section { padding: 100px 0; position: relative; }
-        
-        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.5rem 0; transition: var(--transition); }
-        header.scrolled { background: rgba(18, 18, 18, 0.7); backdrop-filter: blur(10px); padding: 1rem 0; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 700; font-size: 1.8rem; text-decoration: none; color: var(--text); }
-        .nav-links a { margin: 0 1rem; text-decoration: none; color: var(--text-light); font-weight: 500; transition: var(--transition); }
-        .nav-links a:hover { color: var(--primary); }
+        /* Landing Scene */
+        #landing { flex-direction: column; }
+        .landing-content {
+            animation: fadeIn 2s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .landing-name {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            color: var(--text);
+            text-shadow: 0 0 15px var(--primary-glow), 0 0 30px var(--primary-glow);
+        }
+        .landing-tagline {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+            opacity: 0;
+            animation: slideUp 1s ease-out 1s forwards;
+        }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } from { transform: translateY(20px); } }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero-content-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .hero-image { width: 150px; height: 150px; border-radius: 50%; margin-bottom: 2rem; border: 4px solid var(--primary); box-shadow: 0 0 30px rgba(0, 191, 255, 0.5); }
-        .hero-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-        .hero-title { font-size: clamp(3rem, 7vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(0, 191, 255, 0.5); }
-        .hero-tagline { font-size: 1.5rem; color: var(--text-light); margin-bottom: 2.5rem; }
-        .hero-buttons { display: flex; gap: 1rem; }
-        .cta-button { background: var(--primary); color: #fff; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: var(--transition); display: inline-block; border: 1px solid transparent; }
-        .cta-button:hover { background: var(--primary-dark); transform: scale(1.05); }
-        .cta-button.secondary { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
-        .cta-button.secondary:hover { background: var(--primary); color: #fff; }
+        /* About Section */
+        .about-container { display: flex; align-items: center; justify-content: center; gap: 5rem; }
+        .about-image {
+            perspective: 800px;
+        }
+        .about-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 40px var(--primary-glow);
+            transition: transform 0.5s;
+        }
+        .about-text { max-width: 500px; text-align: left; }
+        .about-text h2 { font-size: 3rem; margin-bottom: 1rem; }
+        #typing-text { border-right: 2px solid var(--text-light); padding-right: 5px; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { border-color: transparent; } }
 
-        .about, .skills, .projects, .contact { opacity: 0; transform: translateY(50px); transition: opacity 1s, transform 1s; }
-        .about.visible, .skills.visible, .projects.visible, .contact.visible { opacity: 1; transform: translateY(0); }
+        /* Skills Section */
+        #skills-canvas-3d { width: 100%; height: 100%; cursor: grab; }
+        .skill-tooltip {
+            position: fixed;
+            background: rgba(0,0,0,0.8);
+            color: var(--text);
+            padding: 5px 10px;
+            border-radius: 5px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 999;
+        }
 
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 4px; background-color: var(--border); top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px; }
-        .timeline-item { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; }
-        .timeline-item.left { left: 0; }
-        .timeline-item.right { left: 50%; }
-        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -14px; background-color: var(--background); border: 4px solid var(--primary); top: 15px; border-radius: 50%; z-index: 1; box-shadow: 0 0 15px var(--primary); }
-        .timeline-item.right::after { left: -14px; }
-        .timeline-content { padding: 20px 30px; background-color: var(--background-alt); position: relative; border-radius: var(--border-radius); border: 1px solid var(--border); }
-        .timeline-content h3 { color: var(--primary); }
-        .timeline-icon { position: absolute; top: 12px; font-size: 1.5rem; color: var(--primary); }
-        .timeline-item.left .timeline-icon { right: 50px; }
-        .timeline-item.right .timeline-icon { left: 50px; }
+        /* Projects Section */
+        .projects-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        .projects-container::-webkit-scrollbar { display: none; }
+        .project-panel {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); }
+        .project-content { z-index: 1; }
 
+        /* Contact Section */
+        .contact-form { width: 100%; max-width: 600px; }
+        .chat-bubble {
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition-slow);
+        }
+        .chat-bubble.visible { opacity: 1; transform: translateY(0); }
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--background-alt);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        .form-input:focus { border-color: var(--primary); outline: none; }
+        .submit-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        .submit-btn:hover { background: var(--primary-dark); transform: scale(1.05); }
 
-        .skills-graph { height: 500px; position: relative; cursor: grab; }
-        #skills-canvas { display: block; width: 100%; height: 100%; }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .project-card { background: var(--background-alt); border-radius: var(--border-radius); overflow: hidden; transition: var(--transition); border: 1px solid var(--border); }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 0 30px rgba(0, 191, 255, 0.3); }
-        .project-thumbnail { height: 200px; background-size: cover; background-position: center; }
-        .project-content { padding: 1.5rem; }
-
-        .contact-form .form-group { margin-bottom: 1.5rem; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 1rem; background: var(--background-alt); border: 1px solid var(--border); color: var(--text); border-radius: 10px; transition: var(--transition); }
-        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--primary); box-shadow: 0 0 10px var(--primary); outline: none; }
+        /* Footer */
+        footer { padding: 2rem 0; text-align: center; }
+        .footer-links a { color: var(--text-light); margin: 0 1rem; text-decoration: none; transition: var(--transition-fast); }
+        .footer-links a:hover { color: var(--primary); }
     </style>
 </head>
 <body>
-    <div class="animated-bg"></div>
-    <div id="three-bg" class="three-bg"></div>
 
-    <header id="header">
-        <div class="container nav-container">
-            <a href="#" class="logo">DC</a>
-            <nav class="nav-links">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="resume.pdf" target="_blank">Resume</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
+    <div id="particle-canvas"></div>
+    <div class="scroll-container">
+        <section id="landing" class="section">
+            <div class="landing-content">
+                <h1 class="landing-name">Dilip Choudhary</h1>
+                <p class="landing-tagline">Crafting experiences, not just dashboards.</p>
+            </div>
+            <div class="scroll-indicator">Scroll to Explore</div>
+        </section>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content-wrapper">
-                <div class="hero-image">
-                    <img src="Image/Profile.JPG" alt="Dilip Choudhary">
+        <section id="about" class="section">
+            <div class="container about-container">
+                <div class="about-image">
+                    <img src="Image/Profile.JPG" alt="Dilip Choudhary" class="about-img">
                 </div>
-                <h1 class="hero-title">Transforming Data into Decisions</h1>
-                <p class="hero-tagline">One Insight at a Time.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="cta-button">View My Work</a>
-                    <a href="resume.pdf" target="_blank" class="cta-button secondary">View Resume</a>
+                <div class="about-text">
+                    <h2>My Story</h2>
+                    <p id="typing-text"></p>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="section about">
+        <section id="skills" class="section">
+            <div class="container" style="flex-direction:column;">
+                <h2>Skills Universe</h2>
+                <p>Hover & Interact</p>
+                <div id="skills-canvas-3d" style="width: 80vw; height: 80vh;"></div>
+                <div class="skill-tooltip" id="skillTooltip"></div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="projects-container">
+                <div class="project-panel" style="background-image: url('Image/P3ABC/1.png');">
+                    <div class="project-overlay"></div>
+                    <div class="project-content">
+                        <h2>Customer Payment & Revenue Insights</h2>
+                        <p>Power BI | Excel | DAX</p>
+                    </div>
+                </div>
+                <div class="project-panel" style="background-image: url('Image/Projectec/1.png');">
+                    <div class="project-overlay"></div>
+                    <div class="project-content">
+                        <h2>E-Commerce Sales & Order Insights</h2>
+                        <p>Power BI | Power Query | Excel</p>
+                    </div>
+                </div>
+                <div class="project-panel" style="background-image: url('Image/Projectcrypto/1.png');">
+                     <div class="project-overlay"></div>
+                    <div class="project-content">
+                        <h2>Crypto Market Risk & Sentiment</h2>
+                        <p>Power BI | Excel | DAX</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3rem; margin-bottom: 4rem;">My Journey</h2>
-                <div class="timeline">
-                    <div class="timeline-item left">
-                        <div class="timeline-content">
-                             <i class="fas fa-graduation-cap timeline-icon"></i>
-                            <h3>2021-2023</h3>
-                            <p>Completed my intermediate education at Siva Sivani Junior College, laying the foundation for my analytical journey.</p>
-                        </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="chat-bubble">
+                        <label>Hey there 👋 What's your name?</label>
+                        <input type="text" class="form-input" required>
                     </div>
-                    <div class="timeline-item right">
-                        <div class="timeline-content">
-                            <i class="fas fa-chart-line timeline-icon"></i>
-                            <h3>2023-2026</h3>
-                            <p>Pursuing a Bachelor of Business Analytics at Avinash College of Commerce, specializing in Finance.</p>
-                        </div>
+                    <div class="chat-bubble">
+                        <label>Great, and your email?</label>
+                        <input type="email" class="form-input" required>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section skills">
-            <div class="container">
-                <h2 style="text-align: center; font-size: 3rem; margin-bottom: 2rem;">Skills Network</h2>
-                <div id="skills-graph" class="skills-graph">
-                    <canvas id="skills-canvas"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section projects">
-            <div class="container">
-                <h2 style="text-align: center; font-size: 3rem; margin-bottom: 4rem;">Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-thumbnail" style="background-image: url('Image/P3ABC/1.png');"></div>
-                        <div class="project-content">
-                            <h3>Customer Payment & Revenue Insights</h3>
-                            <p>Tools: Power BI, Excel, DAX</p>
-                        </div>
+                    <div class="chat-bubble">
+                        <label>Tell me about the project or role you have in mind.</label>
+                        <textarea rows="4" class="form-input" required></textarea>
                     </div>
-                    <div class="project-card">
-                        <div class="project-thumbnail" style="background-image: url('Image/Projectec/1.png');"></div>
-                        <div class="project-content">
-                            <h3>E-Commerce Sales & Order Insights</h3>
-                            <p>Tools: Power BI, Power Query, Excel</p>
-                        </div>
+                     <div class="chat-bubble">
+                        <button type="submit" class="submit-btn">Shall I reach out to you soon?</button>
                     </div>
-                    <div class="project-card">
-                        <div class="project-thumbnail" style="background-image: url('Image/Projectcrypto/1.png');"></div>
-                        <div class="project-content">
-                            <h3>Crypto Market Risk & Sentiment</h3>
-                            <p>Tools: Power BI, Excel, DAX</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section contact">
-            <div class="container" style="max-width: 800px; text-align: center;">
-                <h2 style="font-size: 3rem; margin-bottom: 2rem;">Let's Connect</h2>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Hey, what’s your name?" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Cool, and your email?" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="5" placeholder="What can I help you with?" required></textarea>
-                    </div>
-                    <button type="submit" class="cta-button">Send Message</button>
                 </form>
             </div>
         </section>
-    </main>
-    
+
+        <footer class="section" style="height: auto; min-height: 20vh;">
+             <div class="container">
+                <div class="footer-links">
+                    <a href="resume.pdf" target="_blank">Resume</a>
+                    <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank">LinkedIn</a>
+                    <a href="mailto:choudharydilip947@gmail.com">Email</a>
+                </div>
+                 <p style="margin-top: 1rem; color: var(--text-light);">"Turning data into stories that drive decisions."</p>
+            </div>
+        </footer>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Header scroll effect
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                header.classList.toggle('scrolled', window.scrollY > 50);
-            });
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Particle Background ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-            // Section visibility animations
-            const sections = document.querySelectorAll('.section');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            sections.forEach(section => observer.observe(section));
+        let particlesArray;
+        const mouse = { x: null, y: null, radius: 100 };
 
-            // Three.js background
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('three-bg').appendChild(renderer.domElement);
-
-            const particlesGeometry = new THREE.BufferGeometry;
-            const particlesCount = 5000;
-            const posArray = new Float32Array(particlesCount * 3);
-            for (let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 10;
-            }
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const particlesMaterial = new THREE.PointsMaterial({ size: 0.005, color: 0x00BFFF });
-            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
-            camera.position.z = 5;
-
-            document.addEventListener('mousemove', (event) => {
-                const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-                const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-                particlesMesh.rotation.y = mouseX * 0.5;
-                particlesMesh.rotation.x = mouseY * 0.5;
-            });
-
-            const animateThree = function () {
-                requestAnimationFrame(animateThree);
-                particlesMesh.rotation.y += 0.0001;
-                renderer.render(scene, camera);
-            };
-            animateThree();
-            
-            window.addEventListener('resize', () => {
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-            });
-
-            // Interactive Skills Graph
-            const canvas = document.getElementById('skills-canvas');
-            const ctx = canvas.getContext('2d');
-            const skillsContainer = document.getElementById('skills-graph');
-
-            let width = skillsContainer.offsetWidth;
-            let height = skillsContainer.offsetHeight;
-            canvas.width = width;
-            canvas.height = height;
-
-            const mouse = { x: null, y: null, radius: 150 };
-            window.addEventListener('mousemove', event => {
-                const rect = canvas.getBoundingClientRect();
-                mouse.x = event.clientX - rect.left;
-                mouse.y = event.clientY - rect.top;
-            });
-            window.addEventListener('mouseout', () => {
-                mouse.x = null;
-                mouse.y = null;
-            });
-
-
-            const skillNames = ['Power BI', 'Excel', 'Tableau', 'SQL', 'Agile', 'UAT', 'Financial Modeling'];
-            let particlesArray = [];
-
-            class Particle {
-                constructor(x, y, text) {
-                    this.x = x;
-                    this.y = y;
-                    this.text = text;
-                    this.size = 12;
-                    this.baseX = this.x;
-                    this.baseY = this.y;
-                    this.density = (Math.random() * 30) + 1;
-                }
-                draw() {
-                    ctx.fillStyle = 'rgba(0, 191, 255, 0.8)';
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
-                    ctx.closePath();
-                    ctx.fill();
-
-                    ctx.fillStyle = '#EAEAEA';
-                    ctx.font = '16px Inter';
-                    ctx.fillText(this.text, this.x + 10, this.y + 5);
-                }
-                update() {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    let forceDirectionX = dx / distance;
-                    let forceDirectionY = dy / distance;
-                    let maxDistance = mouse.radius;
-                    let force = (maxDistance - distance) / maxDistance;
-                    let directionX = forceDirectionX * force * this.density;
-                    let directionY = forceDirectionY * force * this.density;
-
-                    if (distance < mouse.radius) {
-                        this.x -= directionX;
-                        this.y -= directionY;
-                    } else {
-                        if (this.x !== this.baseX) {
-                            let dx = this.x - this.baseX;
-                            this.x -= dx / 10;
-                        }
-                        if (this.y !== this.baseY) {
-                            let dy = this.y - this.baseY;
-                            this.y -= dy / 10;
-                        }
-                    }
-                }
-            }
-
-            function init() {
-                particlesArray = [];
-                for (let i = 0; i < skillNames.length; i++) {
-                    let x = Math.random() * (width - 200) + 100;
-                    let y = Math.random() * (height - 100) + 50;
-                    particlesArray.push(new Particle(x, y, skillNames[i]));
-                }
-            }
-
-            function animateSkills() {
-                ctx.clearRect(0, 0, width, height);
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].draw();
-                    particlesArray[i].update();
-                }
-                connect();
-                requestAnimationFrame(animateSkills);
-            }
-
-            function connect() {
-                let opacityValue = 1;
-                for (let a = 0; a < particlesArray.length; a++) {
-                    for (let b = a; b < particlesArray.length; b++) {
-                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
-                                       ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                        if (distance < (width / 7) * (height / 7)) {
-                            opacityValue = 1 - (distance / 20000);
-                            ctx.strokeStyle = 'rgba(0, 191, 255,' + opacityValue + ')';
-                            ctx.lineWidth = 1;
-                            ctx.beginPath();
-                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-            
-            window.addEventListener('resize', () => {
-                width = skillsContainer.offsetWidth;
-                height = skillsContainer.offsetHeight;
-                canvas.width = width;
-                canvas.height = height;
-                init();
-            });
-
-            init();
-            animateSkills();
+        canvas.addEventListener('mousemove', e => {
+            mouse.x = e.x;
+            mouse.y = e.y;
         });
+        canvas.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor(x, y, dirX, dirY, size, color) {
+                this.x = x; this.y = y; this.dirX = dirX; this.dirY = dirY;
+                this.size = size; this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary-glow');
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.dirX = -this.dirX;
+                if (this.y > canvas.height || this.y < 0) this.dirY = -this.dirY;
+
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius) {
+                    this.x += this.dirX * 3;
+                    this.y += this.dirY * 3;
+                } else {
+                    this.x += this.dirX;
+                    this.y += this.dirY;
+                }
+                this.draw();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numParticles; i++) {
+                let size = Math.random() * 2 + 1;
+                let x = Math.random() * (innerWidth - size * 2);
+                let y = Math.random() * (innerHeight - size * 2);
+                let dirX = (Math.random() * .4) - .2;
+                let dirY = (Math.random() * .4) - .2;
+                particlesArray.push(new Particle(x, y, dirX, dirY, size));
+            }
+        }
+
+        function animateParticles() {
+            requestAnimationFrame(animateParticles);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+        }
+        initParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            initParticles();
+        });
+
+        // --- About Section Typing Animation ---
+        const typingText = document.getElementById('typing-text');
+        const text = "A Business Analytics student passionate about turning raw data into compelling stories. I thrive on uncovering insights that drive strategic decisions and create tangible impact.";
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                typingText.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        const aboutSection = document.getElementById('about');
+        const aboutObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                setTimeout(typeWriter, 500);
+                aboutObserver.disconnect();
+            }
+        }, { threshold: 0.5 });
+        aboutObserver.observe(aboutSection);
+
+        // --- 3D Skills Sphere ---
+        const skillsContainer = document.getElementById('skills-canvas-3d');
+        const tooltip = document.getElementById('skillTooltip');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, skillsContainer.clientWidth / skillsContainer.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(skillsContainer.clientWidth, skillsContainer.clientHeight);
+        skillsContainer.appendChild(renderer.domElement);
+
+        const skillPoints = ['Power BI', 'Excel', 'Tableau', 'SQL', 'Agile', 'UAT', 'Financial Modeling'];
+        const sphereGeometry = new THREE.SphereGeometry(3, 32, 32);
+        const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x00BFFF, wireframe: true, transparent: true, opacity: 0.1 });
+        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        scene.add(sphere);
+
+        const sprites = skillPoints.map(text => {
+            const canvas = document.createElement('canvas');
+            canvas.width = 256; canvas.height = 64;
+            const context = canvas.getContext('2d');
+            context.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary');
+            context.font = '24px Inter';
+            context.textAlign = 'center';
+            context.fillText(text, 128, 32);
+            const texture = new THREE.CanvasTexture(canvas);
+            const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+            const sprite = new THREE.Sprite(spriteMaterial);
+            sprite.scale.set(2, 0.5, 1);
+            sprite.name = text;
+            
+            const phi = Math.acos(-1 + (2 * Math.random()));
+            const theta = Math.sqrt(4 * Math.PI) * Math.random();
+            sprite.position.setFromSphericalCoords(3.5, phi, theta);
+            scene.add(sprite);
+            return sprite;
+        });
+        
+        camera.position.z = 10;
+        
+        const raycaster = new THREE.Raycaster();
+        const mouse2D = new THREE.Vector2();
+        let intersected;
+
+        skillsContainer.addEventListener('mousemove', (event) => {
+            const rect = renderer.domElement.getBoundingClientRect();
+            mouse2D.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            mouse2D.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+            
+            tooltip.style.left = event.clientX + 15 + 'px';
+            tooltip.style.top = event.clientY + 15 + 'px';
+        });
+
+        function animateSkills3D() {
+            requestAnimationFrame(animateSkills3D);
+            sphere.rotation.y += 0.0005;
+            
+            raycaster.setFromCamera(mouse2D, camera);
+            const intersects = raycaster.intersectObjects(sprites);
+
+            if (intersects.length > 0) {
+                if (intersected != intersects[0].object) {
+                    if (intersected) intersected.material.color.set(0xffffff);
+                    intersected = intersects[0].object;
+                    intersected.material.color.set(0x00BFFF);
+                    tooltip.textContent = intersected.name;
+                    tooltip.style.opacity = 1;
+                }
+            } else {
+                if (intersected) intersected.material.color.set(0xffffff);
+                intersected = null;
+                tooltip.style.opacity = 0;
+            }
+
+            renderer.render(scene, camera);
+        }
+        animateSkills3D();
+        
+        // --- Conversational Contact Form ---
+        const formBubbles = document.querySelectorAll('.chat-bubble');
+        const formObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 300);
+                }
+            });
+        }, { threshold: 0.8 });
+
+        formBubbles.forEach(bubble => {
+            formObserver.observe(bubble);
+        });
+
+    });
     </script>
 </body>
 </html>

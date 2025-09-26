@@ -1,500 +1,823 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dilip Choudhary | A Cinematic Portfolio Experience</title>
-    <meta name="description" content="An award-winning, cinematic portfolio for Dilip Choudhary, showcasing data analytics expertise through an immersive, luxury digital experience.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --background: #121212;
-            --primary: #00BFFF;
-            --primary-glow: rgba(0, 191, 255, 0.3);
-            --text: #EAEAEA;
-            --text-light: #A0A0A0;
-            --border: rgba(255, 255, 255, 0.1);
-            --card-bg: rgba(26, 26, 26, 0.5);
-            --transition-fast: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-slow: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dilip Choudhary — Portfolio (Award Shot)</title>
+<meta name="description" content="A cinematic single-page portfolio — immersive, interactive, and crafted for maximum impact." />
+<style>
+  /* ===========================
+     Variables & Base
+     =========================== */
+  :root{
+    --bg:#0b0d10;
+    --panel:#0f1316;
+    --glass: rgba(255,255,255,0.04);
+    --accent: #00d4ff;
+    --accent2: #8aff6e;
+    --muted: rgba(255,255,255,0.55);
+    --glass-strong: rgba(255,255,255,0.06);
+    --radius: 14px;
+    --maxw: 1200px;
+    --ease: cubic-bezier(.2,.9,.25,1);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(1200px 800px at 10% 10%, rgba(0,30,40,0.08), transparent),
+                linear-gradient(180deg, rgba(2,6,10,1) 0%, var(--bg) 100%);
+    color: #e8eef6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--text);
-            overflow-x: hidden;
-        }
+  /* ===========================
+     Layout / Containers
+     =========================== */
+  .wrap{
+    width:100%;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 20px;
+  }
 
-        #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .main-container { width: 100%; }
+  /* ===========================
+     Canvas Particles (hero-bg)
+     =========================== */
+  canvas#bg-canvas{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    z-index:0;
+    pointer-events:none;
+    mix-blend-mode:screen;
+    opacity:0.9;
+  }
 
-        /* --- Hero & Sticky Profile --- */
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            font-weight: 800;
-            color: var(--text);
-            text-shadow: 0 0 15px var(--primary-glow), 0 0 30px var(--primary-glow);
-            opacity: 0;
-            animation: fadeIn 2s 0.5s forwards;
-        }
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            margin: 1rem 0 2rem;
-            opacity: 0;
-            animation: fadeIn 2s 1s forwards;
-        }
-        .hero-buttons {
-            opacity: 0;
-            animation: fadeIn 2s 1.5s forwards;
-        }
-        .cta-btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition-fast);
-            margin: 0 0.5rem;
-        }
-        .cta-btn.primary { background: var(--primary); color: #fff; }
-        .cta-btn.secondary { border: 1px solid var(--primary); color: var(--primary); }
-        .cta-btn:hover { transform: scale(1.05); }
+  /* ===========================
+     Hero
+     =========================== */
+  header{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:2;
+    padding:40px 0;
+  }
+  .hero-inner{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr;
+    place-items:center;
+    gap:20px;
+    text-align:center;
+  }
 
-        .scroll-indicator { position: absolute; bottom: 30px; color: var(--text-light); animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+  .profile-wrap{
+    position:relative;
+    width:250px;height:250px;
+    border-radius:50%;
+    margin:0 auto 18px;
+    display:flex;
+    align-items:center;justify-content:center;
+    transform-origin:center;
+    transition:transform 600ms var(--ease);
+    box-shadow: 0 6px 40px rgba(0,0,0,0.6), inset 0 0 40px rgba(0,0,0,0.45);
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.04);
+    backdrop-filter: blur(6px) saturate(1.2);
+  }
+  .profile-wrap img{
+    width:92%;height:92%;object-fit:cover;border-radius:50%;display:block;
+    border: 4px solid rgba(255,255,255,0.05);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  }
+  h1{
+    margin:0;font-size: clamp(28px,4.5vw,44px); letter-spacing: -0.6px;
+    font-weight:700;
+    text-shadow: 0 6px 30px rgba(0,0,0,0.7);
+  }
+  .tagline{
+    color:var(--muted); margin-top:6px; font-size: clamp(14px,2vw,18px);
+  }
+  .hero-cta{
+    margin-top:18px; display:flex;gap:12px;justify-content:center;align-items:center;
+  }
+  .btn{
+    padding:10px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    cursor:pointer;color:#eaffff;font-weight:600; font-size:14px;
+    transition: transform 220ms var(--ease), box-shadow 220ms;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+  }
+  .btn:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+  .btn.ghost{
+    background:transparent;color:var(--muted);
+    border:1px solid rgba(255,255,255,0.04);
+  }
 
-        .content-wrapper { position: relative; z-index: 2; background-color: var(--background); }
-        .sticky-container { display: flex; position: relative; min-height: 100vh; }
-        .sticky-profile {
-            width: 50%;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .profile-card {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background-image: url('Image/Profile.JPG');
-            background-size: cover;
-            border: 5px solid var(--primary);
-            box-shadow: 0 0 50px var(--primary-glow);
-            transition: transform 0.5s ease-out;
-        }
-        .scrolling-content { width: 50%; padding: 4rem 2rem; }
-        .content-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+  .scroll-indicator{
+    margin-top:34px; opacity:0.9; animation: pulse 1.8s infinite;
+    display:block;
+    color:var(--muted); font-size:13px;
+  }
+  @keyframes pulse{0%{transform:translateY(0)}50%{transform:translateY(8px)}100%{transform:translateY(0)}}
 
-        /* --- About Section / Timeline --- */
-        #typing-text { min-height: 150px; }
-        .timeline { margin-top: 2rem; }
-        .timeline-item { margin-bottom: 1.5rem; }
-        .timeline-item h3 { color: var(--primary); }
+  /* ===========================
+     Sticky center effect (profile stays visually centered)
+     =========================== */
+  .main{
+    position:relative;
+    z-index:1;
+  }
+  .center-sticky{
+    position:sticky;
+    top:calc(6vh);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
 
-        /* --- Skills Section --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-        }
-        .skill-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            border-radius: 15px;
-            transition: var(--transition-fast);
-        }
-        .skill-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+  /* ===========================
+     About/Timeline section
+     =========================== */
+  section{
+    padding:80px 0;
+    position:relative;
+  }
+  .two-col{
+    display:grid;
+    grid-template-columns: 360px 1fr;
+    gap:32px;
+    align-items:start;
+  }
+  .about-card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    padding:22px;border-radius:16px;border:1px solid rgba(255,255,255,0.04);
+  }
+  .about-card h3{margin:0 0 10px 0}
+  .about-text{color:var(--muted); line-height:1.6}
 
-        /* --- Projects Section --- */
-        .projects-section {
-            height: 100vh;
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-        }
-        .project-panel {
-            flex: 0 0 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            scroll-snap-align: start;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-        }
-        .project-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); }
-        .project-content { z-index: 1; padding: 2rem; }
-        .project-content h2 { font-size: 3rem; }
-        .view-project-btn { margin-top: 1rem; border: 1px solid var(--primary); background: transparent; color: var(--primary); padding: 0.8rem 1.8rem; border-radius: 50px; cursor: pointer; transition: var(--transition-fast); }
-        .view-project-btn:hover { background: var(--primary); color: #fff; }
+  .timeline{
+    margin-top:18px; display:flex; flex-direction:column; gap:14px;
+  }
+  .timeline .item{
+    display:flex; gap:14px; align-items:flex-start;
+    opacity:0; transform: translateY(10px);
+    transition: all 500ms var(--ease);
+  }
+  .timeline .item.active{ opacity:1; transform:none }
 
-        /* --- Project Modal --- */
-        .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
-            z-index: 1000; display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; transition: opacity 0.5s, visibility 0.5s;
-        }
-        .modal.visible { opacity: 1; visibility: visible; }
-        .modal-content {
-            background: var(--background);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            width: 90%; max-width: 900px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 2rem;
-            transform: scale(0.9);
-            transition: transform 0.5s;
-        }
-        .modal.visible .modal-content { transform: scale(1); }
-        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: var(--text); cursor: pointer; }
-        .modal-body img { max-width: 100%; border-radius: 10px; margin: 1rem 0; }
-        
-        /* --- Contact Section --- */
-        .contact-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
-        .contact-form .form-group { margin-bottom: 1.5rem; opacity: 0; transform: translateY(20px); transition: 1s; }
-        .contact-form .form-group.visible { opacity: 1; transform: translateY(0); }
-        .form-input { width: 100%; padding: 1rem; background: transparent; border: 1px solid var(--border); border-radius: 10px; color: var(--text); }
-        .submit-btn { position: relative; }
+  .timeline .dot{
+    width:14px;height:14px;border-radius:50%; background:linear-gradient(90deg,var(--accent),var(--accent2));
+    box-shadow: 0 8px 24px rgba(0,180,200,0.08);
+    flex:0 0 18px;margin-top:6px;
+  }
 
-        /* --- Footer --- */
-        footer { text-align: center; padding: 4rem 2rem; }
-        .footer-links a { margin: 0 1rem; color: var(--text-light); text-decoration: none; }
+  /* ===========================
+     Skills section
+     =========================== */
+  .skills-grid{
+    display:flex;gap:20px;flex-wrap:wrap;justify-content:center;
+  }
+  .skill-node{
+    min-width:120px;max-width:180px;padding:18px;border-radius:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    border:1px solid rgba(255,255,255,0.04);
+    text-align:center; cursor:pointer; transition:transform 250ms var(--ease);
+  }
+  .skill-node:hover{ transform:translateY(-8px) scale(1.02) }
+  .skill-title{font-weight:700;margin:6px 0}
+  .skill-level{color:var(--muted);font-size:13px}
 
-        /* --- Animations --- */
-        @keyframes fadeIn { to { opacity: 1; } }
+  /* ===========================
+     Projects horizontal gallery
+     =========================== */
+  .projects-wrap{
+    overflow:hidden;padding:30px 0;
+  }
+  .projects-strip{
+    display:flex;gap:24px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:12px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .project{
+    min-width:100%;
+    height:60vh;
+    flex:0 0 100%;
+    position:relative;
+    scroll-snap-align:center;
+    border-radius:16px; overflow:hidden;
+    background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.65));
+    display:flex; align-items:flex-end; padding:28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .project .meta{max-width:620px}
+  .project h3{margin:0 0 6px 0; font-size: clamp(20px,3.2vw,32px)}
+  .project p{margin:0;color:var(--muted)}
+  .project .thumb{
+    position:absolute; inset:0; background-size:cover;background-position:center; filter:brightness(0.45) contrast(1.05);
+    transform: scale(1.06); transition: transform 800ms var(--ease);
+  }
+  .project:hover .thumb{ transform: scale(1.02) }
 
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .sticky-container { flex-direction: column; }
-            .sticky-profile { position: relative; width: 100%; height: auto; padding: 4rem 0; }
-            .scrolling-content { width: 100%; }
-        }
-    </style>
+  /* project controls */
+  .projects-controls{display:flex; justify-content:center; gap:8px; margin-top:12px}
+  .dot-btn{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.02); cursor:pointer}
+  .dot-btn.active{background:linear-gradient(90deg,var(--accent),var(--accent2)); box-shadow: 0 8px 26px rgba(0,200,255,0.08)}
+
+  /* ===========================
+     Modal
+     =========================== */
+  .modal{
+    position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+    z-index:9999; backdrop-filter: blur(6px);
+  }
+  .modal.active{ display:flex }
+  .modal-card{
+    width:92%; max-width:980px; max-height:86vh; overflow:auto;
+    background: linear-gradient(180deg, rgba(10,14,18,0.96), rgba(6,10,12,0.96));
+    border-radius:18px; padding:28px; border:1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 40px 120px rgba(0,0,0,0.8);
+  }
+  .modal-grid{ display:grid; grid-template-columns: 1fr 380px; gap:20px}
+  .modal-grid img{width:100%;border-radius:10px; display:block}
+
+  /* ===========================
+     Contact (conversational)
+     =========================== */
+  .contact-box{
+    padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    border:1px solid rgba(255,255,255,0.04); max-width:720px; margin:0 auto;
+  }
+  .conv-flow{display:flex;flex-direction:column;gap:12px}
+  .conv-row{display:flex; gap:12px; align-items:center}
+  .conv-row .prompt{min-width:160px; color:var(--muted)}
+  .input{
+    flex:1; padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);
+    background:transparent;color:inherit;
+  }
+  .submit-success{display:none;color:var(--accent2); font-weight:700; margin-top:10px}
+
+  /* ===========================
+     Footer
+     =========================== */
+  footer{padding:28px 0; text-align:center; color:var(--muted); font-size:13px}
+
+  /* ===========================
+     Responsive rules
+     =========================== */
+  @media (max-width:920px){
+    .two-col{grid-template-columns: 1fr; }
+    .profile-wrap{ width:190px;height:190px;}
+    .project{ height:52vh}
+    .modal-grid{ grid-template-columns:1fr }
+  }
+  @media (max-width:520px){
+    .profile-wrap{ width:140px;height:140px}
+    header{padding-top:24px;padding-bottom:24px}
+    .hero-inner{padding:8px}
+    .project{ height:48vh }
+    .skill-node{ min-width:80px; padding:12px }
+  }
+
+  /* small accessibility / focus states */
+  .btn:focus, .input:focus, .dot-btn:focus{outline:2px solid rgba(0,200,255,0.06);outline-offset:2px}
+</style>
 </head>
 <body>
 
-    <canvas id="particle-canvas"></canvas>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-    <div class="main-container">
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1>Dilip Choudhary</h1>
-                <p>Crafting experiences, not just dashboards.</p>
-                <div class="hero-buttons">
-                    <a href="#about" class="cta-btn primary">Explore</a>
-                    <a href="resume.pdf" target="_blank" class="cta-btn secondary">Resume</a>
-                </div>
-            </div>
-            <div class="scroll-indicator">▼</div>
-        </section>
+<main class="main">
 
-        <div class="content-wrapper">
-            <div id="about" class="sticky-container">
-                <div class="sticky-profile">
-                    <div class="profile-card" id="profileCard"></div>
-                </div>
-                <div class="scrolling-content">
-                    <section class="content-section">
-                        <h2>My Story</h2>
-                        <p id="typing-text"></p>
-                    </section>
-                    <section class="content-section">
-                        <h2>Timeline</h2>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <h3>2021-2023: Foundation</h3>
-                                <p>Completed my intermediate education, sparking an interest in analytical thinking.</p>
-                            </div>
-                            <div class="timeline-item">
-                                <h3>2023-Present: Specialization</h3>
-                                <p>Pursuing a Bachelor of Business Analytics with a focus on Finance, diving deep into data-driven strategies.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="skills" class="content-section">
-                        <h2>Skills</h2>
-                        <div class="skills-grid">
-                            <div class="skill-card"><h3>Power BI</h3><p>DAX, Power Query</p></div>
-                            <div class="skill-card"><h3>Excel</h3><p>Advanced Modeling</p></div>
-                            <div class="skill-card"><h3>Tableau</h3><p>Visualizations</p></div>
-                            <div class="skill-card"><h3>SQL</h3><p>Basic Queries</p></div>
-                            <div class="skill-card"><h3>Agile</h3><p>Sprint Planning</p></div>
-                            <div class="skill-card"><h3>Business Analysis</h3><p>UAT, BRD</p></div>
-                        </div>
-                    </section>
-                </div>
-            </div>
+  <!-- HERO -->
+  <header>
+    <div class="wrap hero-inner" role="banner">
 
-            <section id="projects" class="projects-section">
-                <div class="project-panel" style="background-image: url('Image/P3ABC/1.png');">
-                    <div class="project-overlay"></div>
-                    <div class="project-content">
-                        <h2>Customer Payment & Revenue Insights</h2>
-                        <button class="view-project-btn" data-project="p1">View Case Study</button>
-                    </div>
-                </div>
-                <div class="project-panel" style="background-image: url('Image/Projectec/1.png');">
-                    <div class="project-overlay"></div>
-                    <div class="project-content">
-                        <h2>E-Commerce Sales Insights</h2>
-                        <button class="view-project-btn" data-project="p2">View Case Study</button>
-                    </div>
-                </div>
-                <div class="project-panel" style="background-image: url('Image/Projectcrypto/1.png');">
-                    <div class="project-overlay"></div>
-                    <div class="project-content">
-                        <h2>Crypto Market Risk Dashboard</h2>
-                        <button class="view-project-btn" data-project="p3">View Case Study</button>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="contact" class="contact-section">
-                 <div class="contact-form-container">
-                    <h2>Let's Connect</h2>
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-group"><input type="text" name="name" class="form-input" placeholder="What's your name?" required></div>
-                        <div class="form-group"><input type="email" name="email" class="form-input" placeholder="And your email?" required></div>
-                        <div class="form-group"><textarea name="message" class="form-input" placeholder="What's on your mind?" rows="4" required></textarea></div>
-                        <div class="form-group"><button type="submit" class="cta-btn primary submit-btn">Send Message</button></div>
-                    </form>
-                 </div>
-            </section>
-
-            <footer>
-                <div class="footer-links">
-                    <a href="https://linkedin.com/in/dilip-choudhary-analytics" target="_blank">LinkedIn</a>
-                    <a href="mailto:choudharydilip947@gmail.com">Email</a>
-                    <a href="resume.pdf" target="_blank">Resume</a>
-                </div>
-                <p style="margin-top:1rem; color:var(--text-light);">"Turning data into stories that drive decisions."</p>
-            </footer>
+      <div class="center-sticky" style="flex-direction:column;">
+        <div class="profile-wrap" id="profileWrap" title="Dilip Choudhary — Profile">
+          <!-- put your profile here at Image/Profile.JPG -->
+          <img src="Image/Profile.JPG" alt="Profile photo of Dilip Choudhary" id="heroProfile">
         </div>
-    </div>
-    
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-             <span class="modal-close">&times;</span>
-            <div class="modal-body" id="modalBody">
-                <!-- Content will be injected by JS -->
-            </div>
+
+        <h1 id="heroName">Dilip Choudhary</h1>
+        <div class="tagline">Crafting data stories that build businesses • Business Analytics • Power BI • Excel • Python</div>
+
+        <div class="hero-cta">
+          <button class="btn" id="exploreBtn">Explore</button>
+          <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
         </div>
+
+        <div class="scroll-indicator" id="scrollInd">Scroll to explore ⌄</div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ABOUT / TIMELINE -->
+  <section id="about" class="wrap">
+    <div class="two-col">
+      <div class="about-card" aria-labelledby="aboutTitle">
+        <h3 id="aboutTitle">About — Quick Story</h3>
+        <p class="about-text">
+          I'm a business analytics fresher with a passion for turning messy data into useful decisions. I build dashboards, automate reporting, and find insights that matter.
+          I prefer clean, minimal storytelling and hands-on data work — Excel, Power Query, Power BI, SQL, Python.
+        </p>
+
+        <div class="timeline" id="timeline">
+          <div class="item" data-year="2021">
+            <div class="dot"></div>
+            <div>
+              <strong>Started learning analytics</strong>
+              <div class="muted">Excel → Power Query → Power BI.</div>
+            </div>
+          </div>
+          <div class="item" data-year="2023">
+            <div class="dot"></div>
+            <div>
+              <strong>First major project</strong>
+              <div class="muted">Revenue insights dashboard for e-commerce demo — automated invoicing and DSO tracking.</div>
+            </div>
+          </div>
+          <div class="item" data-year="2024">
+            <div class="dot"></div>
+            <div>
+              <strong>Upskilling & Projects</strong>
+              <div class="muted">Started Python + SQL projects. Built cryptocurrency analysis demo.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="about-card" style="margin-bottom:18px;">
+          <h3>Signature</h3>
+          <p class="about-text">I believe data should be clear, fast, and actionable. I love building dashboards that leaders actually use — not just pretty charts.</p>
+        </div>
+
+        <div class="about-card">
+          <h3>Quick Facts</h3>
+          <ul style="margin:0;padding-left:18px;color:var(--muted)">
+            <li>Location: Hyderabad, India</li>
+            <li>Tools: Excel, Power BI, Power Query, Python, SQL</li>
+            <li>Goal: Financial independence → CFA → build global businesses</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="padding-top:10px;">
+    <div class="wrap">
+      <h2 style="margin:0 0 12px 0">Skills — Node Cluster</h2>
+      <p style="color:var(--muted); margin:0 0 22px 0;">Hover or tap nodes to view quick context and projects contributions.</p>
+
+      <div class="skills-grid" id="skillsGrid">
+        <!-- nodes will be inserted by JS for a lively effect -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects-wrap">
+    <div class="wrap">
+      <h2 style="margin:0 0 12px 0">Projects — Gallery</h2>
+      <p style="color:var(--muted); margin:0 0 18px 0;">Horizontal gallery — swipe/arrow to move. Click a panel to open case study.</p>
+
+      <div class="projects-strip" id="projectsStrip" role="list">
+        <!-- Project items (full-width) -->
+        <!-- Project: P3ABC -->
+        <article class="project" data-project="P3ABC" tabindex="0" role="listitem">
+          <div class="thumb" style="background-image:url('Image/P3ABC/1.png')"></div>
+          <div class="meta">
+            <h3>P3ABC — Revenue Insights (Amazon)</h3>
+            <p>Automated invoices and KPIs to fix cashflow. DSO trends, return analysis, and delivery partner impact.</p>
+            <div style="margin-top:12px;">
+              <button class="btn" data-open="P3ABC">Open Case Study</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project: Projectcrypto -->
+        <article class="project" data-project="Projectcrypto" tabindex="0" role="listitem">
+          <div class="thumb" style="background-image:url('Image/Projectcrypto/1.png')"></div>
+          <div class="meta">
+            <h3>Crypto Analysis — Momentum & Risk</h3>
+            <p>Exploratory analysis for crypto markets. Backtest visuals and risk heatmaps. Learning project with actionable insights.</p>
+            <div style="margin-top:12px;">
+              <button class="btn" data-open="Projectcrypto">Open Case Study</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project: Projectec -->
+        <article class="project" data-project="Projectec" tabindex="0" role="listitem">
+          <div class="thumb" style="background-image:url('Image/Projectec/1.png')"></div>
+          <div class="meta">
+            <h3>Electricity Consumption — Forecasting</h3>
+            <p>Time-series forecasting and anomaly detection. Scalable ETL and dashboard monitoring for operations teams.</p>
+            <div style="margin-top:12px;">
+              <button class="btn" data-open="Projectec">Open Case Study</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="projects-controls" id="projectDots" aria-hidden="false"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding-bottom:30px;">
+    <div class="wrap">
+      <h2 style="margin:0 0 10px 0">Let’s talk</h2>
+      <p style="color:var(--muted); margin:0 0 18px 0;">Short, simple, and human — talk to me like a person.</p>
+
+      <div class="contact-box">
+        <div class="conv-flow" id="convFlow">
+          <div class="conv-row">
+            <div class="prompt">Hey, what’s your name?</div>
+            <input class="input" id="nameInput" placeholder="Your name" />
+          </div>
+          <div class="conv-row" style="opacity:0;transform:translateY(6px)" data-step="email">
+            <div class="prompt">And your email?</div>
+            <input class="input" id="emailInput" placeholder="you@company.com" />
+          </div>
+          <div class="conv-row" style="opacity:0;transform:translateY(6px)" data-step="msg">
+            <div class="prompt">Tell me about the role/project</div>
+            <input class="input" id="msgInput" placeholder="Short description" />
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:10px;">
+            <button class="btn" id="sendBtn">Send</button>
+            <div style="flex:1"></div>
+            <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          </div>
+
+          <div class="submit-success" id="submitSuccess">Thanks — I’ll get back within 48 hours.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
+        <div style="font-weight:700">Dilip Choudhary</div>
+      </div>
+      <div>© <span id="year"></span> Dilip Choudhary — Built to be unforgettable.</div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- Modal for case study -->
+<div class="modal" id="modal">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div>
+        <h3 id="modalTitle" style="margin:0"></h3>
+        <div id="modalSub" style="color:var(--muted);font-size:14px"></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="btn ghost" id="modalClose">Close</button>
+      </div>
     </div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Particle background
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let particles = [];
-        const mouse = { x: null, y: null, radius: 150 };
+    <div class="modal-grid">
+      <div id="modalContent">
+        <!-- images inserted here -->
+      </div>
+      <aside style="padding-left:6px">
+        <h4 style="margin-top:0">Summary</h4>
+        <p id="modalSummary" style="color:var(--muted)"></p>
+        <h4>Impact</h4>
+        <p id="modalImpact" style="color:var(--muted)"></p>
+        <a class="btn" id="modalOpenResume" href="resume.pdf" target="_blank">View Resume</a>
+      </aside>
+    </div>
+  </div>
+</div>
 
-        window.addEventListener('mousemove', e => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
+<script>
+/* =================================
+   Canvas Particles
+   vanilla canvas simple particle system
+   ================================= */
+(() => {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let w=canvas.width=innerWidth, h=canvas.height=innerHeight, mouse={x:w/2,y:h/2};
+  const particles=[];
+  function rand(min,max){return Math.random()*(max-min)+min}
+  function make(){
+    for(let i=0;i<90;i++){
+      particles.push({
+        x:Math.random()*w, y:Math.random()*h,
+        vx:rand(-0.2,0.2), vy:rand(-0.2,0.2),
+        r: rand(0.7,2.6),
+        hue: Math.floor(rand(180,210)),
+        life: rand(80,240)
+      });
+    }
+  }
+  function resize(){w=canvas.width=innerWidth; h=canvas.height=innerHeight}
+  addEventListener('resize', resize);
+  addEventListener('mousemove', e=>{mouse.x=e.clientX; mouse.y=e.clientY});
+  addEventListener('touchmove', e=>{ if(e.touches[0]) {mouse.x=e.touches[0].clientX; mouse.y=e.touches[0].clientY}});
 
-        class Particle {
-            constructor(x, y, dirX, dirY, size) {
-                this.x = x; this.y = y; this.dirX = dirX; this.dirY = dirY; this.size = size;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary-glow');
-                ctx.fill();
-            }
-            update() {
-                if (this.x > canvas.width || this.x < 0) this.dirX = -this.dirX;
-                if (this.y > canvas.height || this.y < 0) this.dirY = -this.dirY;
-                
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                if (Math.sqrt(dx*dx + dy*dy) < mouse.radius) {
-                    this.x += this.dirX * 3;
-                    this.y += this.dirY * 3;
-                } else {
-                    this.x += this.dirX;
-                    this.y += this.dirY;
-                }
-                this.draw();
-            }
-        }
+  make();
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    // subtle radial vignette
+    const g = ctx.createLinearGradient(0,0,0,h);
+    g.addColorStop(0,'rgba(0,0,0,0.01)');
+    g.addColorStop(1,'rgba(0,0,0,0.25)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,w,h);
 
-        function initParticles() {
-            particles = [];
-            let count = (canvas.width * canvas.height) / 9000;
-            for(let i=0; i<count; i++) {
-                let size = Math.random() * 2 + 1;
-                let x = Math.random() * (innerWidth - size*2);
-                let y = Math.random() * (innerHeight - size*2);
-                let dirX = (Math.random() * 0.4) - 0.2;
-                let dirY = (Math.random() * 0.4) - 0.2;
-                particles.push(new Particle(x,y,dirX,dirY,size));
-            }
-        }
+    for(let p of particles){
+      // attraction to mouse
+      const dx = mouse.x - p.x; const dy = mouse.y - p.y;
+      const dist = Math.max(40, Math.sqrt(dx*dx+dy*dy));
+      const force = 60/dist;
+      p.vx += dx * 0.0002 * force;
+      p.vy += dy * 0.0002 * force;
+      p.x += p.vx; p.y += p.vy;
+      p.vx *= 0.98; p.vy *= 0.98;
+      p.life -= 0.2;
+      if(p.life < 0){
+        p.x = Math.random()*w; p.y = Math.random()*h; p.life = Math.random()*200+80; p.vx=0; p.vy=0;
+      }
 
-        function animateParticles() {
-            requestAnimationFrame(animateParticles);
-            ctx.clearRect(0,0,innerWidth, innerHeight);
-            particles.forEach(p => p.update());
-        }
-        
-        initParticles();
-        animateParticles();
-        window.addEventListener('resize', () => {
-            canvas.width = innerWidth;
-            canvas.height = innerHeight;
-            initParticles();
-        });
+      ctx.beginPath();
+      const rad = Math.max(0.4, Math.min(3.6, p.r + (Math.sin(p.life)*0.5)));
+      ctx.fillStyle = "rgba(0,200,255,0.07)";
+      ctx.arc(p.x, p.y, rad, 0, Math.PI*2);
+      ctx.fill();
+    }
 
-        // Sticky profile card 3D effect
-        const profileCard = document.getElementById('profileCard');
-        profileCard.addEventListener('mousemove', e => {
-            const rect = profileCard.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const { width, height } = rect;
-            const rotateX = (y - height / 2) / (height / 2) * -10;
-            const rotateY = (x - width / 2) / (width / 2) * 10;
-            profileCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-        profileCard.addEventListener('mouseleave', () => {
-            profileCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-        });
-        
-        // Typing animation
-        const typingEl = document.getElementById('typing-text');
-        const text = "A Business Analytics student passionate about turning raw data into compelling stories. I thrive on uncovering insights that drive strategic decisions and create tangible impact.";
-        let index = 0;
-        function type() {
-            if (index < text.length) {
-                typingEl.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, 40);
-            }
-        }
-        const observer = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting) {
-                type();
-                observer.disconnect();
-            }
-        }, { threshold: 0.8 });
-        observer.observe(document.querySelector('#about'));
+    // subtle lines connecting near particles
+    for(let i=0;i<30;i++){
+      const a = particles[Math.floor(Math.random()*particles.length)];
+      const b = particles[Math.floor(Math.random()*particles.length)];
+      const d = Math.hypot(a.x-b.x, a.y-b.y);
+      if(d<140){
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(0,200,255," + (0.02 + (1 - (d/140))*0.08) + ")";
+        ctx.lineWidth = 1;
+        ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+      }
+    }
 
-        // Project Modal
-        const modal = document.getElementById('projectModal');
-        const modalBody = document.getElementById('modalBody');
-        const projectData = {
-            p1: {
-                title: 'Customer Payment & Revenue Insights',
-                images: ['Image/P3ABC/1.png', 'Image/P3ABC/Sprint.png', 'Image/P3ABC/UAT.png'],
-                desc: 'Built a Power BI dashboard analysing 100+ invoices, tracking 3,864,000 in revenue and 813,500 at risk with 100% accuracy. Managed UAT with stakeholders, prepared test cases, and earned a 100% result, saving time on revisions.'
-            },
-            p2: {
-                title: 'E-Commerce Sales & Order Insights',
-                images: ['Image/Projectec/1.png', 'Image/Projectec/2.png', 'Image/Projectec/3.png'],
-                desc: 'Analyzed over 128,000 orders to identify a 20% higher cancellation rate in specific categories, leading to process efficiency improvements.'
-            },
-            p3: {
-                title: 'Crypto Market Risk & Sentiment Dashboard',
-                images: ['Image/Projectcrypto/1.png', 'Image/Projectcrypto/2.png', 'Image/Projectcrypto/3.png'],
-                desc: 'Designed custom KPIs like CAGR and volatility scores, cutting manual analysis work by 40% and allowing for a sharper focus on emerging market trends.'
-            }
-        };
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
-        document.querySelectorAll('.view-project-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const projectId = btn.dataset.project;
-                const data = projectData[projectId];
-                let imageHtml = data.images.map(src => `<img src="${src}" alt="${data.title}">`).join('');
-                modalBody.innerHTML = `<h2>${data.title}</h2><p>${data.desc}</p>${imageHtml}`;
-                modal.classList.add('visible');
-            });
-        });
-        
-        modal.querySelector('.modal-close').addEventListener('click', () => modal.classList.remove('visible'));
-        modal.addEventListener('click', e => {
-            if (e.target === modal) modal.classList.remove('visible');
-        });
+/* =================================
+   Hero interactions - small parallax
+   ================================= */
+(function(){
+  const profileWrap = document.getElementById('profileWrap');
+  const heroName = document.getElementById('heroName');
+  const exploreBtn = document.getElementById('exploreBtn');
+  const scrollInd = document.getElementById('scrollInd');
 
-        // Conversational contact form
-        const formGroups = document.querySelectorAll('.form-group');
-        const formObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { rootMargin: "0px 0px -100px 0px" });
+  // subtle tilt based on mouse
+  document.addEventListener('mousemove', e => {
+    const w = innerWidth, h = innerHeight;
+    const rx = (e.clientX - w/2) / (w/12);
+    const ry = (e.clientY - h/2) / (h/20);
+    profileWrap.style.transform = `rotateY(${rx}deg) rotateX(${-ry}deg) translateZ(6px)`;
+  });
 
-        formGroups.forEach((group, index) => {
-            group.style.transitionDelay = `${index * 200}ms`;
-            formObserver.observe(group);
-        });
+  // explore scroll
+  exploreBtn.addEventListener('click', ()=> {
+    document.querySelector('#about').scrollIntoView({behavior:'smooth'});
+  });
+  // hide scroll indicator after scrolling
+  let scrolled=false;
+  addEventListener('scroll', ()=> {
+    if(window.scrollY>40 && !scrolled){ scrolled=true; scrollInd.style.opacity=0; scrollInd.style.display='none' }
+    if(window.scrollY<20 && scrolled){ scrolled=false; scrollInd.style.display='block'; setTimeout(()=>scrollInd.style.opacity=1,40) }
+  });
+})();
 
-        // Form submit particle effect
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('.submit-btn');
-            const rect = btn.getBoundingClientRect();
-            for (let i = 0; i < 50; i++) {
-                createParticle(rect.left + rect.width / 2, rect.top + rect.height / 2);
-            }
-            btn.innerHTML = "Sent!";
-            setTimeout(() => {
-                this.reset();
-                btn.innerHTML = "Send Message";
-            }, 2000);
-        });
-
-        function createParticle(x, y) {
-            const particle = document.createElement('div');
-            document.body.appendChild(particle);
-            particle.style.position = 'fixed';
-            particle.style.left = `${x}px`;
-            particle.style.top = `${y}px`;
-            particle.style.width = `${Math.random() * 5 + 2}px`;
-            particle.style.height = particle.style.width;
-            particle.style.background = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
-            particle.style.borderRadius = '50%';
-            const destinationX = x + (Math.random() - 0.5) * 300;
-            const destinationY = y + (Math.random() - 0.5) * 300;
-            const animation = particle.animate([
-                { transform: 'translate(0, 0)', opacity: 1 },
-                { transform: `translate(${destinationX - x}px, ${destinationY - y}px)`, opacity: 0 }
-            ], {
-                duration: Math.random() * 1000 + 1000,
-                easing: 'cubic-bezier(0, .9, .57, 1)'
-            });
-            animation.onfinish = () => particle.remove();
-        }
+/* =================================
+   Timeline intersection animation
+   ================================= */
+(function(){
+  const items = document.querySelectorAll('.timeline .item');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('active'); }
     });
-    </script>
+  }, {threshold:0.1});
+  items.forEach(it=>io.observe(it));
+})();
+
+/* =================================
+   Skills nodes dynamic creation + hover cards
+   ================================= */
+(function(){
+  const skills = [
+    {k:'Excel', d:'Advanced formulas, Power Query, Power Pivot, DAX', lvl:'Expert'},
+    {k:'Power BI', d:'Dashboards, DAX measures, visuals', lvl:'Advanced'},
+    {k:'SQL', d:'Queries, joins, window functions', lvl:'Intermediate'},
+    {k:'Python', d:'Pandas, data cleaning, plotting', lvl:'Intermediate'},
+    {k:'Tableau', d:'Viz & Storytelling', lvl:'Intermediate'},
+    {k:'Communication', d:'Stakeholder storytelling', lvl:'Strong'},
+    {k:'Data Modelling', d:'Schemas, ETL thinking', lvl:'Advanced'},
+  ];
+
+  const grid = document.getElementById('skillsGrid');
+  skills.forEach(s=>{
+    const node = document.createElement('div');
+    node.className='skill-node';
+    node.innerHTML = `<div style="font-size:18px;font-weight:800">${s.k}</div>
+                      <div class="skill-title">${s.k}</div>
+                      <div class="skill-level">${s.lvl}</div>
+                      <div style="display:none;color:var(--muted);margin-top:8px" class="skill-desc">${s.d}</div>`;
+    node.addEventListener('mouseenter', ()=>{
+      const desc = node.querySelector('.skill-desc');
+      desc.style.display='block';
+    });
+    node.addEventListener('mouseleave', ()=>{
+      const desc = node.querySelector('.skill-desc');
+      desc.style.display='none';
+    });
+    node.addEventListener('click', ()=>{
+      // quick little expansion on click for mobile
+      const desc = node.querySelector('.skill-desc');
+      desc.style.display = desc.style.display==='block' ? 'none' : 'block';
+    });
+    grid.appendChild(node);
+  });
+})();
+
+/* =================================
+   Projects gallery controls + modal
+   ================================= */
+(function(){
+  const strip = document.getElementById('projectsStrip');
+  const dots = document.getElementById('projectDots');
+  const projects = Array.from(strip.querySelectorAll('.project'));
+  // make dots
+  projects.forEach((p,i)=>{
+    const b = document.createElement('button');
+    b.className='dot-btn'; if(i===0) b.classList.add('active');
+    b.addEventListener('click', ()=> {
+      strip.scrollTo({left: strip.clientWidth * i, behavior:'smooth'});
+      document.querySelectorAll('.dot-btn').forEach(d=>d.classList.remove('active'));
+      b.classList.add('active');
+    });
+    dots.appendChild(b);
+  });
+
+  // update dot on scroll
+  let timer;
+  strip.addEventListener('scroll', ()=>{
+    clearTimeout(timer);
+    timer = setTimeout(()=>{
+      const idx = Math.round(strip.scrollLeft / strip.clientWidth);
+      document.querySelectorAll('.dot-btn').forEach((d,i)=> d.classList.toggle('active', i===idx));
+    },80);
+  });
+
+  // modal logic
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSub = document.getElementById('modalSub');
+  const modalContent = document.getElementById('modalContent');
+  const modalSummary = document.getElementById('modalSummary');
+  const modalImpact = document.getElementById('modalImpact');
+  const modalClose = document.getElementById('modalClose');
+
+  const projectData = {
+    'P3ABC': {
+      title:'P3ABC — Revenue Insights',
+      subtitle:'Automated invoices, return & delivery analysis',
+      folder:'Image/P3ABC/',
+      images:['1.png','Sprint.png','UAT Results.png','UAT Scenario.png','UAT Signoff.png','UAT.png','test_case.png'],
+      summary:'Eliminated manual invoice tracking by automating ETL and building KPI surfaces. Key metrics: AOV, return rate, DSO, cancellation analysis.',
+      impact:'Reduced delayed payments by 32% in simulation, clear visibility for finance stakeholders.'
+    },
+    'Projectcrypto': {
+      title:'Crypto — Momentum & Risk',
+      subtitle:'Exploratory backtests & heatmaps',
+      folder:'Image/Projectcrypto/',
+      images:['1.png','2.png','3.png'],
+      summary:'Analyzed price action and risk-adjusted momentum indicators. Created backtest visuals to test strategy viability.',
+      impact:'Provided a clear framework for risk controls and entry/exit visualization.'
+    },
+    'Projectec': {
+      title:'Electricity Consumption Forecast',
+      subtitle:'Time-series forecasting & anomaly detection',
+      folder:'Image/Projectec/',
+      images:['1.png','2.png','3.png','4.png'],
+      summary:'Built a forecasting pipeline and dashboard for operations to monitor anomalies and forecast demand.',
+      impact:'Prototype showed 8-12% improvement in forecasting accuracy during sample window.'
+    }
+  };
+
+  document.querySelectorAll('[data-open]').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      const key = e.currentTarget.closest('.project').dataset.project;
+      openProject(key);
+    });
+  });
+
+  function openProject(key){
+    const pd = projectData[key];
+    modalTitle.textContent = pd.title;
+    modalSub.textContent = pd.subtitle;
+    modalSummary.textContent = pd.summary;
+    modalImpact.textContent = pd.impact;
+    modalContent.innerHTML = '';
+    // create images (only those present)
+    pd.images.forEach(fn=>{
+      const img = document.createElement('img');
+      img.src = pd.folder + fn; // paths from repo
+      img.alt = pd.title + ' - ' + fn;
+      img.loading = 'lazy';
+      modalContent.appendChild(img);
+    });
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e)=>{
+    if(e.target === modal) closeModal();
+  });
+  function closeModal(){
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+})();
+
+/* =================================
+   Conversational contact interactions
+   ================================= */
+(function(){
+  const nameInput = document.getElementById('nameInput');
+  const emailStep = document.querySelector('[data-step="email"]');
+  const msgStep = document.querySelector('[data-step="msg"]');
+  const sendBtn = document.getElementById('sendBtn');
+  const submitSuccess = document.getElementById('submitSuccess');
+
+  nameInput.addEventListener('input', ()=>{
+    if(nameInput.value.trim().length>1){
+      emailStep.style.transition='all 260ms var(--ease)'; emailStep.style.opacity=1; emailStep.style.transform='none';
+    } else {
+      emailStep.style.opacity=0; emailStep.style.transform='translateY(6px)';
+    }
+  });
+
+  const emailInput = document.getElementById('emailInput');
+  emailInput.addEventListener('input', ()=>{
+    if(emailInput.value.includes('@')) {
+      msgStep.style.transition='all 260ms var(--ease)'; msgStep.style.opacity=1; msgStep.style.transform='none';
+    } else {
+      msgStep.style.opacity=0; msgStep.style.transform='translateY(6px)';
+    }
+  });
+
+  sendBtn.addEventListener('click', async ()=>{
+    const n = nameInput.value.trim(), e = emailInput.value.trim(), m = document.getElementById('msgInput').value.trim();
+    if(!n || !e || !m){ alert('Please complete the quick conversation.'); return; }
+
+    // simulate sending — the user will replace with real backend (serverless)
+    sendBtn.disabled = true; sendBtn.textContent='Sending...';
+    await new Promise(r=>setTimeout(r,900));
+    submitSuccess.style.display='block';
+    sendBtn.textContent='Sent';
+    sendBtn.disabled = false;
+
+    // nice particle burst effect at profile area
+    const burst = document.createElement('div');
+    burst.style.position='fixed'; burst.style.left='50%'; burst.style.top='20%'; burst.style.width='8px'; burst.style.height='8px';
+    document.body.appendChild(burst);
+    setTimeout(()=>burst.remove(),1200);
+  });
+})();
+
+/* =================================
+   Small niceties
+   ================================= */
+(function(){
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
-
